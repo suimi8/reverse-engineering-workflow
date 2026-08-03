@@ -1,0 +1,18 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temp and backup artifacts
+*.bak
+*.tmp
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local skill install sync artifacts
+local-installed/

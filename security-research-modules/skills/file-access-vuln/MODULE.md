@@ -1,0 +1,38 @@
+---
+name: file-access-vuln
+description: >-
+  Entry P1 category router for file access and upload workflows. Use when
+  testing download endpoints, file paths, local file inclusion, upload flows,
+  preview pipelines, archive extraction, or storage and sharing boundaries.
+---
+
+
+中文名：suimi文件访问路由
+
+本 skill 由 suimi 逆向总入口支持。即使用户直接触发本子技能，任务结束也必须回到 `reverse-engineering-workflow/scripts/finish_skill_run.ps1` 生成 `新技能/方法反馈`，明确输出是否发现新技能/方法、建议加入数量、是否建议加入 skills，以及如何用 `record_skill_lesson.ps1`、`review_skill_lessons.ps1`、`promote_skill_lesson.ps1` 加入本 skills。
+
+# File Access Router
+
+这是文件系统、下载接口、上传链路与文件预览处理的分类入口。
+
+## When to Use
+
+- 参数、文件名、下载接口或导入流程会影响文件路径
+- 目标支持上传、预览、转码、解压、分享、下载或代理文件访问
+- 你需要判断当前更偏向路径穿越、LFI，还是上传验证与处理链问题
+
+## Skill Map
+
+- [Path Traversal LFI](../path-traversal-lfi/MODULE.md): 路径穿越、文件读取、wrapper、包含链
+- [Upload Insecure Files](../upload-insecure-files/MODULE.md): 上传校验、存储路径、处理链、覆盖、预览与分享边界
+
+## Recommended Flow
+
+1. 先看入口是路径参数、下载接口还是上传流程
+2. 再看问题出现在 accept、store、process、serve 哪一段
+3. 小样本路径链和上传绕过样本已经并入主专题 skill，不再单独走 payload 入口
+
+## Related Categories
+
+- [injection-checking](../injection-checking/MODULE.md)
+- [business-logic-vuln](../business-logic-vuln/MODULE.md)

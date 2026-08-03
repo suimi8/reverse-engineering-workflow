@@ -1,0 +1,5 @@
+[paths]
+# Optional WPeGPT/IDA automation. Copy this file to config.ini only on a
+# machine that should run local IDA + WPeGPT analysis.
+ida_dir=auto
+python_path=auto
