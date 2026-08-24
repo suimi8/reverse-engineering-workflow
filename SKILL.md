@@ -1,6 +1,6 @@
 ﻿---
 name: reverse-engineering-workflow
-description: Suimi-supported single installable auto-routing entry for authorized reverse engineering of local binaries, APKs, firmware, sandbox apps, source recovery, unpacking, static/dynamic analysis, runtime diagnosis, Frida/x64dbg/IDA/Ghidra/WPeGPT workflows, GUI/network/update/auth flow analysis, APK package-name migration, smali/native patching, PE/APK patching, anti-analysis triage, and reverse-discovered Web/API/auth/security-assessment surfaces. Trigger on reverse engineering, APK/mobile reverse, IDA/x64dbg/Ghidra, Frida, firmware, unpacking, patching, traffic/API extraction, auth/update flow analysis, packaging a stable reversible test build, or requests for suimi-provided reverse-engineering workflow support. After this skill triggers, route to the best bundled internal MODULE.md before heavy work; do not install internal modules as separate skills.
+description: Suimi-supported single installable auto-routing entry for authorized reverse engineering of local binaries, APKs, firmware, sandbox apps, source recovery, unpacking, static/dynamic analysis, runtime diagnosis, Frida/x64dbg/IDA/Ghidra/WPeGPT workflows, GUI/network/update/auth flow analysis, APK package-name migration, smali/native patching, PE/APK patching, anti-analysis triage, and reverse-discovered Web/API/auth/security-assessment surfaces. Also routes authorized penetration-testing toolchain work (nmap/port scanning, nuclei vulnerability scanning, sqlmap/SQL injection testing, ffuf directory bruteforcing, hashcat password cracking, ZAP/Burp, src/bug bounty vulnerability hunting, and pentest toolchain requests). Trigger on reverse engineering, APK/mobile reverse, IDA/x64dbg/Ghidra, Frida, firmware, unpacking, patching, traffic/API extraction, auth/update flow analysis, packaging a stable reversible test build, penetration testing (nmap, nuclei, sqlmap, ffuf, hashcat, ZAP, Burp), src/bug bounty hunting, or requests for suimi-provided reverse-engineering workflow support. After this skill triggers, route to the best bundled internal MODULE.md before heavy work; do not install internal modules as separate skills.
 ---
 
 
@@ -150,6 +150,7 @@ If uncertain, use this fallback:
 - Machine-readable reusable invocation contracts: `references/reusable-invocation-contract.md`.
 - Autonomous lesson capture and promotion rules: `references/skill-learning-loop.md`.
 - Unified Chinese skill names and routing map: `references/unified-skills-entry.md`.
+- Module/reference onboarding spec (how to add or retire an internal module without breaking healthcheck): `references/module-onboarding-spec.md`.
 
 ## Useful Scripts
 
@@ -175,6 +176,7 @@ If uncertain, use this fallback:
 - `scripts/promote_skill_lesson.ps1`: append one validated lesson to a target Markdown reference, mark the inbox entry promoted, and automatically sync the installed skill directory unless `-SkipInstalledSync` is passed.
 - `scripts/wpegpt_analyze.ps1`: run IDA with WPeGPT in headless mode and generate AI analysis reports for PE/ELF binaries.
 - `scripts/wpegpt_analyze.bat`: backup local terminal launcher for WPeGPT analysis; prefer the PowerShell script in agent workflows.
+- `scripts/new_module.ps1`: scaffold a compliant internal `MODULE.md` from `scripts/templates/module.md.tmpl` and complete every cross-file registration (chinese-skill-names, unified entry, INDEX/SKILL lists, security P1 router link) in one idempotent command; `-WhatIf` previews without writing, `-AsJson` emits a structured plan.
 
 Use scripts as templates. Read before adapting, then keep edits small and reversible.
 
@@ -202,7 +204,42 @@ The following upstream reverse-only modules were appended without replacing loca
 - `github-reverse-modules/skills/binary-diff/MODULE.md`: cross-version symbol migration and LLM-assisted binary diff methodology.
 - `github-reverse-modules/skills/apk-reverse/MODULE.md`: APK decode, manifest summary, Frida run, and rebuild-sign-install workflow.
 - `github-reverse-modules/skills/mobile-reverse/MODULE.md`: Android+iOS mobile reverse methodology.
+- `github-reverse-modules/skills/dotnet-reverse/MODULE.md`: .NET/C# assembly reverse with dnSpyEx, de4dot, obfuscator bypass, NativeAOT, Sharp* tooling.
+- `github-reverse-modules/skills/js-reverse/MODULE.md`: JavaScript/Web frontend reverse, webpack/IIFE deobfuscation, AST rewriting, browser runtime capture.
+- `github-reverse-modules/skills/ghidra-reverse/MODULE.md`: Ghidra headless/scripting reverse workflow, decompiler API, Sleigh, plugins.
+- `github-reverse-modules/skills/go-rust-reverse/MODULE.md`: Go/Rust binary reverse with symbol recovery, type info, goroutine/Rust stdlib patterns, string recovery.
+- `github-reverse-modules/skills/malware-analysis/MODULE.md`: Malware triage, sandbox analysis, unpacking, persistence, IOC extraction.
+- `github-reverse-modules/skills/firmware-pentest/MODULE.md`: Firmware extraction, filesystem carving, bootloader/secure-boot review, device emulation.
+- `github-reverse-modules/skills/protocol-reverse/MODULE.md`: Network protocol reverse, traffic replay, field mapping.
+- `github-reverse-modules/skills/thick-client/MODULE.md`: Thick client (desktop app) reverse with API interception, process memory, config extraction.
+- `github-reverse-modules/skills/patch-diff-exploit/MODULE.md`: Patch diffing to locate fixed vulnerabilities.
+- `github-reverse-modules/skills/pwn-chain/MODULE.md`: Exploit chain assembly, mitigation bypass (ASLR/DEP/CFG), debugger-driven exploitation.
+- `github-reverse-modules/skills/edr-bypass-re/MODULE.md`: EDR/AV evasion, API unhooking, syscall analysis.
+- `github-reverse-modules/skills/macos-reverse/MODULE.md`: macOS/iOS binary reverse, Mach-O, Objective-C runtime, entitlements.
+- `github-reverse-modules/skills/browser-extension-reverse/MODULE.md`: Browser extension reverse, CRX unpack, manifest/permission analysis.
+- `github-reverse-modules/skills/reverse-engineering/dsl-vm-reverse/MODULE.md`: JavaScript-based custom DSL/VM reverse, opcode dispatch table, bytecode semantics recovery.
+- `github-reverse-modules/skills/web-api-reverse/MODULE.md`: Web backend API reverse, recover internal API protocol from traffic/HAR/cURL, generate Python httpx / TypeScript client + API docs.
+- `github-reverse-modules/skills/web-js-reverse/MODULE.md`: Web frontend JS reverse, obfuscation deobfuscation, JSVMP methodology, CDP bypass, TLS fingerprint, env patching, WASM reverse, anti-crawler.
+- `github-reverse-modules/skills/web-crypto-reverse/MODULE.md`: Web/APK crypto reverse, identify and rebuild encryption/signing algorithms in Python, specialist index, online verification.
+
+## Shared Upstream Scripts
+
 - `github-reverse-modules/skills/scripts/`: shared upstream bootstrap and tool discovery scripts required by the appended modules.
+
+## Newly Synced IDA Reverse Files
+
+- `github-reverse-modules/skills/ida-reverse/scripts/watchdog.ps1`: minute-level IDA MCP health check.
+- `github-reverse-modules/skills/ida-reverse/scripts/install-autostart.ps1`: login autostart task registration.
+- `github-reverse-modules/skills/ida-reverse/scripts/start-gui.ps1`: GUI-plugin start fallback.
+- `github-reverse-modules/skills/ida-reverse/scripts/run-supervisor.py`: Python supervisor equivalent.
+- `github-reverse-modules/skills/ida-reverse/scripts/IdaOpenHelpers.ps1`: shared open-lock policy.
+- `github-reverse-modules/skills/ida-reverse/LOCAL-SETUP.md`: IDA ↔ reverse-skill install/configure notes.
+
+## New References (synced from upstream)
+
+- `github-reverse-modules/skills/reverse-engineering/references/nonpe-format-cookbook.md` — non-PE binary formats cookbook
+- `github-reverse-modules/skills/reverse-engineering/references/ollvm-deobfuscation.md` — OLLVM deobfuscation
+- `github-reverse-modules/skills/reverse-engineering/references/re-agent-workflow.md` — reverse-agent workflow notes
 
 ## Added Local Reverse Modules
 
@@ -223,4 +260,5 @@ The following optional Web/API security research modules were appended under `se
 - Use `security-research-modules/skills/injection-checking/MODULE.md` for XSS, SQLi, SSRF, XXE, SSTI, CMDi, JNDI, XSLT, NoSQL, and expression-language routing.
 - Use `security-research-modules/skills/file-access-vuln/MODULE.md` for upload, download, path traversal, LFI, and exposed file/source-control surfaces.
 - Use `security-research-modules/skills/business-logic-vuln/MODULE.md` for payment, coupon, inventory, invitation, race, and multi-step workflow review.
-- See `security-research-modules/INDEX.md` for the imported skill list, compatibility notes, and excluded donor files.
+- Upstream-synced security/auxiliary modules (v1.0.1): `attack-chain`, `browser-automation`, `case-review`, `cloud-k8s`, `code-audit`, `ctf-sandbox`, `database-security`, `diagram-generator`, `digital-forensics`, `docs-generator`, `email-security`, `hardware-security`, `identity-federation`, `llm-security`, `ot-ics`, `radio-sdr`, `supply-chain-security`, `threat-hunting`, `threat-intelligence`, `wifi-wireless`, `windows-ad` — see `security-research-modules/INDEX.md` for the full imported skill list, compatibility notes, and excluded donor files.
+- CTF-Sandbox-Orchestrator family (v1.0.1 sidecar, 42 modules): `ctf-sandbox-orchestrator` is the default competition entry and routes to 41 `competition-*` downstream specializations (web-runtime, reverse-pwn, crypto-mobile, zip-archive, agent-cloud, identity-windows, prompt-injection, supply-chain, windows-pivot, malware-config, kerberos-delegation, container-runtime, forensic-timeline, android-hooking, stego-media, runtime-routing, ios-runtime, firmware-layout, mailbox-abuse, pcap-protocol, browser-persistence, k8s-control-plane, ad-certificate-abuse, custom-protocol-replay, oauth-oidc-chain, websocket-runtime, cloud-metadata-path, relay-coercion-chain, jwt-claim-confusion, file-parser-chain, queue-worker-drift, lsass-ticket-material, template-render-path, bundle-sourcemap-recovery, graphql-rpc-drift, dpapi-credential-chain, ssrf-metadata-pivot, race-condition-state-drift, request-normalization-smuggling, linux-credential-pivot, kernel-container-escape). Sandbox-internal by default; reply in Simplified Chinese; prove one end-to-end path before expanding. See `references/ops/` (作战契约层) and `references/field-journal/` (实战日志与种子案例) for supporting material.

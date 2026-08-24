@@ -1,4 +1,4 @@
----
+﻿---
 name: windows-local-service-persistence
 description: Repair and validate Windows localhost helper service startup for authorized local apps. Use for loopback-only Node/Python/helper services, Startup folder scripts, scheduled task fallback, port no-op guards, non-ASCII path failures in .cmd files, hidden Start-Process launchers, cold-start verification, and apps that need a local service on 127.0.0.1 to reach the functional UI.
 ---

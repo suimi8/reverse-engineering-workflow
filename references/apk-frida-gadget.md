@@ -1,4 +1,4 @@
-# APK / Frida Gadget Reverse Engineering Notes
+﻿# APK / Frida Gadget Reverse Engineering Notes
 
 Use for authorized APK analysis, mobile sandbox testing, ad/network component isolation, no-root Frida Gadget builds, and runtime hook-to-persistent-patch migration.
 

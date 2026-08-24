@@ -1,4 +1,4 @@
----
+﻿---
 name: xxe-xml-external-entity
 description: >-
   XXE playbook. Use when XML, SVG, OOXML, SOAP, or parser-driven imports may resolve external entities, files, or internal network resources.

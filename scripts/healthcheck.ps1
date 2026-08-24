@@ -525,7 +525,31 @@ function suimiTest-CrossReferenceCompleteness {
         }
     }
 
-    $routers = @('hack', 'recon-for-sec', 'api-sec', 'auth-sec', 'injection-checking', 'file-access-vuln', 'business-logic-vuln')
+    $localSkillsRoot = Join-Path $RootDir 'local-reverse-modules\skills'
+    if (Test-Path -LiteralPath $localSkillsRoot) {
+        $localDirs = @(Get-ChildItem -LiteralPath $localSkillsRoot -Directory | Where-Object { $_.Name -ne 'scripts' } | Select-Object -ExpandProperty Name)
+        $localIndexPath = Join-Path $RootDir 'local-reverse-modules\INDEX.md'
+        if (-not (Test-Path -LiteralPath $localIndexPath)) {
+            $issues += 'local-reverse-modules/INDEX.md is missing'
+        } else {
+            $localIndexText = Get-Content -LiteralPath $localIndexPath -Raw
+            foreach ($dirName in $localDirs) {
+                if ($localIndexText -notmatch [regex]::Escape("skills/$dirName/")) {
+                    $issues += "local-reverse-modules/INDEX.md missing module dir: $dirName"
+                }
+            }
+        }
+
+        $localSectionMatch = [regex]::Match($skillMdText, '(?ms)^##\s+Added Local Reverse Modules\b.*?(?=^##\s|\z)')
+        $localSectionText = if ($localSectionMatch.Success) { $localSectionMatch.Value } else { '' }
+        foreach ($dirName in $localDirs) {
+            if ($localSectionText -notmatch [regex]::Escape("local-reverse-modules/skills/$dirName/MODULE.md")) {
+                $issues += "SKILL.md Added Local Reverse Modules list missing: $dirName"
+            }
+        }
+    }
+
+    $routers = @('hack', 'recon-for-sec', 'api-sec', 'auth-sec', 'injection-checking', 'file-access-vuln', 'business-logic-vuln', 'ctf-sandbox-orchestrator')
     $routerLinkedNames = @()
     foreach ($routerName in $routers) {
         $routerFile = Join-Path $secSkillsRoot "$routerName\MODULE.md"
@@ -542,11 +566,23 @@ function suimiTest-CrossReferenceCompleteness {
         $issues += "security-research-modules module not linked from any P1 router Skill Map: $orphanName"
     }
 
-    $selectText = Get-Content -LiteralPath (Join-Path $RootDir 'scripts\select_skill.ps1') -Raw
-    $ruleNames = @([regex]::Matches($selectText, "name = '([a-z0-9\-]+)';\s*pattern") | ForEach-Object { $_.Groups[1].Value })
-    $deadRuleRefs = @($ruleNames | Where-Object { $_ -notin $allNames } | Select-Object -Unique)
-    foreach ($deadName in $deadRuleRefs) {
-        $issues += "select_skill.ps1 rule references unknown skill name: $deadName"
+    $routingRulesPath = Join-Path $RootDir 'scripts\routing-rules.json'
+    $ruleNames = @()
+    if (-not (Test-Path -LiteralPath $routingRulesPath)) {
+        $issues += 'scripts/routing-rules.json is missing'
+    } else {
+        $routingRulesRaw = [System.IO.File]::ReadAllText($routingRulesPath, [System.Text.Encoding]::UTF8)
+        $parsedRoutingRules = $routingRulesRaw | ConvertFrom-Json
+        $routingRules = @($parsedRoutingRules)
+        $ruleNames = @($routingRules | ForEach-Object { [string]$_.name })
+        $deadRuleRefs = @($ruleNames | Where-Object { $_ -notin $allNames } | Select-Object -Unique)
+        foreach ($deadName in $deadRuleRefs) {
+            $issues += "routing-rules.json rule references unknown skill name: $deadName"
+        }
+        $incompleteRules = @($routingRules | Where-Object { [string]::IsNullOrWhiteSpace([string]$_.name) -or [string]::IsNullOrWhiteSpace([string]$_.pattern) -or [string]::IsNullOrWhiteSpace([string]$_.reason) -or ($null -eq $_.confidence) })
+        foreach ($incompleteRule in $incompleteRules) {
+            $issues += "routing-rules.json rule has incomplete fields: $([string]$incompleteRule.name)"
+        }
     }
 
     if ($issues.Count -gt 0) {
@@ -558,7 +594,7 @@ function suimiTest-CrossReferenceCompleteness {
 
     return @{
         status = 'pass'
-        message = "Cross-reference completeness OK: unified-skills-entry.md, INDEX.md (both trees), SKILL.md module lists, $($secDetailDirs.Count) Skill-Map-linked detail modules, and $($ruleNames.Count) select_skill.ps1 rule refs are all consistent with the registry."
+        message = "Cross-reference completeness OK: unified-skills-entry.md, INDEX.md (all three trees), SKILL.md module lists, $($secDetailDirs.Count) Skill-Map-linked detail modules, and $($ruleNames.Count) routing-rules.json rule refs are all consistent with the registry."
     }
 }
 

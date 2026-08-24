@@ -1,4 +1,4 @@
-# PyQt / Nuitka GUI Reverse Notes
+﻿# PyQt / Nuitka GUI Reverse Notes
 
 ## QApplication Probes
 

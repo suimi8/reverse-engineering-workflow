@@ -1,4 +1,4 @@
----
+﻿---
 name: auth-sec
 description: >-
   Entry P1 category router for authentication and authorization. Use when

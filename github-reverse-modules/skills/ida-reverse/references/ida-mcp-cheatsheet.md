@@ -1,4 +1,4 @@
-# IDA Pro MCP 工具速查
+﻿# IDA Pro MCP 工具速查
 
 > 72 个 MCP 工具按功能分类，附常用参数和典型用法。
 > 服务器名：`idapro`，工具前缀：`idapro_*`，HTTP 模式运行。

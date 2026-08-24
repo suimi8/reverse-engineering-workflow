@@ -1,4 +1,4 @@
-# Frida 实战脚本速查
+﻿# Frida 实战脚本速查
 
 > 精选自 [awesome-frida](https://github.com/dweinstein/awesome-frida)、[Frida-Mobile-Scripts](https://github.com/m0bilesecurity/Frida-Mobile-Scripts)、[frida-codeshare-scripts](https://github.com/zengfr/frida-codeshare-scripts) 等开源项目。
 > 按场景分类，直接复制使用。

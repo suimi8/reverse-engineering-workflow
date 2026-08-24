@@ -1,4 +1,4 @@
----
+﻿---
 name: ida-reverse
 description: |
   IDA Pro 逆向分析辅助技能。当用户提到逆向、反编译、分析二进制/PE/ELF/APK/DLL/SO、破解、找密码、漏洞分析、病毒分析、firmware 固件分析，或需要分析 exe/dll/so/elf/macho/sys 等文件时，务必使用此技能。
@@ -340,3 +340,43 @@ ida-pro-mcp --config
 
 - IDA Pro 已安装且 `IDADIR` 环境变量已设置（或脚本内默认路径正确）
 - Python 已安装（idalib-mcp 依赖 Python）
+
+## 新增维护脚本
+
+以下脚本由仓库同步补充，用于持续保活：
+
+### watchdog.ps1 — 分钟级健康巡检
+
+路径：`scripts/watchdog.ps1`
+
+每分钟检查 13337 端口是否健康；健康则复用，仅当 down/stale 时才调用 `start.ps1` 替换。日志保存在 `%LOCALAPPDATA%\reverse-skill\ida-mcp\watchdog.log`。
+
+### install-autostart.ps1 — 登录自启动注册
+
+路径：`scripts/install-autostart.ps1`
+
+注册计划任务 `reverse-skill-ida-mcp`（登录时 + 每分钟触发），确保 IDA MCP 持续可用。
+
+### start-gui.ps1 — 图形界面启动（备用）
+
+路径：`scripts/start-gui.ps1`
+
+适用于 idalib 授权失败时通过 IDA GUI 插件启动 MCP 服务器。
+
+### run-supervisor.py — Python 版监督器
+
+路径：`scripts/run-supervisor.py`
+
+Python 实现的 `start.ps1` 等价逻辑，可在非 Windows 环境或不想用 PowerShell 时使用。
+
+### IdaOpenHelpers.ps1 — 共享锁策略
+
+路径：`scripts/IdaOpenHelpers.ps1`
+
+提供 `Get-IdaOpenLockPlan` 函数，检查 `.id0/.id1/.nam` 等锁文件状态，决定是否需复制到 Temp 打开。被 `open.ps1` 调用。
+
+### LOCAL-SETUP.md — 安装与配置说明
+
+路径：`LOCAL-SETUP.md`
+
+记录了 IDA ↔ reverse-skill 对接的完整安装步骤，包括 `IDADIR` 设置、idalib 激活、MCP 安装与配置。

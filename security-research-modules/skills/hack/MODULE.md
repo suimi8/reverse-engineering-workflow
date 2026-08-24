@@ -1,4 +1,4 @@
----
+﻿---
 name: hack
 description: >-
   Entry P0 primary router for HackSkills. Use when the task involves web
@@ -120,6 +120,31 @@ description: >-
 - [Clickjacking](../clickjacking/MODULE.md)
 - [Open Redirect](../open-redirect/MODULE.md)
 - [Web Cache Deception](../web-cache-deception/MODULE.md)
+
+### 上游同步模块（reverse-skill v1.0.1 导入）
+
+- [Attack Chain](../attack-chain/MODULE.md)
+- [Browser Automation](../browser-automation/MODULE.md)
+- [Case Review](../case-review/MODULE.md)
+- [Cloud & K8s Security](../cloud-k8s/MODULE.md)
+- [Code Audit](../code-audit/MODULE.md)
+- [CTF Sandbox](../ctf-sandbox/MODULE.md)
+- [Database Security](../database-security/MODULE.md)
+- [Diagram Generator](../diagram-generator/MODULE.md)
+- [Digital Forensics](../digital-forensics/MODULE.md)
+- [Docs Generator](../docs-generator/MODULE.md)
+- [Email Security](../email-security/MODULE.md)
+- [Hardware Security](../hardware-security/MODULE.md)
+- [Identity Federation](../identity-federation/MODULE.md)
+- [LLM Security](../llm-security/MODULE.md)
+- [OT/ICS Security](../ot-ics/MODULE.md)
+- [Radio & SDR](../radio-sdr/MODULE.md)
+- [Supply Chain Security](../supply-chain-security/MODULE.md)
+- [Threat Hunting](../threat-hunting/MODULE.md)
+- [Threat Intelligence](../threat-intelligence/MODULE.md)
+- [WiFi & Wireless](../wifi-wireless/MODULE.md)
+- [Windows AD](../windows-ad/MODULE.md)
+- [Pentest Tools](../pentest-tools/MODULE.md)
 
 原先单独拆出的 payload-selection、brute-selection 一类小 skill 已并回对应主 skill，避免入口过多导致 loader 负担和选择噪音。
 

@@ -1,4 +1,4 @@
-#Requires -Version 5.0
+﻿#Requires -Version 5.0
 
 function suimiGet-SkillLearningRoot {
     $scriptsDir = Split-Path -Parent $PSScriptRoot

@@ -1,4 +1,4 @@
-# x64dbg MCP 工具速查
+﻿# x64dbg MCP 工具速查
 
 > 71 个 MCP 工具，按功能分类，附真实参数（核对自 `duty1g/x64dbg-mcp-server` 源码 `src/mcp/tools.zig`，非推测）。
 > 工具名是原始 PascalCase（`LoadBinary`、`ReadMemory` 等），服务器本身不加前缀；在 Claude Code 里会以 `mcp__<server名>__<工具名>` 形式出现，`<server名>` 就是 `claude mcp add` 时起的名字（默认 `x64dbg`）。

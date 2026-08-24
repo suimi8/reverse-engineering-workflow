@@ -1,4 +1,4 @@
-# Frida Bypass Kit — Android 通用安全绕过框架
+﻿# Frida Bypass Kit — Android 通用安全绕过框架
 
 > 来源：[FridaBypassKit](https://github.com/okankurtuluss/FridaBypassKit)（2025）
 > 适用场景：APK 动态分析时需要绕过 root 检测、SSL pinning、模拟器检测、反调试

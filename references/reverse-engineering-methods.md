@@ -1,4 +1,4 @@
-# Reusable Reverse Engineering Method Checklist
+﻿# Reusable Reverse Engineering Method Checklist
 
 ## Baseline
 

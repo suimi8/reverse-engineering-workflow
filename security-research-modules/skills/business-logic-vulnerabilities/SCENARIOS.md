@@ -1,4 +1,4 @@
-# Business Logic Vulnerabilities — Extended Scenarios
+﻿# Business Logic Vulnerabilities — Extended Scenarios
 
 > Companion to [SKILL.md](./MODULE.md). Contains payment security, captcha bypass, password reset flaws, user enumeration, and traversal attack scenarios.
 

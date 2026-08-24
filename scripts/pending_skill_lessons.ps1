@@ -1,4 +1,4 @@
-#Requires -Version 5.0
+﻿#Requires -Version 5.0
 param(
     [ValidateSet('pending', 'candidate', 'validated', 'all')]
     [string]$Status = 'pending',

@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
 Health-check the x64dbg-mcp-server plugin: process liveness, HTTP-layer
 connectivity on both architecture ports, local mcp_config.json contents, and

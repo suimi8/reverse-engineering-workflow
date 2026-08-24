@@ -1,4 +1,4 @@
-#Requires -Version 5.0
+﻿#Requires -Version 5.0
 param(
     [ValidateRange(0, 100)]
     [int]$NewLessonCount = 0,

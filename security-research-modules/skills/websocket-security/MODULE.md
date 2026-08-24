@@ -1,4 +1,4 @@
----
+﻿---
 name: websocket-security
 description: >-
   WebSocket handshake, CSWSH, tooling (wsrepl, ws-harness, Burp), and common flaws. Use when apps use real-time channels, chat, notifications, or WS-backed APIs.

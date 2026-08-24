@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
 Launch a target program with SSLKEYLOGFILE set, capture its network traffic
 with tshark, and save a .pcapng (+ TLS key log when the target respects the

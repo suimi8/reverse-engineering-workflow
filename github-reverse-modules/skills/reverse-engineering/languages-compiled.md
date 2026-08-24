@@ -1,4 +1,4 @@
-# CTF Reverse - Compiled Language Reversing (Go, Rust)
+﻿# CTF Reverse - Compiled Language Reversing (Go, Rust)
 
 ## Table of Contents
 - [Go Binary Reversing](#go-binary-reversing)

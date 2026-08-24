@@ -1,4 +1,4 @@
-# XXE — Extended Scenarios & Real-World Cases
+﻿# XXE — Extended Scenarios & Real-World Cases
 
 > Companion to [SKILL.md](./MODULE.md). Contains additional CVE case studies and exploitation techniques.
 

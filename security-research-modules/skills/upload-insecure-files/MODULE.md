@@ -1,4 +1,4 @@
----
+﻿---
 name: upload-insecure-files
 description: >-
   Insecure file upload playbook. Use when testing upload validation, storage paths, processing pipelines, preview behavior, overwrite risks, and upload-to-RCE chains.

@@ -1,4 +1,4 @@
-# Patching And Packaging Notes
+﻿# Patching And Packaging Notes
 
 ## Patch Strategy
 

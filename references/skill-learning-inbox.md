@@ -528,3 +528,296 @@ review
 
 Promoted to `references/reverse-task-recipes.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-24 19:08:24 +08:00.
 
+
+## 2026-08-24 19:52:26 +08:00 - 把新增模块的多处跨文件登记固化成入库规范并与 healthcheck 逐项对齐
+
+- id: 20260824-195226-把新增模块的多处跨文件登记固化成入库规范并与-healthcheck-逐项对齐
+- status: promoted
+- category: tooling
+- confidence: 4/5
+- applies_to: 给 reverse-engineering-workflow 新增或退役内部模块及 references 文档时
+- purpose_zh: 用单一权威入库规范替代每次靠人工回查跨文件登记，杜绝孤儿模块、注册表计数不符、中文名不同步
+- target_skill_path: references/module-onboarding-spec.md
+- tags: none
+
+### Evidence
+
+本包 inbox 已有 4 条关于新增模块需同步 select_skill 规则与跨文件审计的经验；cross-reference-completeness 检查精确定义了 5 类登记点；落地 references/module-onboarding-spec.md 并加 SKILL.md Choose References 与 manifest.references 两处登记后，healthcheck 24 项 0 fail，reusable-skill-registry 仍为 61 证明 references 文档未被误计为技能，manifest-paths 由 57 增至 58
+
+### Lesson
+
+当一个 skill 包反复踩新增模块要同步多处登记的坑时，正解不是每次人工回查，而是先读 healthcheck 的 cross-reference-completeness 等检查把它强制的所有登记点列全，按落点 github/local/security/references 分别写死登记清单，固化成一份 references 入库规范文档并与每一项 healthcheck 检查逐条对齐附一页 checklist；规范文档本身也要按规范登记到 SKILL.md 与 manifest 但不能进 chinese-skill-names 以免 registry 计数不符，最后用 healthcheck 0 fail 验证
+
+### Validation
+
+scripts/healthcheck.ps1 全量 24 项零 fail；list_skills 注册表计数未变仍为 61
+
+### Next Action
+
+review
+
+### Promotion
+
+Promoted to `references/module-onboarding-spec.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-24 21:14:43 +08:00.
+
+## 2026-08-24 21:11:24 +08:00 - 多代理重构核心文件用并行调研加串行门禁加主控字节级兜底验证，实施agent断线后healthcheck全绿不等于正确
+
+- id: 20260824-211124-多代理重构核心文件用并行调研加串行门禁加主控字节级兜底验证-实施agent断线后healthch
+- status: promoted
+- category: tooling
+- confidence: 4/5
+- applies_to: 用多代理或workflow对高耦合核心脚本做数据外置或等价重构时
+- purpose_zh: 规避多代理并发写冲突与实施代理中途断线导致的半成品或语义漂移，用可复现的字节级比对兜底
+- target_skill_path: references/reverse-task-recipes.md
+- tags: none
+
+### Evidence
+
+本次 workflow 为 3 调研并行加 3 实施串行(每步 healthcheck+Pester 门禁)加 1 终验；route 实施代理回传响应时 Connection lost，但仓库内 healthcheck 24 项仍 0 fail；因 healthcheck 仅抽样 6 个 selector 用例不能证明 33 条正则无漂移，遂用 git show HEAD:scripts/select_skill.ps1 提取原始 33 条规则，与 routing-rules.json 经 ConvertFrom-Json 还原值逐条大小写敏感比对，TOTAL DIFFS=0，确认 JSON 反斜杠双写正确、语义零漂移；再对 7 条口语 query 抽验路由行为一致
+
+### Lesson
+
+1) 多代理改同一批核心文件必须串行实施(顺序 await 共享工作区)避免并发覆盖，每步用 healthcheck+Pester 做硬门禁，红即 halt 保护完整性。2) 实施代理中途断线(Connection lost)时落盘改动可能完整也可能半成品，不能只看 healthcheck 全绿就放心，因为 healthcheck 只抽样验证，证明不了全量数据(如 33 条正则)字节级无漂移。3) 数据外置类重构(ps1 规则数组转 json)必做兜底：git show HEAD 原文件提取原始数据，与新数据源解析还原后逐条大小写敏感比对，DIFFS 必须为 0，尤其盯 JSON 反斜杠转义(单写会被解析改变语义)。4) 脚手架等写盘脚本用 -WhatIf 自测后必须 git status 确认零落盘。
+
+### Validation
+
+healthcheck 24 项 0 fail、tests passed=22、registry 计数 61 不变；33 条规则 -cne 比对 DIFFS=0；7 条口语路由抽验全部命中预期
+
+### Next Action
+
+review
+
+### Promotion
+
+Promoted to `references/reverse-task-recipes.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-24 21:16:02 +08:00.
+
+---
+
+## 2026-08-24 23:25:00 +08:00 - Web 站点全量逆向：Vite SPA chunk 提取 + 开源溯源 + 版本差异对照
+
+- id: 20260824-232500-web-reverse-vite-spa-opensource-trace
+- status: promoted
+- category: method
+- confidence: 4/5
+- applies_to: web-frontend-reverse, web-api-reverse
+- purpose_zh: 从 Vue3 SPA 网站系统性提取完整 API 端点/路由/认证机制，通过 GitHub 链接溯源开源后端并对照线上版本差异
+- target_skill_path: references/reverse-task-recipes.md
+- tags: vite, spa, sub2api, vue3, gin, api-recon
+
+### Lesson
+
+Web 逆向六步法：
+1) 主页 HTML 的 window.__APP_CONFIG__ 提供配置指纹（OAuth/支付/验证码开关/邮箱白名单/服务器时区）
+2) 主 bundle 中动态 import 提取全部懒加载 chunk 并下载合并
+3) 正则批量提取 API 端点与前端路由（本例 292 条路径 + 86 条路由）
+4) JS 内 GitHub 链接直接溯源开源后端代码（本例 Wei-Shaw/sub2api 的 Go+Gin 项目）
+5) 对照开源代码确认路由/限流/认证实现，并识别线上定制差异（如新增定制端点）
+6) 黑盒探测公开端点验证版本号与行为一致性
+
+关键发现顺序：window.__APP_CONFIG__ → 主 bundle 路由表 → 懒加载 chunk 业务逻辑 → 开源项目溯源 → 版本对比 → 定制功能识别
+
+### Evidence
+
+kakouai.com 逆向：
+- 提取 292 条 API 路径、86 条前端路由、85 个懒加载 chunk
+- 溯源到开源 Sub2API 项目（Wei-Shaw/sub2api，Go 1.27 + Gin + Vue 3 + PostgreSQL + Redis）
+- 线上版本 0.1.179 vs 开源最新 0.1.181（确认定制分支）
+- 发现定制端点 /api/v1/settings/maintenance（开源版本无此路由）
+- 认证机制：localStorage auth_token/refresh_token，JWT 双 token 带锁刷新
+- 管理面认证：Admin API Key（x-api-key）或管理员 JWT（Authorization Bearer）
+- 公开配置：/settings/public 暴露注册邮箱白名单（含 @shijiantech.xyz）、OAuth 开关、支付配置
+
+### Validation
+
+- 开源代码路由与实际线上行为 100% 吻合（/health、/setup/status 返回一致）
+- 黑盒探测验证了限流行为、CORS 配置、webhook 行为
+- 未发现假阳性：所有 404 端点确认路由不存在
+
+### Next Action
+
+review
+
+---
+
+### Promotion
+
+Promoted to `references/reverse-task-recipes.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-25 07:47:39 +08:00.
+
+## 2026-08-25 05:15:30 +08:00 - sidecar orchestrator 模块族导入法：orchestrator 注册为 P1 路由器
+
+- id: 20260825-051530-sidecar-orchestrator-模块族导入法-orchestrator-注册为-p1
+- status: promoted
+- category: method
+- confidence: 4/5
+- applies_to: upstream skill merge / module family import
+- purpose_zh: 上游仓库的侧车模块族（orchestrator + 41 个 downstream 专精）导入本地时，把 orchestrator 注册为 P1 路由器（加入 healthcheck.ps1 的 routers 与 new_module.ps1 的 routerNames），并在其 MODULE.md 加 Core Skill Map 链接全部下游模块，即可让整族通过 orphan 检查，无需逐个链接旧 P1。
+- target_skill_path: scripts/healthcheck.ps1
+- tags: merge, routing, healthcheck
+
+### Evidence
+
+reverse-skill v1.0.1 CTF-Sandbox-Orchestrator 42 模块导入：ctf-sandbox-orchestrator 加入 routers 后 healthcheck 24/24 PASS，chinese-skill-names 138 条 0 missing，select_skill 实测 CTF 任务正确路由 conf=0.9。
+
+### Lesson
+
+导入 upstream sidecar 模块族时，先识别族内默认入口（orchestrator），将其注册为本地 P1 路由器并链接全部 downstream 模块，整族一次通过 orphan 与 cross-reference 检查。
+
+### Validation
+
+healthcheck 24/24 PASS；unit-tests 22/22 PASS；select_skill CTF 路由 conf=0.9
+
+### Next Action
+
+review
+
+### Promotion
+
+Promoted to `references/module-onboarding-spec.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-25 05:16:19 +08:00.
+
+## 2026-08-25 05:15:45 +08:00 - 上游 sidecar 参考文件（ops/field-journal）导入落点：references/ 子目录
+
+- id: 20260825-051545-上游-sidecar-参考文件-ops-field-journal-导入落点-reference
+- status: promoted
+- category: other
+- confidence: 4/5
+- applies_to: upstream skill merge / reference files
+- purpose_zh: 上游仓库的 ops 作战契约层与 field-journal 实战日志并非模块，不应注册为 skill，而应整目录导入本地 references/ops/ 与 references/field-journal/，并在 manifest.json references 中登记入口文件，保持与模块树分离。
+- target_skill_path: references/ops/README.md
+- tags: merge, references, manifest
+
+### Evidence
+
+reverse-skill v1.0.1 导入：ops 10 文件 + field-journal 44 文件（17 篇实战日志 + 17 seed 案例）完整复制到 references/ 子目录，manifest-paths 61 项 PASS，healthcheck 24/24 PASS。
+
+### Lesson
+
+非模块类上游资产（契约文档、实战案例库）用 references/ 子目录整目录导入并登记 manifest，不注册为 skill；实战日志与 seed 案例保留原文件名便于日后检索复用。
+
+### Validation
+
+manifest-paths 61 项 PASS；healthcheck 24/24 PASS
+
+### Next Action
+
+review
+
+### Promotion
+
+Promoted to `references/ops/README.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-25 05:16:52 +08:00.
+
+
+## 2026-08-25 06:33:45 +08:00 - 双基准diff验证法-上游本地文件树对比
+
+- id: 20260825-063345-双基准diff验证法-上游本地文件树对比
+- status: promoted
+- category: method
+- confidence: 4/5
+- applies_to: upstream skill merge / file integrity verification
+- purpose_zh: 上游模块导入后，用 find | sort | diff 双基准对比文件树，确保零丢失导入
+- target_skill_path: references/module-onboarding-spec.md
+- tags: diff,verification,import
+
+### Evidence
+
+在上游 pentest-tools 导入验证中，用 find | sort | diff 对比上游 114 文件和本地 114 文件，差异仅为 2 个合规改名（SKILL.md→MODULE.md, src-hunter/SKILL.md→src-hunter.md），确认零丢失。
+
+### Lesson
+
+导入上游模块后，用 diff <(find REPO -type f | sort) <(find LOCAL -type f | sort) 对比文件树，精确确认迁移零丢失（114=114），比目录数对比可靠得多。
+
+### Validation
+
+文件数 114=114 一致，healthcheck 24/24 PASS，unit-tests 22/22 PASS。
+
+### Next Action
+
+review
+
+### Promotion
+
+Promoted to `references/module-onboarding-spec.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-25 06:34:37 +08:00.
+
+## 2026-08-25 06:33:49 +08:00 - 触发词闸门检查法-验证skill自动调用链路
+
+- id: 20260825-063349-触发词闸门检查法-验证skill自动调用链路
+- status: promoted
+- category: method
+- confidence: 4/5
+- applies_to: skill auto-invocation / pi skills routing verification
+- purpose_zh: 验证自动调用链路时，先检查根 SKILL.md description 覆盖目标场景触发词，再测 invoke_skill 路由
+- target_skill_path: references/skill-learning-loop.md
+- tags: auto-invocation,description,trigger,pi-skills
+
+### Evidence
+
+在 pentest-tools 导入完成后，检查根 SKILL.md description 发现无渗透测试触发词（nmap/sqlmap/src/bounty 全为 0），导致自动调用链路断裂。添加后 description 覆盖 nmap/sqlmap/src挖洞/bug bounty 等，新会话后可触发。
+
+### Lesson
+
+验证 skill 自动调用时，不能只测 invoke_skill 路由，必须先检查根 SKILL.md 的 description 是否覆盖目标场景触发词。Pi 启动时提取 name+description 注入系统提示，模型据此判断是否加载 skill——description 漏了触发词（nmap/sqlmap/src挖洞等），后面路由全白搭。
+
+### Validation
+
+YAML 校验通过，healthcheck 24/24 PASS，invoke_skill 实测路由 pentest-tools 0.94。
+
+### Next Action
+
+review
+
+### Promotion
+
+Promoted to `references/skill-learning-loop.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-25 06:35:38 +08:00.
+
+
+## 2026-08-25 07:49:23 +08:00 - Web 逆向路由必须指向统一根入口而非子模块
+
+- id: 20260825-074923-web-逆向路由必须指向统一根入口而非子模块
+- status: candidate
+- category: method
+- confidence: 3/5
+- applies_to: web-api-reverse, web-js-reverse, web-crypto-reverse, routing
+- purpose_zh: 新增 web 逆向子模块时，routing-rules.json 的规则目标必须设为根入口 reverse-engineering-workflow（0.85 置信度），由根 SKILL.md 按需加载内部 MODULE.md，避免绕过统一入口造成多入口分裂
+- target_skill_path: references/unified-skills-entry.md
+- tags: none
+
+### Evidence
+
+3 条指向 web-api-reverse/web-js-reverse/web-crypto-reverse 的路由规则改为 1 条合并规则指向 reverse-engineering-workflow 后，6 个 NL 路由用例全部命中根入口；回归测试同步更新
+
+### Lesson
+
+规则：select_skill.ps1 的 task-rule 目标只允许根入口或安全/本地既有模块；新增子模块只注册进 unified-skills-entry.md/INDEX.md/SKILL.md/chinese-skill-names.json 四文件，不新增顶层路由规则
+
+### Validation
+
+healthcheck cross-reference-completeness PASS（38→36 规则一致）；routing.Tests.ps1 25 用例全过；APK/BOLA/x64dbg 等非 web 场景路由不变
+
+### Next Action
+
+review
+## 2026-08-25 07:49:42 +08:00 - new_module.ps1 的 [appended] 输出不可信，注册必须经 healthcheck 交叉验证
+
+- id: 20260825-074942-new-module-ps1-的-appended-输出不可信-注册必须经-healthchec
+- status: candidate
+- category: tooling
+- confidence: 3/5
+- applies_to: module-onboarding, healthcheck, registry
+- purpose_zh: new_module.ps1 宣称已追加注册（unified-skills-entry.md/INDEX.md/SKILL.md/chinese-skill-names.json），实际多次未写入；必须以 healthcheck 的 cross-reference-completeness 与 chinese-skill-names 检查为准，缺了就手动补齐
+- target_skill_path: references/module-onboarding-spec.md
+- tags: none
+
+### Evidence
+
+3 个新模块经 new_module.ps1 创建后均报 [appended]，但 package_release 健康门禁 FAIL 列出 3 处缺失（unified-skills-entry.md/INDEX.md/SKILL.md），手动补齐 4 文件后 PASS
+
+### Lesson
+
+规则：任何 new_module.ps1 执行后，先跑 scripts/healthcheck.ps1 确认 cross-reference-completeness PASS 再继续；若 FAIL 按报告逐文件补注册行，补完重跑至 PASS 才可发布
+
+### Validation
+
+手动补齐 chinese-skill-names.json 3 条 + unified-skills-entry.md 3 行 + INDEX.md 3 块 + SKILL.md 3 行后，healthcheck 25/25 PASS，manifest 1.23.2 发布成功
+
+### Next Action
+
+review

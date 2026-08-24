@@ -1,4 +1,4 @@
-# APK Package Rename and Native Patch Workflow
+﻿# APK Package Rename and Native Patch Workflow
 
 Use this reference when the task is to rename a decompiled APK package, diagnose failures after package migration, or turn a proven native hook/patch into a reversible test build.
 

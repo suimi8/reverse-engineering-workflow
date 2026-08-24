@@ -1,4 +1,4 @@
----
+﻿---
 name: unauthorized-access-common-services
 description: Use for authorized review of exposed management services and middleware consoles such as Redis, Elasticsearch, Solr, Docker API, Kubernetes dashboard, Jenkins, JMX, RMI, T3, AJP, message queues, databases, and admin interfaces discovered during recon or reverse engineering.
 ---

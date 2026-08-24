@@ -1,4 +1,4 @@
-# Root / 越狱 / 反调试 / SSL Pinning 绕过
+﻿# Root / 越狱 / 反调试 / SSL Pinning 绕过
 
 ## 检测层次模型
 

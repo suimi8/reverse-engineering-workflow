@@ -1,4 +1,4 @@
----
+﻿---
 name: api-authorization-and-bola
 description: >-
   API authorization and BOLA testing playbook. Use when APIs expose object identifiers, nested resources, hidden writable fields, or weak function-level authorization.

@@ -1,4 +1,4 @@
-# Flet Diagnostics Checklist
+﻿# Flet Diagnostics Checklist
 
 Use this checklist after `flet-desktop-diagnostics` is selected.
 

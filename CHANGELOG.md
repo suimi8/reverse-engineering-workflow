@@ -2,6 +2,16 @@
 
 本技能包所有值得记录的变更都记录在此文件。格式参考 Keep a Changelog。版本号与 `manifest.json` 保持一致。
 
+
+
+## [1.23.2] - 2026-08-25
+
+unify web reverse routing through single root entry (reverse-engineering-workflow); merge 3 web rules into one
+
+## [1.23.1] - 2026-08-25
+
+add web-api-reverse / web-js-reverse / web-crypto-reverse modules; routing-rules.json extraction
+
 ## [Unreleased]
 
 ### Fixed
@@ -10,6 +20,10 @@
 
 ### Added
 
+- `github-reverse-modules/skills/web-api-reverse/`：**suimi Web 后端 API 逆向**（整合 metterian/reverse-api-skill + Luis247911/claude-skill-reverse-engineering-api）——从网络请求/HAR/cURL 逆向内部 API 协议，REST/GraphQL/batchexecute/gRPC-web 多协议检测、认证检测、生成 Python httpx / TypeScript 客户端 + API 文档，含七阶段多智能体流水线与回放验证。
+- `github-reverse-modules/skills/web-js-reverse/`：**suimi Web 前端 JS 逆向**（整合 kings0527/web-reverse-engineering-skill）——JS 混淆分级与还原、JSVMP 五步逆向法、CDP 检测绕过、TLS/HTTP2/QUIC 指纹、环境修补、WASM 逆向、反爬分层击破；携带 12 份精选 references。
+- `github-reverse-modules/skills/web-crypto-reverse/`：**suimi Web/APK 加密算法逆向**（整合 osloxdao/thefounds）——从 Web JS 与 Android APK 识别并 Python 重构加密/签名算法，30 个 specialist 索引、Web2/Web3 判定、线上验证闭环。
+- `scripts/routing-rules.json`：路由规则独立配置文件（3 条新 web 逆向规则），`select_skill.ps1` 改为从该文件加载；`healthcheck.ps1` 同步改为校验该文件。
 - `README.md`：人类可读的项目总览与使用说明。
 - `CHANGELOG.md`：变更记录。
 - `scripts/package_release.ps1` 与 `scripts/lib/Release.ps1`：健康检查门禁的发布打包脚本，支持 manifest 版本自增（patch/minor）、CHANGELOG 自动追加、确定性 zip 打包与 SHA256 校验、DryRun 预览。

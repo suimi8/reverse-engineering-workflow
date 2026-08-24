@@ -1,4 +1,4 @@
----
+﻿---
 name: file-access-vuln
 description: >-
   Entry P1 category router for file access and upload workflows. Use when

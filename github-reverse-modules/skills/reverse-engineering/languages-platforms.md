@@ -1,4 +1,4 @@
-# CTF Reverse - Platform & Framework-Specific Techniques
+﻿# CTF Reverse - Platform & Framework-Specific Techniques
 
 ## Table of Contents
 - [Rust serde_json Schema Recovery](#rust-serde_json-schema-recovery)

@@ -1,4 +1,4 @@
-# PE Patching
+﻿# PE Patching
 
 ## Patch Order
 

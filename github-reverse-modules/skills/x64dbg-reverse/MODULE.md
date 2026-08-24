@@ -1,4 +1,4 @@
----
+﻿---
 name: x64dbg-reverse
 description: |
   x64dbg 动态调试与逆向辅助技能。当用户提到 x64dbg、Windows PE 可执行文件动态调试、断点跟踪、内存读写/patch、脱壳、找 OEP、注册码/序列号动态验证分析、句柄/线程/调用栈观察，或需要在运行时观察一个 exe/dll 的实际行为时，务必使用此技能。

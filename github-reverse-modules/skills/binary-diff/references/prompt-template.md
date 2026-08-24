@@ -1,4 +1,4 @@
-# Symbol Migration Prompt Template
+﻿# Symbol Migration Prompt Template
 
 ## 标准比对 Prompt（直接复制使用）
 

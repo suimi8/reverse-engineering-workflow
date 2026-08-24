@@ -1,4 +1,4 @@
-$here = Split-Path -Parent $MyInvocation.MyCommand.Path
+﻿$here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $rootDir = (Resolve-Path -LiteralPath (Join-Path $here '..')).Path
 
 Describe 'Skill routing scripts' {
@@ -54,5 +54,53 @@ Describe 'Learning loop scripts' {
         $result = $json | ConvertFrom-Json
         $result.ok | Should Be $true
         ($null -ne $result.pending_count) | Should Be $true
+    }
+}
+
+Describe 'new_module scaffold' {
+    It 'previews a github module without writing on WhatIf' {
+        $json = & (Join-Path $rootDir 'scripts\new_module.ps1') -Root github-reverse -Name zzz-scaffold-selftest -DisplayNameZh 'suimiScaffoldSelftest' -Description 'pester whatif probe' -WhatIf -AsJson | Out-String
+        $result = $json | ConvertFrom-Json
+        $result.ok | Should Be $true
+        $result.applied | Should Be $false
+        (Test-Path -LiteralPath (Join-Path $rootDir 'github-reverse-modules\skills\zzz-scaffold-selftest')) | Should Be $false
+    }
+
+    It 'stays idempotent for an already-registered module on WhatIf' {
+        $json = & (Join-Path $rootDir 'scripts\new_module.ps1') -Root github-reverse -Name radare2 -DisplayNameZh 'suimiIdempotencyProbe' -Description 'pester idempotency probe' -WhatIf -AsJson | Out-String
+        $result = $json | ConvertFrom-Json
+        $result.ok | Should Be $true
+        $statuses = @($result.actions | ForEach-Object { $_.status } | Sort-Object -Unique)
+        ($statuses -contains 'would-append') | Should Be $false
+        ($statuses -contains 'anchor-not-found') | Should Be $false
+    }
+
+    It 'chooses a P1 router for a security module on WhatIf' {
+        $json = & (Join-Path $rootDir 'scripts\new_module.ps1') -Root security -Name zzz-scaffold-selftest -DisplayNameZh 'suimiSecuritySelftest' -Description 'pester security whatif probe' -WhatIf -AsJson | Out-String
+        $result = $json | ConvertFrom-Json
+        $result.ok | Should Be $true
+        $result.chosen_router | Should Be 'hack'
+        (Test-Path -LiteralPath (Join-Path $rootDir 'security-research-modules\skills\zzz-scaffold-selftest')) | Should Be $false
+    }
+
+    It 'select_skill routes an API-reverse task through the unified root entry' {
+        $result = & (Join-Path $rootDir 'scripts\select_skill.ps1') -TaskText '帮我逆向这个网站的API接口，生成Python客户端' -AsJson | ConvertFrom-Json
+        $result.ok | Should Be $true
+        (([string]$result.skill.name) -eq 'reverse-engineering-workflow') | Should Be $true
+        ($result.confidence -ge 0.8) | Should Be $true
+    }
+
+    It 'select_skill routes a JSVMP task through the unified root entry' {
+        $result = & (Join-Path $rootDir 'scripts\select_skill.ps1') -TaskText '这个网站有JSVMP保护，帮我破解混淆还原签名算法' -AsJson | ConvertFrom-Json
+        $result.ok | Should Be $true
+        (([string]$result.skill.name) -eq 'reverse-engineering-workflow') | Should Be $true
+        ($result.confidence -ge 0.8) | Should Be $true
+    }
+
+    It 'select_skill routes a crypto-reverse task through the unified root entry' {
+        $result = & (Join-Path $rootDir 'scripts\select_skill.ps1') -TaskText '帮我识别这个网站请求的加密算法并用Python重构签名' -AsJson | ConvertFrom-Json
+        $result.ok | Should Be $true
+        (([string]$result.skill.name) -eq 'reverse-engineering-workflow') | Should Be $true
+        ($result.confidence -ge 0.8) | Should Be $true
     }
 }

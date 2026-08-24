@@ -1,4 +1,4 @@
-# CTF Reverse - Platform-Specific Reversing
+﻿# CTF Reverse - Platform-Specific Reversing
 
 macOS/iOS, embedded/IoT firmware, kernel driver, and automotive reverse engineering.
 

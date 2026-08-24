@@ -1,4 +1,4 @@
-# Extra Injection Types — SSI, LDAP, XPath
+﻿# Extra Injection Types — SSI, LDAP, XPath
 
 > Companion to [SKILL.md](./MODULE.md). Covers injection types that are less common in modern web apps but still appear in specific technology stacks.
 

@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
 Deploy the x64dbg-mcp-server plugin (duty1g/x64dbg-mcp-server) into a local x64dbg
 installation, let it generate its auth token, and register it as an MCP server in

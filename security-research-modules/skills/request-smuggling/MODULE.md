@@ -1,4 +1,4 @@
----
+﻿---
 name: request-smuggling
 description: >-
   HTTP request smuggling and desynchronization testing. Use when front proxies,

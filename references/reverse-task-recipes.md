@@ -253,3 +253,60 @@ healthcheck.ps1 里已有的检查（frontmatter 正则、中文名同步、mand
 **Validation**
 
 阳性破坏测试：删除已知引用触发精确 FAIL，恢复后变回 PASS；健全性测试：scripts/healthcheck.ps1 全量重跑 24 项检查零 fail，新检查报告 41 个 Skill-Map 可达详情模块与 33 条 select_skill.ps1 规则引用全部一致。
+
+### 多代理重构核心文件用并行调研加串行门禁加主控字节级兜底验证，实施agent断线后healthcheck全绿不等于正确
+
+- source: `20260824-211124-多代理重构核心文件用并行调研加串行门禁加主控字节级兜底验证-实施agent断线后healthch`
+- category: tooling
+- applies_to: 用多代理或workflow对高耦合核心脚本做数据外置或等价重构时
+- purpose_zh: 规避多代理并发写冲突与实施代理中途断线导致的半成品或语义漂移，用可复现的字节级比对兜底
+- confidence: 4/5
+
+**Lesson**
+
+1) 多代理改同一批核心文件必须串行实施(顺序 await 共享工作区)避免并发覆盖，每步用 healthcheck+Pester 做硬门禁，红即 halt 保护完整性。2) 实施代理中途断线(Connection lost)时落盘改动可能完整也可能半成品，不能只看 healthcheck 全绿就放心，因为 healthcheck 只抽样验证，证明不了全量数据(如 33 条正则)字节级无漂移。3) 数据外置类重构(ps1 规则数组转 json)必做兜底：git show HEAD 原文件提取原始数据，与新数据源解析还原后逐条大小写敏感比对，DIFFS 必须为 0，尤其盯 JSON 反斜杠转义(单写会被解析改变语义)。4) 脚手架等写盘脚本用 -WhatIf 自测后必须 git status 确认零落盘。
+
+**Evidence**
+
+本次 workflow 为 3 调研并行加 3 实施串行(每步 healthcheck+Pester 门禁)加 1 终验；route 实施代理回传响应时 Connection lost，但仓库内 healthcheck 24 项仍 0 fail；因 healthcheck 仅抽样 6 个 selector 用例不能证明 33 条正则无漂移，遂用 git show HEAD:scripts/select_skill.ps1 提取原始 33 条规则，与 routing-rules.json 经 ConvertFrom-Json 还原值逐条大小写敏感比对，TOTAL DIFFS=0，确认 JSON 反斜杠双写正确、语义零漂移；再对 7 条口语 query 抽验路由行为一致
+
+**Validation**
+
+healthcheck 24 项 0 fail、tests passed=22、registry 计数 61 不变；33 条规则 -cne 比对 DIFFS=0；7 条口语路由抽验全部命中预期
+
+### Web 站点全量逆向：Vite SPA chunk 提取 + 开源溯源 + 版本差异对照
+
+- source: `20260824-232500-web-reverse-vite-spa-opensource-trace`
+- category: method
+- applies_to: web-frontend-reverse, web-api-reverse
+- purpose_zh: 从 Vue3 SPA 网站系统性提取完整 API 端点/路由/认证机制，通过 GitHub 链接溯源开源后端并对照线上版本差异
+- confidence: 4/5
+
+**Lesson**
+
+Web 逆向六步法：
+1) 主页 HTML 的 window.__APP_CONFIG__ 提供配置指纹（OAuth/支付/验证码开关/邮箱白名单/服务器时区）
+2) 主 bundle 中动态 import 提取全部懒加载 chunk 并下载合并
+3) 正则批量提取 API 端点与前端路由（本例 292 条路径 + 86 条路由）
+4) JS 内 GitHub 链接直接溯源开源后端代码（本例 Wei-Shaw/sub2api 的 Go+Gin 项目）
+5) 对照开源代码确认路由/限流/认证实现，并识别线上定制差异（如新增定制端点）
+6) 黑盒探测公开端点验证版本号与行为一致性
+
+关键发现顺序：window.__APP_CONFIG__ → 主 bundle 路由表 → 懒加载 chunk 业务逻辑 → 开源项目溯源 → 版本对比 → 定制功能识别
+
+**Evidence**
+
+kakouai.com 逆向：
+- 提取 292 条 API 路径、86 条前端路由、85 个懒加载 chunk
+- 溯源到开源 Sub2API 项目（Wei-Shaw/sub2api，Go 1.27 + Gin + Vue 3 + PostgreSQL + Redis）
+- 线上版本 0.1.179 vs 开源最新 0.1.181（确认定制分支）
+- 发现定制端点 /api/v1/settings/maintenance（开源版本无此路由）
+- 认证机制：localStorage auth_token/refresh_token，JWT 双 token 带锁刷新
+- 管理面认证：Admin API Key（x-api-key）或管理员 JWT（Authorization Bearer）
+- 公开配置：/settings/public 暴露注册邮箱白名单（含 @shijiantech.xyz）、OAuth 开关、支付配置
+
+**Validation**
+
+- 开源代码路由与实际线上行为 100% 吻合（/health、/setup/status 返回一致）
+- 黑盒探测验证了限流行为、CORS 配置、webhook 行为
+- 未发现假阳性：所有 404 端点确认路由不存在

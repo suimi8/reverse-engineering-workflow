@@ -1,4 +1,4 @@
----
+﻿---
 name: mobile-reverse
 description: Use for authorized Android and iOS mobile reverse engineering, APK/IPA triage, Frida and Objection workflows, SSL pinning and root/jailbreak detection bypass analysis, mobile API/auth/crypto extraction, and OWASP MASTG-style app assessment on owned, local, sandboxed, or explicitly authorized targets.
 ---
@@ -188,3 +188,10 @@ Interceptor.attach(Module.findExportByName("libcommonCrypto.dylib", "CCCrypt"), 
 - `references/frida-objection-deep.md` — Frida + Objection 深度用法
 - `references/ios-reverse-guide.md` — iOS 逆向专项
 - `references/anti-detection-bypass.md` — Root/越狱/反调试/SSL Pinning 绕过
+
+## 任务完成自检（声称完成前 MUST 通过）
+
+- [ ] 我是否执行了工作流中的每一步（而不是只阅读）？
+- [ ] 我是否基于 `tool-index` 使用了真实工具路径？
+- [ ] 我是否产出了可复现证据（命令/脚本/截图/报告）？
+- [ ] 我是否完成并回写了 RULES 要求的 Checklist 项？

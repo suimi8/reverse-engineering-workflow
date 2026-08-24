@@ -1,4 +1,4 @@
-# WPeGPT IDA Analysis
+﻿# WPeGPT IDA Analysis
 
 Use this reference when the user asks for automated AI-assisted analysis of an authorized PE or ELF binary, wants a quick program-purpose report, asks for network IoCs or suspicious functions, or requests vulnerability-focused binary analysis through IDA and WPeGPT.
 

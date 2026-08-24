@@ -1,4 +1,4 @@
-# Cheat Engine MCP 工具速查
+﻿# Cheat Engine MCP 工具速查
 
 > 127 个 MCP 工具，按源码 `src/tool-registry.js` 的官方 14 分类整理（核对自源码，非推测）。
 > 工具名固定 `ce_` 前缀（`ce_read_memory`、`ce_attach_process` 等）；在 Claude Code 里以 `mcp__<server名>__<工具名>` 形式出现，`<server名>` 是 `claude mcp add` 时起的名字（默认 `cheatengine`）。

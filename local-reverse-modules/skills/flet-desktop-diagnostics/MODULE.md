@@ -1,4 +1,4 @@
----
+﻿---
 name: flet-desktop-diagnostics
 description: Diagnose authorized packaged Flet desktop apps on Windows, especially Python app.exe plus flet.exe process pairs, hidden or blank windows, failure to reach the functional UI, AppData resource/config discovery, local webview/runtime issues, localhost API dependencies, and lost-source packaged Python/Flet applications.
 ---

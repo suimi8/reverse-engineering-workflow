@@ -1,4 +1,4 @@
-# Service Persistence Checklist
+﻿# Service Persistence Checklist
 
 Use this checklist after `windows-local-service-persistence` is selected.
 

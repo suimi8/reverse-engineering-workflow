@@ -1,4 +1,4 @@
-# CTF Reverse - Patterns & Techniques
+﻿# CTF Reverse - Patterns & Techniques
 
 ## Table of Contents
 - [Custom VM Reversing](#custom-vm-reversing)

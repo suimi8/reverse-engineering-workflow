@@ -1,6 +1,6 @@
 {
   "name": "reverse-engineering-workflow",
-  "version": "1.23.0",
+  "version": "1.23.2",
   "language": "zh-CN",
   "short_description": "Suimi-supported authorized reverse engineering workflow",
   "packaging": {
@@ -40,6 +40,12 @@
     "references/reusable-invocation-contract.md",
     "references/skill-learning-loop.md",
     "references/skill-learning-inbox.md",
+    "references/module-onboarding-spec.md",
+    "references/ops/README.md",
+    "references/community-security-skills.md",
+    "references/domain-coverage-map.md",
+    "references/upstream-archive/README.md",
+    "references/field-journal/_index.md",
     "local-reverse-modules/skills/flet-desktop-diagnostics/MODULE.md",
     "local-reverse-modules/skills/flet-desktop-diagnostics/references/flet-diagnostics-checklist.md",
     "local-reverse-modules/skills/windows-python-app-recovery/MODULE.md",
@@ -73,6 +79,7 @@
     "scripts/lib/SkillLearning.ps1",
     "scripts/lib/Release.ps1",
     "scripts/wpegpt_analyze.ps1",
-    "scripts/wpegpt_analyze.bat"
+    "scripts/wpegpt_analyze.bat",
+    "scripts/new_module.ps1"
   ]
 }

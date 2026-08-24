@@ -1,4 +1,4 @@
-$here = Split-Path -Parent $MyInvocation.MyCommand.Path
+﻿$here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $rootDir = (Resolve-Path -LiteralPath (Join-Path $here '..')).Path
 . (Join-Path $rootDir 'scripts\lib\SkillLearning.ps1')
 

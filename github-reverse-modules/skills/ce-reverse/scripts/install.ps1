@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
 Deploy the Cheat Engine MCP Lua bridge into Cheat Engine's autorun folder and
 register the Node.js-based ce_mcp stdio MCP server with Claude Code.

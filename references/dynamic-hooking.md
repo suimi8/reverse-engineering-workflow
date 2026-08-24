@@ -1,4 +1,4 @@
-# Dynamic Hooking
+﻿# Dynamic Hooking
 
 ## Hooking Principles
 

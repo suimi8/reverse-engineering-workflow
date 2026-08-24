@@ -1,4 +1,4 @@
-# CORS Misconfiguration — Extended Scenarios
+﻿# CORS Misconfiguration — Extended Scenarios
 
 > Companion to [SKILL.md](./MODULE.md). Contains JSONP hijacking, same-origin policy deep dive, and real-world exploitation patterns.
 

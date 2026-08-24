@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
 Health-check the Cheat Engine MCP bridge: Node.js availability, Cheat Engine
 process liveness, Lua bridge deployment, and Claude Code's MCP registration/

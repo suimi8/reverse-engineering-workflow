@@ -1,4 +1,4 @@
-# Reverse Engineering Field Notes
+﻿# Reverse Engineering Field Notes
 
 Detailed quick notes that support [`SKILL.md`](SKILL.md). Read this file after triage, not before.
 

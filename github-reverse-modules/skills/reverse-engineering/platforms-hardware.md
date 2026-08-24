@@ -1,4 +1,4 @@
-# CTF Reverse - Hardware and Advanced Architecture Reversing
+﻿# CTF Reverse - Hardware and Advanced Architecture Reversing
 
 HD44780 LCD GPIO reconstruction, RISC-V advanced extensions and debugging, ARM64/AArch64 reversing and exploitation.
 

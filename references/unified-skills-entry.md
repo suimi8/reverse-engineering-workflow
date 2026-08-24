@@ -36,6 +36,23 @@
 | suimi x64dbg 动态调试 | `github-reverse-modules/skills/x64dbg-reverse/MODULE.md` | suimi 支持的 x64dbg/MCP 运行时调试、断点/内存/寄存器观察、脱壳找 OEP |
 | suimi Cheat Engine 逆向 | `github-reverse-modules/skills/ce-reverse/MODULE.md` | suimi 支持的 Cheat Engine/MCP 内存扫描、指针链追踪、函数 Hook、代码注入 |
 | suimi抓包与流量分析 | `github-reverse-modules/skills/traffic-capture/MODULE.md` | suimi 支持的 tshark 接口级抓包（SSLKEYLOGFILE 解密）与 mitmproxy 中间人抓包，还原本地程序/移动端真实网络请求 |
+| suimi .NET 逆向 | `github-reverse-modules/skills/dotnet-reverse/MODULE.md` | suimi 支持的 .NET/C# 程序集逆向，dnSpyEx + de4dot，NativeAOT，Sharp* 工具 |
+| suimi JS 逆向 | `github-reverse-modules/skills/js-reverse/MODULE.md` | suimi 支持的 JS/Web 前端逆向，webpack/IIFE 去混淆，AST 重写，浏览器运行时捕获 |
+| suimi Ghidra 逆向 | `github-reverse-modules/skills/ghidra-reverse/MODULE.md` | suimi 支持的 Ghidra 无头/脚本逆向工作流，反编译 API，Sleigh，插件 |
+| suimi Go/Rust 逆向 | `github-reverse-modules/skills/go-rust-reverse/MODULE.md` | suimi 支持的 Go/Rust 二进制逆向，符号恢复，类型信息，string 恢复 |
+| suimi 恶意软件分析 | `github-reverse-modules/skills/malware-analysis/MODULE.md` | suimi 支持的恶意软件分类、沙箱分析、脱壳、持久化、IOC 提取 |
+| suimi 固件渗透 | `github-reverse-modules/skills/firmware-pentest/MODULE.md` | suimi 支持的固件提取、文件系统分析、启动加载器/安全启动审查、设备模拟 |
+| suimi 协议逆向 | `github-reverse-modules/skills/protocol-reverse/MODULE.md` | suimi 支持的网络协议逆向、流量重放、字段映射 |
+| suimi 厚客户端逆向 | `github-reverse-modules/skills/thick-client/MODULE.md` | suimi 支持的厚客户端（桌面应用）逆向，API 拦截、进程内存、配置提取 |
+| suimi 补丁差异利用 | `github-reverse-modules/skills/patch-diff-exploit/MODULE.md` | suimi 支持的补丁差异分析定位已修复漏洞 |
+| suimi 漏洞利用链 | `github-reverse-modules/skills/pwn-chain/MODULE.md` | suimi 支持的利用链组装、缓解绕过（ASLR/DEP/CFG） |
+| suimi EDR 绕过逆向 | `github-reverse-modules/skills/edr-bypass-re/MODULE.md` | suimi 支持的 EDR/AV 规避、API unhooking、syscall 分析 |
+| suimi macOS 逆向 | `github-reverse-modules/skills/macos-reverse/MODULE.md` | suimi 支持的 macOS/iOS 二进制逆向，Mach-O、OC 运行时、entitlements |
+| suimi 浏览器扩展逆向 | `github-reverse-modules/skills/browser-extension-reverse/MODULE.md` | suimi 支持的浏览器扩展逆向，CRX 解包、manifest/权限分析 |
+| suimi DSL 自定义虚拟机逆向 | `github-reverse-modules/skills/reverse-engineering/dsl-vm-reverse/MODULE.md` | suimi 支持的 JS 自定义 DSL/VM 逆向，opcode 调度表、字节码语义恢复 |
+| suimi Web 后端 API 逆向 | `github-reverse-modules/skills/web-api-reverse/MODULE.md` | suimi 支持的从网络请求/HAR/cURL 逆向内部 API 协议，REST/GraphQL/batchexecute/gRPC-web 多协议检测、认证检测、生成 Python httpx / TypeScript 客户端 + API 文档 |
+| suimi Web 前端 JS 逆向 | `github-reverse-modules/skills/web-js-reverse/MODULE.md` | suimi 支持的 JS 混淆分级与还原、JSVMP 五步逆向法、CDP 检测绕过、TLS/HTTP2/QUIC 指纹、环境修补、WASM 逆向、反爬分层击破 |
+| suimi Web/APK 加密算法逆向 | `github-reverse-modules/skills/web-crypto-reverse/MODULE.md` | suimi 支持的从 Web JS 与 Android APK 识别并 Python 重构加密/签名算法，30 个 specialist 索引、Web2/Web3 判定、线上验证闭环 |
 
 ## 本地逆向恢复技能
 
@@ -102,6 +119,70 @@
 | suimi通用安全方法论 | `security-research-modules/skills/recon-and-methodology/MODULE.md` |
 | suimi OSINT 侦察工具库 | `security-research-modules/skills/osint-recon/MODULE.md` |
 | suimi常见服务未授权访问 | `security-research-modules/skills/unauthorized-access-common-services/MODULE.md` |
+| suimi 攻击链 | `security-research-modules/skills/attack-chain/MODULE.md` |
+| suimi 浏览器自动化 | `security-research-modules/skills/browser-automation/MODULE.md` |
+| suimi 案例审查 | `security-research-modules/skills/case-review/MODULE.md` |
+| suimi 云与K8s安全 | `security-research-modules/skills/cloud-k8s/MODULE.md` |
+| suimi 代码审计 | `security-research-modules/skills/code-audit/MODULE.md` |
+| suimi CTF沙箱 | `security-research-modules/skills/ctf-sandbox/MODULE.md` |
+| suimi 数据库安全 | `security-research-modules/skills/database-security/MODULE.md` |
+| suimi 图表生成 | `security-research-modules/skills/diagram-generator/MODULE.md` |
+| suimi 数字取证 | `security-research-modules/skills/digital-forensics/MODULE.md` |
+| suimi 文档生成 | `security-research-modules/skills/docs-generator/MODULE.md` |
+| suimi 邮件安全 | `security-research-modules/skills/email-security/MODULE.md` |
+| suimi 硬件安全 | `security-research-modules/skills/hardware-security/MODULE.md` |
+| suimi 身份联合 | `security-research-modules/skills/identity-federation/MODULE.md` |
+| suimi LLM安全 | `security-research-modules/skills/llm-security/MODULE.md` |
+| suimi OT/ICS安全 | `security-research-modules/skills/ot-ics/MODULE.md` |
+| suimi 无线电SDR | `security-research-modules/skills/radio-sdr/MODULE.md` |
+| suimi 供应链安全 | `security-research-modules/skills/supply-chain-security/MODULE.md` |
+| suimi 威胁狩猎 | `security-research-modules/skills/threat-hunting/MODULE.md` |
+| suimi 威胁情报 | `security-research-modules/skills/threat-intelligence/MODULE.md` |
+| suimi WiFi无线安全 | `security-research-modules/skills/wifi-wireless/MODULE.md` |
+| suimi Windows AD安全 | `security-research-modules/skills/windows-ad/MODULE.md` |
+| suimi 渗透测试工具链 | `security-research-modules/skills/pentest-tools/MODULE.md` |
+| suimi AD证书滥用比赛 | `security-research-modules/skills/competition-ad-certificate-abuse/MODULE.md` |
+| suimi Agent云环境比赛 | `security-research-modules/skills/competition-agent-cloud/MODULE.md` |
+| suimi Android Hook比赛 | `security-research-modules/skills/competition-android-hooking/MODULE.md` |
+| suimi 浏览器持久化比赛 | `security-research-modules/skills/competition-browser-persistence/MODULE.md` |
+| suimi 前端Sourcemap恢复比赛 | `security-research-modules/skills/competition-bundle-sourcemap-recovery/MODULE.md` |
+| suimi 云元数据路径比赛 | `security-research-modules/skills/competition-cloud-metadata-path/MODULE.md` |
+| suimi 容器运行时比赛 | `security-research-modules/skills/competition-container-runtime/MODULE.md` |
+| suimi 移动端密码学比赛 | `security-research-modules/skills/competition-crypto-mobile/MODULE.md` |
+| suimi 自定义协议重放比赛 | `security-research-modules/skills/competition-custom-protocol-replay/MODULE.md` |
+| suimi DPAPI凭据链比赛 | `security-research-modules/skills/competition-dpapi-credential-chain/MODULE.md` |
+| suimi 文件解析链比赛 | `security-research-modules/skills/competition-file-parser-chain/MODULE.md` |
+| suimi 固件布局比赛 | `security-research-modules/skills/competition-firmware-layout/MODULE.md` |
+| suimi 取证时间线比赛 | `security-research-modules/skills/competition-forensic-timeline/MODULE.md` |
+| suimi GraphQL/RPC漂移比赛 | `security-research-modules/skills/competition-graphql-rpc-drift/MODULE.md` |
+| suimi Windows身份比赛 | `security-research-modules/skills/competition-identity-windows/MODULE.md` |
+| suimi iOS运行时比赛 | `security-research-modules/skills/competition-ios-runtime/MODULE.md` |
+| suimi JWT声明混淆比赛 | `security-research-modules/skills/competition-jwt-claim-confusion/MODULE.md` |
+| suimi K8s控制面比赛 | `security-research-modules/skills/competition-k8s-control-plane/MODULE.md` |
+| suimi Kerberos委派比赛 | `security-research-modules/skills/competition-kerberos-delegation/MODULE.md` |
+| suimi 内核容器逃逸比赛 | `security-research-modules/skills/competition-kernel-container-escape/MODULE.md` |
+| suimi Linux凭据跳板比赛 | `security-research-modules/skills/competition-linux-credential-pivot/MODULE.md` |
+| suimi LSASS票据材料比赛 | `security-research-modules/skills/competition-lsass-ticket-material/MODULE.md` |
+| suimi 邮箱滥用比赛 | `security-research-modules/skills/competition-mailbox-abuse/MODULE.md` |
+| suimi 恶意软件配置比赛 | `security-research-modules/skills/competition-malware-config/MODULE.md` |
+| suimi OAuth/OIDC链比赛 | `security-research-modules/skills/competition-oauth-oidc-chain/MODULE.md` |
+| suimi PCAP协议比赛 | `security-research-modules/skills/competition-pcap-protocol/MODULE.md` |
+| suimi Prompt注入比赛 | `security-research-modules/skills/competition-prompt-injection/MODULE.md` |
+| suimi 队列/Worker漂移比赛 | `security-research-modules/skills/competition-queue-worker-drift/MODULE.md` |
+| suimi 竞态条件比赛 | `security-research-modules/skills/competition-race-condition-state-drift/MODULE.md` |
+| suimi 中继强制链比赛 | `security-research-modules/skills/competition-relay-coercion-chain/MODULE.md` |
+| suimi 请求归一化走私比赛 | `security-research-modules/skills/competition-request-normalization-smuggling/MODULE.md` |
+| suimi 逆向Pwn比赛 | `security-research-modules/skills/competition-reverse-pwn/MODULE.md` |
+| suimi 运行时路由比赛 | `security-research-modules/skills/competition-runtime-routing/MODULE.md` |
+| suimi SSRF元数据跳板比赛 | `security-research-modules/skills/competition-ssrf-metadata-pivot/MODULE.md` |
+| suimi 隐写媒体比赛 | `security-research-modules/skills/competition-stego-media/MODULE.md` |
+| suimi 供应链比赛 | `security-research-modules/skills/competition-supply-chain/MODULE.md` |
+| suimi 模板渲染路径比赛 | `security-research-modules/skills/competition-template-render-path/MODULE.md` |
+| suimi Web运行时比赛 | `security-research-modules/skills/competition-web-runtime/MODULE.md` |
+| suimi WebSocket运行时比赛 | `security-research-modules/skills/competition-websocket-runtime/MODULE.md` |
+| suimi Windows跳板比赛 | `security-research-modules/skills/competition-windows-pivot/MODULE.md` |
+| suimi ZIP归档比赛 | `security-research-modules/skills/competition-zip-archive/MODULE.md` |
+| suimi CTF沙箱协调器 | `security-research-modules/skills/ctf-sandbox-orchestrator/MODULE.md` |
 
 ## 推荐加载顺序
 

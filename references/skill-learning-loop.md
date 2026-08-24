@@ -170,3 +170,25 @@ Before closing a reverse-engineering task:
 4. Promote only after validation or when the lesson is obviously generic and low-risk.
 5. Run `scripts/healthcheck.ps1` after editing any skill package file.
 6. Include the mandatory `新技能/方法反馈` section in the final user response.
+
+## Promoted Learning Notes
+
+### 触发词闸门检查法-验证skill自动调用链路
+
+- source: `20260825-063349-触发词闸门检查法-验证skill自动调用链路`
+- category: method
+- applies_to: skill auto-invocation / pi skills routing verification
+- purpose_zh: 验证自动调用链路时，先检查根 SKILL.md description 覆盖目标场景触发词，再测 invoke_skill 路由
+- confidence: 4/5
+
+**Lesson**
+
+验证 skill 自动调用时，不能只测 invoke_skill 路由，必须先检查根 SKILL.md 的 description 是否覆盖目标场景触发词。Pi 启动时提取 name+description 注入系统提示，模型据此判断是否加载 skill——description 漏了触发词（nmap/sqlmap/src挖洞等），后面路由全白搭。
+
+**Evidence**
+
+在 pentest-tools 导入完成后，检查根 SKILL.md description 发现无渗透测试触发词（nmap/sqlmap/src/bounty 全为 0），导致自动调用链路断裂。添加后 description 覆盖 nmap/sqlmap/src挖洞/bug bounty 等，新会话后可触发。
+
+**Validation**
+
+YAML 校验通过，healthcheck 24/24 PASS，invoke_skill 实测路由 pentest-tools 0.94。

@@ -1,4 +1,4 @@
-# APK 安全测试速查
+﻿# APK 安全测试速查
 
 > 基于 OWASP MASTG（Mobile Application Security Testing Guide）整理。
 > 覆盖静态分析、动态分析、网络通信、数据存储、认证授权、代码保护六大维度。

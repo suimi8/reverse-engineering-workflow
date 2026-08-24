@@ -1,4 +1,4 @@
----
+﻿---
 name: nosql-injection
 description: Use for authorized NoSQL injection review when MongoDB, Elasticsearch, CouchDB, Firebase-style JSON querying, query operators, JSON filters, or document database selectors are exposed through Web/API inputs discovered during reverse engineering or security testing.
 ---

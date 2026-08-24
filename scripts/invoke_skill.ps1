@@ -1,4 +1,4 @@
-#Requires -Version 5.0
+﻿#Requires -Version 5.0
 param(
     [Parameter(Mandatory=$true)]
     [string]$TaskText,
@@ -75,7 +75,8 @@ if ([string]::IsNullOrWhiteSpace($TargetPath)) {
 }
 
 if ($LASTEXITCODE -ne 0) {
-    throw 'Skill selector returned a non-zero exit code.'
+    [Console]::Error.WriteLine('Skill selector returned a non-zero exit code.')
+    exit 1
 }
 
 $selection = $selectionJson | ConvertFrom-Json

@@ -1,4 +1,4 @@
-# Windows Recovery Checklist
+﻿# Windows Recovery Checklist
 
 Use this checklist only after `windows-python-app-recovery` has been selected and the target is the user's own or authorized Windows Python desktop app.
 

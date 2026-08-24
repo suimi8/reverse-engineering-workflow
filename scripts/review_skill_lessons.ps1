@@ -1,4 +1,4 @@
-#Requires -Version 5.0
+﻿#Requires -Version 5.0
 param(
     [ValidateSet('all', 'candidate', 'validated', 'promoted', 'rejected')]
     [string]$Status = 'all',

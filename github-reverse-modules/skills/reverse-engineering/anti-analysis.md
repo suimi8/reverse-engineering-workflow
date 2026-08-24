@@ -1,4 +1,4 @@
-# CTF Reverse - Anti-Analysis Techniques & Bypasses
+﻿# CTF Reverse - Anti-Analysis Techniques & Bypasses
 
 Comprehensive reference for anti-debugging, anti-VM, anti-DBI, and integrity-check techniques encountered in CTF challenges, with practical bypasses.
 

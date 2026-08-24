@@ -1,4 +1,4 @@
-# CTF Reverse - Language-Specific Techniques
+﻿# CTF Reverse - Language-Specific Techniques
 
 ## Table of Contents
 - [Python Bytecode Reversing (dis.dis output)](#python-bytecode-reversing-disdis-output)

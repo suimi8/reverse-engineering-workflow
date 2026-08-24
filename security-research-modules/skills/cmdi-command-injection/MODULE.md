@@ -1,4 +1,4 @@
----
+﻿---
 name: cmdi-command-injection
 description: >-
   Command injection playbook. Use when user input may reach shell commands, process execution, converters, import pipelines, or blind out-of-band command sinks.

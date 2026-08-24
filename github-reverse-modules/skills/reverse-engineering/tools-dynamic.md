@@ -1,4 +1,4 @@
-# CTF Reverse - Dynamic Analysis Tools
+﻿# CTF Reverse - Dynamic Analysis Tools
 
 ## Table of Contents
 - [Frida (Dynamic Instrumentation)](#frida-dynamic-instrumentation)

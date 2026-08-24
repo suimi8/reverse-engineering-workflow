@@ -1,4 +1,4 @@
----
+﻿---
 name: windows-python-app-recovery
 description: Recover and diagnose authorized lost-source Windows desktop apps packaged from Python. Use for Nuitka, PyInstaller, cx_Freeze, Flet, embedded Python DLL bundles, app.exe/flet.exe pairs, LOCALAPPDATA/APPDATA state repair, localhost helper service recovery, startup persistence, and cases where the user cannot enter the functional UI of their own Windows Python app.
 ---

@@ -1,4 +1,4 @@
----
+﻿---
 name: prototype-pollution
 description: >-
   Prototype pollution testing for JavaScript stacks. Use when user input is

@@ -1,4 +1,4 @@
-#Requires -Version 5.0
+﻿#Requires -Version 5.0
 param(
     [ValidateSet('none', 'patch', 'minor')]
     [string]$BumpVersion = 'none',

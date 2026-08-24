@@ -1,4 +1,4 @@
----
+﻿---
 name: injection-checking
 description: >-
   Entry P1 category router for injection testing. Use when routing between XSS,

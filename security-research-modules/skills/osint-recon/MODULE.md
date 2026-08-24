@@ -1,4 +1,4 @@
----
+﻿---
 name: osint-recon
 description: >-
   OSINT/recon tool catalog lookup with a bundled local snapshot of the external rawfilejson/awesome-osint-arsenal GitHub repo (753 tools across 26 categories: username/email/domain/IP/SOCMINT/GEOINT/dark-web/breach-search/forensics, plus bundled red-team and blue-team installers). Use when a task needs "which OSINT tool covers X" lookups, target/asset reconnaissance tooling choices, or a safety review before running its bundled install.sh/category installers. Single entry point — the 753-tool data file is queried on demand, never loaded in full.
