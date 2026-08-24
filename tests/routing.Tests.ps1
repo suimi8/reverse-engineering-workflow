@@ -31,6 +31,13 @@ Describe 'Skill routing scripts' {
         $result.ok | Should Be $true
         (([string]$result.skill.path) -match 'flet') | Should Be $true
     }
+
+    It 'select_skill routes an x64dbg dynamic-debugging task to the x64dbg module' {
+        $json = & (Join-Path $rootDir 'scripts\select_skill.ps1') -TaskText '帮我附加到这个进程,下个断点看看参数' -AsJson | Out-String
+        $result = $json | ConvertFrom-Json
+        $result.ok | Should Be $true
+        (([string]$result.skill.path) -match 'x64dbg-reverse') | Should Be $true
+    }
 }
 
 Describe 'Learning loop scripts' {

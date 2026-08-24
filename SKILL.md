@@ -196,6 +196,9 @@ The following upstream reverse-only modules were appended without replacing loca
 - `github-reverse-modules/skills/reverse-engineering/MODULE.md`: large reverse methodology pack with languages, platforms, patterns, and advanced tool notes.
 - `github-reverse-modules/skills/radare2/MODULE.md`: dedicated radare2 CLI workflow with `references/cheatsheet.md` and `scripts/recon.ps1`.
 - `github-reverse-modules/skills/ida-reverse/MODULE.md`: IDA MCP-oriented workflow with `scripts/start.ps1` and `scripts/open.ps1`.
+- `github-reverse-modules/skills/x64dbg-reverse/MODULE.md`: x64dbg-mcp-server (duty1g) runtime debugging workflow with `scripts/install.ps1` and `scripts/status.ps1`.
+- `github-reverse-modules/skills/ce-reverse/MODULE.md`: Cheat Engine MCP (ce_mcp) memory scanning/pointer-chain/hook workflow with `scripts/install.ps1` and `scripts/status.ps1`.
+- `github-reverse-modules/skills/traffic-capture/MODULE.md`: tshark interface-level capture (SSLKEYLOGFILE) and mitmproxy man-in-the-middle capture for recovering HTTP(S) request/response evidence.
 - `github-reverse-modules/skills/binary-diff/MODULE.md`: cross-version symbol migration and LLM-assisted binary diff methodology.
 - `github-reverse-modules/skills/apk-reverse/MODULE.md`: APK decode, manifest summary, Frida run, and rebuild-sign-install workflow.
 - `github-reverse-modules/skills/mobile-reverse/MODULE.md`: Android+iOS mobile reverse methodology.

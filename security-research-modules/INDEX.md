@@ -88,6 +88,12 @@ File, browser, business, and support:
 - `recon-and-methodology`
 - `unauthorized-access-common-services`
 
+## Locally Added Modules
+
+The following module is authored locally and is not part of the imported donor skill set above. It documents an external GitHub repo as a read-only tool catalog and bundles no executable tooling of its own.
+
+- `osint-recon`: catalog/lookup reference for `rawfilejson/awesome-osint-arsenal` (753+ OSINT/recon/red-team/blue-team tools), linked from `recon-for-sec`'s Skill Map.
+
 ## Compatibility Notes
 
 - These modules are Markdown-only and do not add executable tooling.

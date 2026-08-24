@@ -33,6 +33,9 @@
 | suimi二进制 Diff | `github-reverse-modules/skills/binary-diff/MODULE.md` | suimi 支持的版本对比、符号迁移、补丁差异分析 |
 | suimi APK 逆向 | `github-reverse-modules/skills/apk-reverse/MODULE.md` | suimi 支持的 APK 解包、manifest 汇总、Frida、重打包签名安装 |
 | suimi移动端逆向 | `github-reverse-modules/skills/mobile-reverse/MODULE.md` | suimi 支持的 Android/iOS 移动端逆向方法论 |
+| suimi x64dbg 动态调试 | `github-reverse-modules/skills/x64dbg-reverse/MODULE.md` | suimi 支持的 x64dbg/MCP 运行时调试、断点/内存/寄存器观察、脱壳找 OEP |
+| suimi Cheat Engine 逆向 | `github-reverse-modules/skills/ce-reverse/MODULE.md` | suimi 支持的 Cheat Engine/MCP 内存扫描、指针链追踪、函数 Hook、代码注入 |
+| suimi抓包与流量分析 | `github-reverse-modules/skills/traffic-capture/MODULE.md` | suimi 支持的 tshark 接口级抓包（SSLKEYLOGFILE 解密）与 mitmproxy 中间人抓包，还原本地程序/移动端真实网络请求 |
 
 ## 本地逆向恢复技能
 
@@ -97,6 +100,7 @@
 | suimi源码管理泄露 | `security-research-modules/skills/insecure-source-code-management/MODULE.md` |
 | suimi CSV 公式注入 | `security-research-modules/skills/csv-formula-injection/MODULE.md` |
 | suimi通用安全方法论 | `security-research-modules/skills/recon-and-methodology/MODULE.md` |
+| suimi OSINT 侦察工具库 | `security-research-modules/skills/osint-recon/MODULE.md` |
 | suimi常见服务未授权访问 | `security-research-modules/skills/unauthorized-access-common-services/MODULE.md` |
 
 ## 推荐加载顺序

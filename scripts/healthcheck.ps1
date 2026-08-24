@@ -476,6 +476,92 @@ function suimiTest-SkillRegistry {
     }
 }
 
+function suimiTest-CrossReferenceCompleteness {
+    param([string]$RootDir)
+
+    $issues = @()
+
+    $listScript = Join-Path $RootDir 'scripts\list_skills.ps1'
+    $registryJson = & $listScript -AsJson
+    if ($LASTEXITCODE -ne 0) {
+        return @{
+            status = 'fail'
+            message = 'Cross-reference completeness check could not load the skill registry.'
+        }
+    }
+    $registry = $registryJson | ConvertFrom-Json
+    $allPaths = @($registry.skills | ForEach-Object { [string]$_.path })
+    $allNames = @($registry.skills | ForEach-Object { [string]$_.name })
+
+    $unifiedPath = Join-Path $RootDir 'references\unified-skills-entry.md'
+    $unifiedText = Get-Content -LiteralPath $unifiedPath -Raw
+    $missingFromUnified = @($allPaths | Where-Object { $_ -ne 'SKILL.md' -and $unifiedText -notmatch [regex]::Escape($_) })
+    foreach ($missingPath in $missingFromUnified) {
+        $issues += "unified-skills-entry.md missing path: $missingPath"
+    }
+
+    $ghSkillsRoot = Join-Path $RootDir 'github-reverse-modules\skills'
+    $ghDirs = @(Get-ChildItem -LiteralPath $ghSkillsRoot -Directory | Where-Object { $_.Name -ne 'scripts' } | Select-Object -ExpandProperty Name)
+    $ghIndexText = Get-Content -LiteralPath (Join-Path $RootDir 'github-reverse-modules\INDEX.md') -Raw
+    foreach ($dirName in $ghDirs) {
+        if ($ghIndexText -notmatch [regex]::Escape("skills/$dirName/")) {
+            $issues += "github-reverse-modules/INDEX.md missing module dir: $dirName"
+        }
+    }
+
+    $skillMdText = Get-Content -LiteralPath (Join-Path $RootDir 'SKILL.md') -Raw
+    foreach ($dirName in $ghDirs) {
+        if ($skillMdText -notmatch [regex]::Escape("skills/$dirName/MODULE.md")) {
+            $issues += "SKILL.md Added Reverse Modules list missing: $dirName"
+        }
+    }
+
+    $secSkillsRoot = Join-Path $RootDir 'security-research-modules\skills'
+    $secDirs = @(Get-ChildItem -LiteralPath $secSkillsRoot -Directory | Select-Object -ExpandProperty Name)
+    $secIndexText = Get-Content -LiteralPath (Join-Path $RootDir 'security-research-modules\INDEX.md') -Raw
+    foreach ($dirName in $secDirs) {
+        if ($secIndexText -notmatch ('`' + [regex]::Escape($dirName) + '`')) {
+            $issues += "security-research-modules/INDEX.md missing module dir: $dirName"
+        }
+    }
+
+    $routers = @('hack', 'recon-for-sec', 'api-sec', 'auth-sec', 'injection-checking', 'file-access-vuln', 'business-logic-vuln')
+    $routerLinkedNames = @()
+    foreach ($routerName in $routers) {
+        $routerFile = Join-Path $secSkillsRoot "$routerName\MODULE.md"
+        if (Test-Path -LiteralPath $routerFile) {
+            $routerText = Get-Content -LiteralPath $routerFile -Raw
+            $links = [regex]::Matches($routerText, '\]\(\.\./([a-z0-9\-]+)/MODULE\.md\)') | ForEach-Object { $_.Groups[1].Value }
+            $routerLinkedNames += $links
+        }
+    }
+    $routerLinkedNames = @($routerLinkedNames | Select-Object -Unique)
+    $secDetailDirs = @($secDirs | Where-Object { $_ -notin $routers })
+    $orphanSecModules = @($secDetailDirs | Where-Object { $_ -notin $routerLinkedNames })
+    foreach ($orphanName in $orphanSecModules) {
+        $issues += "security-research-modules module not linked from any P1 router Skill Map: $orphanName"
+    }
+
+    $selectText = Get-Content -LiteralPath (Join-Path $RootDir 'scripts\select_skill.ps1') -Raw
+    $ruleNames = @([regex]::Matches($selectText, "name = '([a-z0-9\-]+)';\s*pattern") | ForEach-Object { $_.Groups[1].Value })
+    $deadRuleRefs = @($ruleNames | Where-Object { $_ -notin $allNames } | Select-Object -Unique)
+    foreach ($deadName in $deadRuleRefs) {
+        $issues += "select_skill.ps1 rule references unknown skill name: $deadName"
+    }
+
+    if ($issues.Count -gt 0) {
+        return @{
+            status = 'fail'
+            message = ($issues -join '; ')
+        }
+    }
+
+    return @{
+        status = 'pass'
+        message = "Cross-reference completeness OK: unified-skills-entry.md, INDEX.md (both trees), SKILL.md module lists, $($secDetailDirs.Count) Skill-Map-linked detail modules, and $($ruleNames.Count) select_skill.ps1 rule refs are all consistent with the registry."
+    }
+}
+
 function suimiTest-SkillResolver {
     param([string]$RootDir)
 
@@ -576,6 +662,11 @@ function suimiTest-SkillSelector {
             task = 'firmware unpack and static analysis'
             target = ''
             path = 'github-reverse-modules/skills/reverse-engineering/MODULE.md'
+        },
+        [pscustomobject]@{
+            task = 'help me attach to this process and set a breakpoint to inspect the arguments'
+            target = ''
+            path = 'github-reverse-modules/skills/x64dbg-reverse/MODULE.md'
         }
     )
 
@@ -996,6 +1087,9 @@ try {
 
     $skillRegistryResult = suimiTest-SkillRegistry -RootDir $rootDir
     suimiAdd-Check (suimiNew-Check -Name 'reusable-skill-registry' -Status $skillRegistryResult.status -Message $skillRegistryResult.message)
+
+    $crossReferenceResult = suimiTest-CrossReferenceCompleteness -RootDir $rootDir
+    suimiAdd-Check (suimiNew-Check -Name 'cross-reference-completeness' -Status $crossReferenceResult.status -Message $crossReferenceResult.message)
 
     $skillResolverResult = suimiTest-SkillResolver -RootDir $rootDir
     suimiAdd-Check (suimiNew-Check -Name 'reusable-skill-resolver' -Status $skillResolverResult.status -Message $skillResolverResult.message)

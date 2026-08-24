@@ -26,6 +26,8 @@ description: >-
 - [Recon and Methodology](../recon-and-methodology/MODULE.md)
 - [Insecure Source Code Management](../insecure-source-code-management/MODULE.md) — .git/.svn/.hg exposure detection
 - [Dependency Confusion](../dependency-confusion/MODULE.md) — Supply chain reconnaissance for internal package names
+- [OSINT Recon Arsenal](../osint-recon/MODULE.md) — 外部 753+ 工具目录查询（按分类找具体 OSINT 工具）与执行前安全边界核查
+- [Unauthorized Access to Common Services](../unauthorized-access-common-services/MODULE.md) — Redis/MongoDB/Elasticsearch/Docker API 等常见服务未授权访问排查
 
 ## Recommended Flow
 
@@ -74,3 +76,43 @@ shop.gpt.ge逆向：entry.js中Tu对象包含所有API路径，.create封装在j
 **Validation**
 
 已通过Invoke-WebRequest验证GET和POST端点响应
+
+### dujiaoka/发卡站 vendor 暴露与认证接口方法混淆检测
+
+- source: `20260814-230942-dujiaoka-发卡站-vendor-暴露与认证接口方法混淆检测`
+- category: method
+- applies_to: Laravel/dujiaoka 发卡站 Web 审计
+- purpose_zh: 审计独角数卡类站点时优先验证 /vendor/composer/installed.json 匿名可读性以获取精确依赖版本，并对 /admin/api 认证端点逐一测试 GET/PUT/PATCH/DELETE/OPTIONS 方法混淆与错误信息泄露
+- confidence: 3/5
+
+**Lesson**
+
+Laravel 系发卡站即使有 CF，vendor 目录下的 composer/installed.json 常可直接读取获得完整供应链指纹；认证接口不限制 HTTP 方法时，GET 也能触发业务逻辑并泄露枚举信息；会话 Cookie 标志缺失需与 XSS 面联动评估
+
+**Evidence**
+
+lyxazy.cn /vendor/composer/installed.json -> 200 104KB 38包精确版本; /admin/api/authentication/login GET/PUT/PATCH/DELETE 均返回业务 JSON 该邮箱不存在; Set-Cookie ACG-SHOP 无 HttpOnly/Secure/SameSite
+
+**Validation**
+
+对 lyxazy.cn 复现 3/3；对同类 dujiaoka 站点可复用同一路径与方法矩阵
+
+### 同主体多平台联动测绘：商城+Flask代理门户+shop子域
+
+- source: `20260814-235842-同主体多平台联动测绘-商城-flask代理门户-shop子域`
+- category: method
+- applies_to: 多域名黑盒 Web 审计
+- purpose_zh: 域名间共享主体时，除主商城外必须测绘同源 JS 中 PLATFORM_HOSTS 列出的全部域名与 SPA chunk，逐个提取 /api 路由面、邀请码 oracle、游客店铺 slug 机制与登录限速策略
+- confidence: 3/5
+
+**Lesson**
+
+黑盒多域名目标先抓主站 JS 的 PLATFORM_HOSTS/跨域配置，第二平台往往防御配置不同；邀请码校验接口可泄露上级 UID；临时邮箱收不到码时不要无限重试，转而枚举其他认证面或攻击签名/会话机制
+
+**Evidence**
+
+lyxazy.cn(dujiaoka) + www.lyxazy.top(Flask门户 /api/auth|admin|shop|openapi 80+端点) + shop.lyxazy.top + octoneai.com(同商城); invite-check 泄露 inviterUid:1; 登录统一错误+429/60s; 邮件验证码多临时邮箱均不达
+
+**Validation**
+
+对 lyxazy 系 4 域名复现；思路对同构站点可复用

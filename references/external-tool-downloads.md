@@ -1,4 +1,4 @@
-# External Tool Official Downloads
+﻿# External Tool Official Downloads
 
 Use this reference when setting up the reverse-engineering workflow environment. Prefer official vendor/project pages over third-party mirrors, cracked builds, repacks, or search-result download sites. Versioned direct download URLs change often; use the stable landing pages below unless a script needs a pinned version.
 
@@ -39,7 +39,10 @@ This is a coverage map, not a mandatory one-shot install list. Install the basel
 | ida-pro-mcp | https://github.com/mrexodia/ida-pro-mcp | IDA MCP bridge used by the appended `ida-reverse` module. |
 | Ghidra | https://github.com/NationalSecurityAgency/ghidra/releases | Official NSA GitHub releases. Requires a supported JDK. |
 | radare2 | https://github.com/radareorg/radare2/releases | Provides `r2`, `rabin2`, `rasm2`, `radiff2`, `rahash2`, and related CLI tools. |
-| x64dbg | https://x64dbg.com/ | Windows x86/x64 debugger. |
+| x64dbg | https://x64dbg.com/ | Windows x86/x64 debugger. Official builds/snapshots are published under GitHub releases at https://github.com/x64dbg/x64dbg/releases. |
+| x64dbg-mcp-server | https://github.com/duty1g/x64dbg-mcp-server | x64dbg MCP bridge plugin (71 tools) used by the appended `x64dbg-reverse` module. |
+| Cheat Engine | https://cheatengine.org/ | Memory scanner/debugger; official code repository at https://github.com/cheat-engine/cheat-engine. No stable scriptable direct-download link — install manually. |
+| ce_mcp (cheatengine npm package) | https://www.npmjs.com/package/cheatengine | Cheat Engine MCP bridge (127 tools, Node.js + Lua) used by the appended `ce-reverse` module. No confirmed public source repo; use a local checkout or `npx -y cheatengine@latest`. |
 | Binary Ninja | https://binary.ninja/ | Commercial reverse-engineering suite. |
 | GDB | https://sourceware.org/gdb/ | GNU debugger for ELF/native runtime analysis. |
 | GNU Binutils | https://www.gnu.org/software/binutils/ | Provides `objdump`, `readelf`, `strings`, and related native binary utilities. |
@@ -170,3 +173,25 @@ python -m pip install angr unicorn qiling miasm lief pwntools r2pipe capstone
 For WPeGPT, use the plugin repository's own `requirements.txt` after downloading or cloning the official repository.
 
 For Go-based security tools, prefer the official repository's current `go install ...@latest` command. For Node-based tools, prefer `npm`, `npx`, `corepack`, or `pnpm` instructions from the official project page.
+
+## Promoted Learning Notes
+
+### bootstrap-manifest.json 声明 canAutoInstall 前必须先在脚本里真正实现
+
+- source: `20260824-014418-bootstrap-manifest-json-声明-canautoinstall-前必须先在脚`
+- category: tooling
+- applies_to: github-reverse-modules/skills/scripts/bootstrap-manifest.json 里任何新增或修改的 capability 条目
+- purpose_zh: 避免 manifest 对外承诺能一键自动装好某工具,实际脚本却只报错退出的文档与行为不一致
+- confidence: 3/5
+
+**Lesson**
+
+给 bootstrap-manifest.json 加或改一条 canAutoInstall:true 的 capability 时, 必须在对应的 install/start 脚本里现场跑一遍缺依赖场景验证它真的能把这个工具装好(或者至少缺失时给出可执行的下一步), 不能只在 manifest 里声明就当完成; MODULE.md 的按需自举表格也要和脚本真实行为保持同步, 发现不一致时以实际跑出来的行为为准去改文档, 而不是反过来。
+
+**Evidence**
+
+x64dbg 这条 capability 一开始写了 canAutoInstall:true, 但当时 install.ps1 遇到 x64dbg 缺失只会输出 ERR:x64dbg_not_found 就退出, 并不会真的下载; 直到后来补上 -AutoInstallX64dbg 真正实现下载解压逻辑, manifest 声明和脚本行为才对上。
+
+**Validation**
+
+对比 install.ps1 修复前后, 在缺少 x64dbg 场景下的真实命令行输出

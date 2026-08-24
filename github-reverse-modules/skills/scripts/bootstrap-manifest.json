@@ -97,6 +97,47 @@
       "verificationMode": "service-and-registration"
     },
     {
+      "name": "x64dbg",
+      "bootstrapKind": "github-release-zip",
+      "repo": "x64dbg/x64dbg",
+      "assetRegex": "^snapshot_.*\\.zip$",
+      "installDir": "%USERPROFILE%\\Tools\\x64dbg",
+      "docsUrl": "https://x64dbg.com/",
+      "canAutoInstall": true,
+      "verifyCommand": "",
+      "note": "官方快照 zip 解压后本体在 <installDir>\\release\\x32|x64 下，x64dbg-reverse\\scripts\\install.ps1 会自动识别这层嵌套，也兼容手动拍平后的 <installDir>\\x32|x64 布局。"
+    },
+    {
+      "name": "x64dbg-mcp",
+      "bootstrapKind": "local-http-mcp",
+      "dependsOn": ["x64dbg"],
+      "mcpNames": ["x64dbg", "x64dbg-x32"],
+      "mcpUrl": "http://127.0.0.1:9094/",
+      "servicePort": 9094,
+      "servicePortRange": [9094, 9095],
+      "portNote": "端口按架构固定区分：x64=9094，x32=9095（与 IDA 的多实例递增端口不同），两个可以同时注册为不同的 MCP server 名。",
+      "startScript": "%SKILL_ROOT%\\x64dbg-reverse\\scripts\\install.ps1",
+      "docsUrl": "https://github.com/duty1g/x64dbg-mcp-server",
+      "canAutoInstall": true,
+      "verificationMode": "service-and-registration",
+      "postInstallSteps": [
+        "install.ps1 自动下载插件 zip 并复制 .dp32/.dp64 到 x64dbg 的 x32/x64 plugins 目录",
+        "首次启动 x64dbg 后插件自动生成 mcp_config.json（含端口与 Bearer token）",
+        "install.ps1 读取 token 后自动执行 claude mcp add --transport http 完成注册"
+      ]
+    },
+    {
+      "name": "ce-mcp",
+      "bootstrapKind": "local-stdio-mcp",
+      "mcpNames": ["cheatengine"],
+      "mcpCommand": "node",
+      "startScript": "%SKILL_ROOT%\\ce-reverse\\scripts\\install.ps1",
+      "docsUrl": "https://www.npmjs.com/package/cheatengine",
+      "canAutoInstall": true,
+      "verificationMode": "service-and-registration",
+      "note": "Cheat Engine 本体需要先手动安装（无稳定可脚本化直链，官方下载页 https://cheatengine.org/，官方源码仓库 https://github.com/cheat-engine/cheat-engine）。install.ps1 需要 -CeMcpSourceDir 指向本地 ce_mcp 源码（含 ce_mcp_server.js / ce_mcp_bridge.lua），负责把 Lua 桥部署到 CE 的 autorun 目录并用 claude mcp add --transport stdio 注册。"
+    },
+    {
       "name": "r2",
       "bootstrapKind": "github-release-zip",
       "repo": "radareorg/radare2",

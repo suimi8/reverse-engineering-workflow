@@ -269,6 +269,15 @@ $Note
         }
     }
 
+    # suimiRead-LearningInbox splits entries on "^##" at the start of a line, and the
+    # lazy body match for this entry originally extended through the blank-line
+    # separator before the next entry's heading (or end of file). Every branch above
+    # ends with .TrimEnd(), which strips that separator. Restore it unconditionally so
+    # the next "## " heading is not glued onto this entry's last line — otherwise the
+    # next entry silently stops matching as its own heading and its fields get
+    # misattributed to this entry (a real data-corruption bug, not hypothetical).
+    $updated = $updated.TrimEnd() + "`r`n`r`n"
+
     $newText = $text.Remove($entry.start_index, $entry.length).Insert($entry.start_index, $updated)
     [System.IO.File]::WriteAllText($InboxPath, $newText, [System.Text.Encoding]::UTF8)
 }

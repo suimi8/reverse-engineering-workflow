@@ -117,6 +117,9 @@ description: >-
 - [CSV Formula Injection](../csv-formula-injection/MODULE.md)
 - [WebSocket Security](../websocket-security/MODULE.md)
 - [Dependency Confusion](../dependency-confusion/MODULE.md)
+- [Clickjacking](../clickjacking/MODULE.md)
+- [Open Redirect](../open-redirect/MODULE.md)
+- [Web Cache Deception](../web-cache-deception/MODULE.md)
 
 原先单独拆出的 payload-selection、brute-selection 一类小 skill 已并回对应主 skill，避免入口过多导致 loader 负担和选择噪音。
 
