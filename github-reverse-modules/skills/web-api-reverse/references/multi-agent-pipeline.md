@@ -1,6 +1,6 @@
 ﻿# 七阶段多智能体流水线（web-api-reverse）
 
-> 来源：整合公开上游 skill（Luis247911/claude-skill-reverse-engineering-api）的工程化方法，按 suimi 模块规范重排。适用于接口多、需要稳定产出与回归验证的 Web 后端 API 逆向任务。路线 A（轻量）见主 MODULE.md。
+> 适用于接口多、需要稳定产出与回归验证的 Web 后端 API 逆向任务。路线 A（轻量）见主 MODULE.md。
 
 ## 流水线总览
 

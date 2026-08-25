@@ -1,6 +1,6 @@
 ﻿<#
 .SYNOPSIS
-Deploy the x64dbg-mcp-server plugin (duty1g/x64dbg-mcp-server) into a local x64dbg
+Deploy the x64dbg-mcp-server plugin into a local x64dbg
 installation, let it generate its auth token, and register it as an MCP server in
 Claude Code.
 
@@ -174,7 +174,7 @@ if (-not (Test-Path -LiteralPath $pluginDest)) {
             $release = Invoke-RestMethod -Uri $releaseApi -Headers @{ "User-Agent" = "reverse-engineering-workflow" } -ErrorAction Stop
             $asset = $release.assets | Where-Object { $_.name -like "*.zip" } | Select-Object -First 1
             if (-not $asset) {
-                throw "no .zip asset found on the latest duty1g/x64dbg-mcp-server release"
+                throw "no .zip asset found on the latest x64dbg-mcp-server release"
             }
 
             $zipPath = Join-Path $tempDir $asset.name

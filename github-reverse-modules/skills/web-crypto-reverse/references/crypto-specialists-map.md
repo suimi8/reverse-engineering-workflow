@@ -1,6 +1,6 @@
 ﻿# Crypto Specialists 完整索引（web-crypto-reverse）
 
-> 来源：整合公开上游套件 osloxdao/thefounds（Crypto Recon）的 30 个 specialist 分类，按 suimi 模块规范重排。用于快速定位：给目标后该跑哪些 specialist、各自找什么、输出什么。
+> 30 个 specialist 分类，用于快速定位：给目标后该跑哪些 specialist、各自找什么、输出什么。
 
 ## A. 入口与编排
 

@@ -1,4 +1,4 @@
-﻿# IDA ↔ reverse-skill 对接（可移植）
+﻿# IDA ↔ reverse-engineering-workflow 对接（可移植）
 
 本页是通用步骤，不含某台机器的绝对路径。本机就绪报告留在仓库根目录的 `LOCAL-READINESS.md`（已 gitignore）。
 
@@ -37,11 +37,11 @@ python -m ida_pro_mcp --install --transport streamable-http --scope global
 |------|------|
 | `scripts/start.ps1` | 健康则 `OK:<n>:reuse`；端口在听但 RPC 超时视为忙，不杀；只在无人监听或缺 `py_eval` 时替换 managed supervisor；永不杀 `ida.exe` |
 | `scripts/watchdog.ps1` | 每分钟巡检；忙/健康则 reuse；只有 down/stale 才调 `start.ps1` |
-| `scripts/install-autostart.ps1` | 注册计划任务 `reverse-skill-ida-mcp`（登录 + 每分钟） |
+| `scripts/install-autostart.ps1` | 注册计划任务 `reverse-engineering-workflow-ida-mcp`（登录 + 每分钟） |
 | `scripts/start-gui.ps1` | idalib license 失败时开 GUI 插件 |
 | `scripts/open.ps1` | HTTP 直调 `idb_open`，绕过部分客户端 schema 校验 |
 
-日志：`%LOCALAPPDATA%\reverse-skill\ida-mcp\supervisor.log` 与 `watchdog.log`。
+日志：`%LOCALAPPDATA%\reverse-engineering-workflow\ida-mcp\supervisor.log` 与 `watchdog.log`。
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File "skills\ida-reverse\scripts\start.ps1"

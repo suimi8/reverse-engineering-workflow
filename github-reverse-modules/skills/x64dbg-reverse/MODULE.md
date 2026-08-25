@@ -16,7 +16,7 @@ description: |
 
 本 skill 由 suimi 逆向总入口支持。即使用户直接触发本子技能，任务结束也必须回到 `reverse-engineering-workflow/scripts/finish_skill_run.ps1` 生成 `新技能/方法反馈`，并按需用 `record_skill_lesson.ps1`、`review_skill_lessons.ps1`、`promote_skill_lesson.ps1` 维护学习闭环。
 
-本模块基于 [duty1g/x64dbg-mcp-server](https://github.com/duty1g/x64dbg-mcp-server)（MIT License，Zig 编写，零依赖单文件插件）。与 `ida-reverse` 的静态反编译定位不同，本模块专注于**运行时**证据：真实断点命中、真实寄存器/内存值、真实调用栈。
+本模块基于 x64dbg 的 MCP 桥接插件 x64dbg-MCP-Server（Zig 编写，零依赖单文件插件），插件本体由 `scripts/install.ps1` 从官方 Release 自动下载部署。与 `ida-reverse` 的静态反编译定位不同，本模块专注于**运行时**证据：真实断点命中、真实寄存器/内存值、真实调用栈。
 
 ## 已知问题与反思（必读）
 
@@ -55,7 +55,7 @@ description: |
 
 8. **调用链上任何一环缺软件，脚本都不会只报错就退出**
    - x64dbg 本体缺失 → 打印 `https://x64dbg.com/` 官方页 + GitHub Releases 直链 + `-AutoInstallX64dbg` 自助安装提示
-   - 插件 zip 下载失败（断网/限流）→ 打印 `duty1g/x64dbg-mcp-server` Releases 页，可手动下载后把 `.dp32`/`.dp64` 直接放进 `plugins` 目录
+   - 插件 zip 下载失败（断网/限流）→ 打印 x64dbg-mcp-server 官方 Releases 页，可手动下载后把 `.dp32`/`.dp64` 直接放进 `plugins` 目录
    - `claude` 命令行缺失 → 打印 Windows 原生安装命令 `irm https://claude.ai/install.ps1 | iex`（免管理员、免 Node.js）和 `winget install Anthropic.ClaudeCode` 备选
    - 统一约定：`ERR:*` 之后紧跟的 `INFO:*_download_page`/`INFO:*_download_command` 行就是可执行的下一步，不用去翻文档
 
@@ -76,7 +76,7 @@ description: |
 路径：`scripts/install.ps1`
 
 - 自动探测本机已安装的 x64dbg 根目录（兼容官方快照 `release/x32|x64` 嵌套布局与拍平布局），找不到则报错退出，不会静默瞎猜路径
-- 从 `duty1g/x64dbg-mcp-server` 最新 Release 下载插件 zip，解压后把 `x64dbg-MCP-Server.dp32`/`.dp64` 分别复制到 `x32\plugins\`、`x64\plugins\`（会自动创建 `plugins` 目录）
+- 从 x64dbg-mcp-server 官方 Release 下载插件 zip，解压后把 `x64dbg-MCP-Server.dp32`/`.dp64` 分别复制到 `x32\plugins\`、`x64\plugins\`（会自动创建 `plugins` 目录）
 - 若 `mcp_config.json` 尚不存在，后台启动一次 x64dbg 触发插件生成配置，轮询等待文件出现（有超时，不会无限挂起）
 - 读取生成的端口与 token，调用 `claude mcp add --transport http` 完成注册（已存在同名 server 会先 remove 再 add，保证 token 更新后能覆盖旧配置）
 - 成功输出 `OK:<server-name>:<port>`，失败输出 `ERR:<reason>`
@@ -261,7 +261,7 @@ CommentOrLabelAtAddress(address="0x00401234", value="密码校验入口", mode="
 | 工具 | 可自动安装 | 安装方式 | 说明 |
 |------|-----------|---------|------|
 | x64dbg 本体 | ✓（需显式开关） | GitHub Release zip（`x64dbg/x64dbg` 官方快照） | 默认只打印官方下载页/Releases 直链；传 `install.ps1 -AutoInstallX64dbg` 才会真正下载解压到 `-X64dbgInstallDir` |
-| x64dbg-MCP-Server 插件 | ✓（默认自动） | GitHub Release zip（`duty1g/x64dbg-mcp-server`） | `install.ps1` 自动下载、解压、复制到 plugins 目录；下载失败会打印手动下载链接而不是裸异常 |
+| x64dbg-MCP-Server 插件 | ✓（默认自动） | 官方 Release zip（x64dbg-mcp-server） | `install.ps1` 自动下载、解压、复制到 plugins 目录；下载失败会打印手动下载链接而不是裸异常 |
 | MCP 注册 | ✓（默认自动） | `claude mcp add --transport http` | `install.ps1` 读取 token 后自动完成，`--scope user` 为全局；`claude` 命令行缺失时打印官方安装命令 |
 
 ### 安装步骤（已验证，2026-08-24 实测）
@@ -288,7 +288,7 @@ claude mcp get x64dbg
 ### 自举触发点
 
 - `scripts/install.ps1`：缺 x64dbg 本体时默认报 `ERR:x64dbg_not_found` 并打印官方下载页/Releases 直链，不做静默安装（涉及安装一个完整 GUI 调试器，交给用户确认更安全）；传 `-AutoInstallX64dbg` 则自动下载解压
-- `scripts/install.ps1`：x64dbg 本体存在但插件缺失时，全自动下载 `duty1g/x64dbg-mcp-server` 最新 Release 并部署；下载失败会打印手动下载链接而不是抛异常
+- `scripts/install.ps1`：x64dbg 本体存在但插件缺失时，全自动下载 x64dbg-mcp-server 官方最新 Release 并部署；下载失败会打印手动下载链接而不是抛异常
 - `scripts/install.ps1`：`claude` 命令行缺失时打印官方安装命令（`irm https://claude.ai/install.ps1 | iex`，备选 `winget install Anthropic.ClaudeCode`）
 - MCP 注册：`install.ps1` 自动把 `x64dbg`（或自定义 server 名）写入 Claude MCP 配置
 

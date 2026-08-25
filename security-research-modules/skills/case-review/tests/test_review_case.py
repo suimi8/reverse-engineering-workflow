@@ -20,7 +20,7 @@ class ReviewCaseTests(unittest.TestCase):
             report_dir.mkdir(parents=True)
 
         artifact = evidence_dir / "sample.bin"
-        artifact.write_bytes(b"reverse-skill case review fixture")
+        artifact.write_bytes(b"re-workflow case review fixture")
         digest = hashlib.sha256(artifact.read_bytes()).hexdigest()
 
         (root / "scope.md").write_text(
@@ -184,12 +184,12 @@ class ReviewCaseTests(unittest.TestCase):
             scope = root / "scope.md"
             scope.write_text(
                 scope.read_text(encoding="utf-8")
-                .replace("  - sample.bin", r"  - D:\reverse-skill")
+                .replace("  - sample.bin", r"  - D:\re-workflow")
                 .replace("- mode: offline", "- mode: lab_only"),
                 encoding="utf-8",
             )
             result = REVIEW_CASE.review_case(root)
-            self.assertEqual(result["scope"]["assets"], [r"D:\reverse-skill"])
+            self.assertEqual(result["scope"]["assets"], [r"D:\re-workflow"])
             self.assertFalse(any(item["code"] == "scope.assets_missing" for item in result["issues"]))
 
 

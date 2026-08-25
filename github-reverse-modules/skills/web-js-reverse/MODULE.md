@@ -97,7 +97,7 @@ description: 浏览器端 JS 逆向与反爬对抗技能。JS 混淆分级与还
 
 ## 详细参考文档
 
-本模块携带以下 references（来源：kings0527/web-reverse-engineering-skill 的精选），按需加载：
+本模块携带以下精选 references，按需加载：
 
 | 参考文档 | 聚焦 |
 |---------|------|

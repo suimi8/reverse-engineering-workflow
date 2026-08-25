@@ -63,4 +63,4 @@ Finding 模板允许 `optional_attack: Txxxx`（见 `references/ops/evidence-fin
 
 
 ---
-> 注：本文件由上游 reverse-skill v1.0.1 `skills/references/` 导入，内部路径已调整为本地布局（ops → `references/ops/`，attack-chain/pentest-tools → `security-research-modules/skills/`）。
+> 注：本文件内部路径已调整为本地布局（ops → `references/ops/`，attack-chain/pentest-tools → `security-research-modules/skills/`）。

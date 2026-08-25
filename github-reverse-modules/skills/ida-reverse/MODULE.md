@@ -349,13 +349,13 @@ ida-pro-mcp --config
 
 路径：`scripts/watchdog.ps1`
 
-每分钟检查 13337 端口是否健康；健康则复用，仅当 down/stale 时才调用 `start.ps1` 替换。日志保存在 `%LOCALAPPDATA%\reverse-skill\ida-mcp\watchdog.log`。
+每分钟检查 13337 端口是否健康；健康则复用，仅当 down/stale 时才调用 `start.ps1` 替换。日志保存在 `%LOCALAPPDATA%\reverse-engineering-workflow\ida-mcp\watchdog.log`。
 
 ### install-autostart.ps1 — 登录自启动注册
 
 路径：`scripts/install-autostart.ps1`
 
-注册计划任务 `reverse-skill-ida-mcp`（登录时 + 每分钟触发），确保 IDA MCP 持续可用。
+注册计划任务 `reverse-engineering-workflow-ida-mcp`（登录时 + 每分钟触发），确保 IDA MCP 持续可用。
 
 ### start-gui.ps1 — 图形界面启动（备用）
 
@@ -379,4 +379,4 @@ Python 实现的 `start.ps1` 等价逻辑，可在非 Windows 环境或不想用
 
 路径：`LOCAL-SETUP.md`
 
-记录了 IDA ↔ reverse-skill 对接的完整安装步骤，包括 `IDADIR` 设置、idalib 激活、MCP 安装与配置。
+记录了 IDA ↔ reverse-engineering-workflow 对接的完整安装步骤，包括 `IDADIR` 设置、idalib 激活、MCP 安装与配置。

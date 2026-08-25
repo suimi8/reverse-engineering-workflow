@@ -437,7 +437,7 @@ def render_markdown(report):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Review a reverse-skill case for scope and Evidence graph integrity")
+    parser = argparse.ArgumentParser(description="Review a re-workflow case for scope and Evidence graph integrity")
     parser.add_argument("case_root", help="Path to a work/<case> directory")
     parser.add_argument("--format", choices=("markdown", "json"), default="markdown")
     parser.add_argument("--strict", action="store_true", help="Treat warnings as a failed review")

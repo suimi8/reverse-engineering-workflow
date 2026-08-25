@@ -1111,14 +1111,14 @@ try {
     suimiAdd-Check (suimiNew-Check -Name 'security-skill-modules' -Status $securitySkillResult.status -Message $securitySkillResult.message)
 
     $githubReverseSkillResult = suimiTest-MarkdownSkillModules -SkillsRoot (Join-Path $rootDir 'github-reverse-modules\skills') -Label 'GitHub reverse' -ExcludeDirNames @('scripts')
-    suimiAdd-Check (suimiNew-Check -Name 'github-reverse-skill-modules' -Status $githubReverseSkillResult.status -Message $githubReverseSkillResult.message)
+    suimiAdd-Check (suimiNew-Check -Name 'github-re-workflow-modules' -Status $githubReverseSkillResult.status -Message $githubReverseSkillResult.message)
 
     $localReverseRoot = Join-Path $rootDir 'local-reverse-modules\skills'
     if (Test-Path -LiteralPath $localReverseRoot) {
         $localReverseSkillResult = suimiTest-MarkdownSkillModules -SkillsRoot $localReverseRoot -Label 'Local reverse'
-        suimiAdd-Check (suimiNew-Check -Name 'local-reverse-skill-modules' -Status $localReverseSkillResult.status -Message $localReverseSkillResult.message)
+        suimiAdd-Check (suimiNew-Check -Name 'local-re-workflow-modules' -Status $localReverseSkillResult.status -Message $localReverseSkillResult.message)
     } else {
-        suimiAdd-Check (suimiNew-Check -Name 'local-reverse-skill-modules' -Status 'pass' -Message 'No local reverse skill modules configured.')
+        suimiAdd-Check (suimiNew-Check -Name 'local-re-workflow-modules' -Status 'pass' -Message 'No local reverse skill modules configured.')
     }
 
     $skillRegistryResult = suimiTest-SkillRegistry -RootDir $rootDir

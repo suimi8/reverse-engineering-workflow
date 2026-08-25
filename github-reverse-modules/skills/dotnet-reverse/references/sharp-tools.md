@@ -105,7 +105,7 @@ brew install --cask dotnet-sdk
 
 ## dnSpy MCP 集成
 
-社区已有多个 dnSpy MCP 项目，把 dnSpy 的反编译/IL 检查暴露成 MCP 工具，AI 可直接调用 —— 和 reverse-skill 的 MCP 哲学完全一致。
+社区已有多个 dnSpy MCP 项目，把 dnSpy 的反编译/IL 检查暴露成 MCP 工具，AI 可直接调用 —— 和 reverse-engineering-workflow 的 MCP 哲学完全一致。
 
 ### 主流 dnSpy MCP 项目
 
@@ -132,7 +132,7 @@ brew install --cask dotnet-sdk
 
 注册后本 skill 的 AI 联动路径：用户说"分析这个 .NET"→ 路由到 `dotnet-reverse/` → 优先调 `dnspy_decompile` / `dnspy_inspect_il` 工具面 → 不行再切 GUI。
 
-> dnSpy MCP 不是 reverse-skill 内置 bootstrap 能力，需用户手动按项目 README 安装扩展并注册。后续可考虑加进 `bootstrap-manifest.json`。
+> dnSpy MCP 不是 reverse-engineering-workflow 内置 bootstrap 能力，需用户手动按项目 README 安装扩展并注册。后续可考虑加进 `bootstrap-manifest.json`。
 
 ---
 

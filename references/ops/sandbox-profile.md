@@ -1,8 +1,8 @@
 # 可选沙箱工具 Profile（对照 bootstrap-manifest）
 
-> Z3r0 默认镜像工具很全；reverse-skill **不捆绑镜像**，用本表做「覆盖率对照」与可选 Docker 建议。
+> reverse-engineering-workflow **不捆绑镜像**，用本表做「覆盖率对照」与可选 Docker 建议。
 
-## reverse-skill 可自动 bootstrap 的能力
+## reverse-engineering-workflow 可自动 bootstrap 的能力
 
 来源：`skills/scripts/bootstrap-manifest.json`（以文件为准）：
 
@@ -22,9 +22,9 @@ powershell -File skills\scripts\bootstrap-reverse.ps1 -Capability @('jadx','nmap
 powershell -File skills\scripts\refresh-tool-index.ps1
 ```
 
-## Z3r0 沙箱常见但本包 manifest 未自动装的
+## 沙箱常见但本包 manifest 未自动装的
 
-| 工具 | reverse-skill 策略 |
+| 工具 | reverse-engineering-workflow 策略 |
 |------|-------------------|
 | subfinder / amass / httpx / ffuf / nuclei / sqlmap | 文档安装 / Kali 脚本 / 外部 MCP；**勿假装 bootstrap 已有** |
 | Ghidra GUI 全量 | ghidra-mcp 能力 + 手动插件步骤 |
@@ -44,7 +44,7 @@ powershell -File skills\scripts\refresh-tool-index.ps1
 逆向：宿主机 IDA/r2 + tool-index
 ```
 
-**MUST NOT** 要求用户安装 Z3r0 才能使用 reverse-skill。
+**MUST NOT** 要求用户安装额外平台才能使用 reverse-engineering-workflow。
 
 ## network_profile 联动
 

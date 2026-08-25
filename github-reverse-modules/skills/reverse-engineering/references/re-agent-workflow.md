@@ -114,7 +114,7 @@
 □ 时间盒（补丁 9 · SHOULD 默认）：静态深挖约 15 分钟仍无关键路径 → 强制转入 §3 Dynamic（用户/任务可覆盖时长）
 ```
 
-**无 MCP 时**：可用导出反编译文本再分析（对照 P4nda0s reverse-skills / IDA-NO-MCP 思路），仍写 Evidence 路径。
+**无 MCP 时**：可用导出反编译文本再分析（对照 IDA-NO-MCP 思路），仍写 Evidence 路径。
 
 ## 3. Dynamic（交叉验证循环区）
 

@@ -275,37 +275,37 @@ scripts/healthcheck.ps1 全量 24 项零 fail；list_skills 注册表计数未�
 
 - source: `20260825-051530-sidecar-orchestrator-模块族导入法-orchestrator-注册为-p1`
 - category: method
-- applies_to: upstream skill merge / module family import
-- purpose_zh: 上游仓库的侧车模块族（orchestrator + 41 个 downstream 专精）导入本地时，把 orchestrator 注册为 P1 路由器（加入 healthcheck.ps1 的 routers 与 new_module.ps1 的 routerNames），并在其 MODULE.md 加 Core Skill Map 链接全部下游模块，即可让整族通过 orphan 检查，无需逐个链接旧 P1。
+- applies_to: module merge / module family import
+- purpose_zh: 侧车模块族（orchestrator + 41 个 downstream 专精）导入本地时，把 orchestrator 注册为 P1 路由器（加入 healthcheck.ps1 的 routers 与 new_module.ps1 的 routerNames），并在其 MODULE.md 加 Core Skill Map 链接全部下游模块，即可让整族通过 orphan 检查，无需逐个链接旧 P1。
 - confidence: 4/5
 
 **Lesson**
 
-导入 upstream sidecar 模块族时，先识别族内默认入口（orchestrator），将其注册为本地 P1 路由器并链接全部 downstream 模块，整族一次通过 orphan 与 cross-reference 检查。
+导入外部 sidecar 模块族时，先识别族内默认入口（orchestrator），将其注册为本地 P1 路由器并链接全部 downstream 模块，整族一次通过 orphan 与 cross-reference 检查。
 
 **Evidence**
 
-reverse-skill v1.0.1 CTF-Sandbox-Orchestrator 42 模块导入：ctf-sandbox-orchestrator 加入 routers 后 healthcheck 24/24 PASS，chinese-skill-names 138 条 0 missing，select_skill 实测 CTF 任务正确路由 conf=0.9。
+CTF-Sandbox-Orchestrator 42 模块导入：ctf-sandbox-orchestrator 加入 routers 后 healthcheck 24/24 PASS，chinese-skill-names 138 条 0 missing，select_skill 实测 CTF 任务正确路由 conf=0.9。
 
 **Validation**
 
 healthcheck 24/24 PASS；unit-tests 22/22 PASS；select_skill CTF 路由 conf=0.9
 
-### 双基准diff验证法-上游本地文件树对比
+### 双基准diff验证法-外部本地文件树对比
 
-- source: `20260825-063345-双基准diff验证法-上游本地文件树对比`
+- source: `20260825-063345-双基准diff验证法-外部本地文件树对比`
 - category: method
-- applies_to: upstream skill merge / file integrity verification
-- purpose_zh: 上游模块导入后，用 find | sort | diff 双基准对比文件树，确保零丢失导入
+- applies_to: module merge / file integrity verification
+- purpose_zh: 外部模块导入后，用 find | sort | diff 双基准对比文件树，确保零丢失导入
 - confidence: 4/5
 
 **Lesson**
 
-导入上游模块后，用 diff <(find REPO -type f | sort) <(find LOCAL -type f | sort) 对比文件树，精确确认迁移零丢失（114=114），比目录数对比可靠得多。
+导入外部模块后，用 diff <(find REPO -type f | sort) <(find LOCAL -type f | sort) 对比文件树，精确确认迁移零丢失（114=114），比目录数对比可靠得多。
 
 **Evidence**
 
-在上游 pentest-tools 导入验证中，用 find | sort | diff 对比上游 114 文件和本地 114 文件，差异仅为 2 个合规改名（SKILL.md→MODULE.md, src-hunter/SKILL.md→src-hunter.md），确认零丢失。
+在外部 pentest-tools 导入验证中，用 find | sort | diff 对比外部 114 文件和本地 114 文件，差异仅为 2 个合规改名（SKILL.md→MODULE.md, src-hunter/SKILL.md→src-hunter.md），确认零丢失。
 
 **Validation**
 

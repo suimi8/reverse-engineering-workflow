@@ -16,7 +16,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
-$logDir = Join-Path $env:LOCALAPPDATA 'reverse-skill\ida-mcp'
+$logDir = Join-Path $env:LOCALAPPDATA 're-workflow\ida-mcp'
 if (-not (Test-Path -LiteralPath $logDir)) {
     New-Item -ItemType Directory -Path $logDir -Force | Out-Null
 }

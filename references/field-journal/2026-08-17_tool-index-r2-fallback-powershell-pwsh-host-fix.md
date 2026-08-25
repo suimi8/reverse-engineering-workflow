@@ -1,4 +1,4 @@
-# 2026-08-17 reverse-skill
+# 2026-08-17 reverse-engineering-workflow
 
 ## 场景分类
 工具链与环境（引导阶段缺陷修复）
@@ -126,7 +126,7 @@ foreach ($cap in $mc.capabilities) {
 - OS: Windows（win32）
 - Shell/Host: pwsh 7.6.4（`C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\pwsh.exe`）；本机无 `powershell` / `powershell.exe`
 - radare2: 6.2.0 +1 abi:132 @ windows-x86_64（安装于 `C:\Users\{username}\Tools\radare2\bin\`）
-- 仓库根: `D:\Sources\reverse-skill`
+- 仓库根: `D:\Sources\reverse-engineering-workflow`
 
 ## 脱敏要求
 本次为本仓库自身脚本修复，无真实目标域名/IP/凭据，无需脱敏。
@@ -136,7 +136,7 @@ foreach ($cap in $mc.capabilities) {
 写完本日志后，同步更新 `_index.md`：
 1. 「工具链与环境」小节新增一行 ✓
 2. 「高频成功模式」追加本文件名（PowerShell 子进程入口统一）✓
-3. 「实体倒排」追加本文件名（reverse-skill 引导脚本）✓
+3. 「实体倒排」追加本文件名（reverse-engineering-workflow 引导脚本）✓
 4. 更新「统计」总数与最近更新日期 ✓
 
 ---

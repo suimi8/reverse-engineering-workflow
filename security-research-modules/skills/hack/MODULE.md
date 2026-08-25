@@ -121,7 +121,7 @@ description: >-
 - [Open Redirect](../open-redirect/MODULE.md)
 - [Web Cache Deception](../web-cache-deception/MODULE.md)
 
-### 上游同步模块（reverse-skill v1.0.1 导入）
+### 内置安全研究模块
 
 - [Attack Chain](../attack-chain/MODULE.md)
 - [Browser Automation](../browser-automation/MODULE.md)

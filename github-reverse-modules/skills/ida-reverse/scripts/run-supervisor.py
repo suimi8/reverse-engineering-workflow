@@ -1,7 +1,7 @@
 """Hidden idalib supervisor launcher with file logging.
 
 Started via pythonw so no console window appears. stdout/stderr and the
-logging module both go to %LOCALAPPDATA%\\reverse-skill\\ida-mcp\\supervisor.log.
+logging module both go to %LOCALAPPDATA%\\re-workflow\\ida-mcp\\supervisor.log.
 """
 
 from __future__ import annotations
@@ -13,7 +13,7 @@ from pathlib import Path
 
 
 def _log_path() -> Path:
-    root = Path(os.environ.get("LOCALAPPDATA") or ".") / "reverse-skill" / "ida-mcp"
+    root = Path(os.environ.get("LOCALAPPDATA") or ".") / "re-workflow" / "ida-mcp"
     root.mkdir(parents=True, exist_ok=True)
     return root / "supervisor.log"
 

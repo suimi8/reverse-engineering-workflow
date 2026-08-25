@@ -333,7 +333,7 @@ if ($Root -eq 'github-reverse') {
         '  - Entry: ' + $tick + "skills/$Name/MODULE.md" + $tick,
         '  - Focus: ' + $Description
     )
-    $res = suimiInsert-BeforeHeading -Text $info.text -Eol $info.eol -HeadingRegex '^## Shared Upstream Support' -NewBlockLines $block -PresenceToken "skills/$Name/"
+    $res = suimiInsert-BeforeHeading -Text $info.text -Eol $info.eol -HeadingRegex '^## Shared Support Scripts' -NewBlockLines $block -PresenceToken "skills/$Name/"
     $actions += suimiFinalize-Edit -Path $ghIndexPath -TargetLabel 'github-reverse-modules/INDEX.md' -Info $info -Result $res -WhatIfMode $whatIfMode
 
     $info = suimiRead-TextFileInfo -Path $skillPath
@@ -364,7 +364,7 @@ if ($Root -eq 'github-reverse') {
             '  - Entry: ' + $tick + "skills/$Name/MODULE.md" + $tick,
             '  - Focus: ' + $Description
         )
-        $res = suimiInsert-BeforeHeading -Text $info.text -Eol $info.eol -HeadingRegex '^## Shared Upstream Support' -NewBlockLines $block -PresenceToken "skills/$Name/"
+        $res = suimiInsert-BeforeHeading -Text $info.text -Eol $info.eol -HeadingRegex '^## Shared Support Scripts' -NewBlockLines $block -PresenceToken "skills/$Name/"
         $actions += suimiFinalize-Edit -Path $localIndexPath -TargetLabel 'local-reverse-modules/INDEX.md' -Info $info -Result $res -WhatIfMode $whatIfMode
     }
 

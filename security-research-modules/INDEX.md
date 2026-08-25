@@ -94,9 +94,9 @@ The following module is authored locally and is not part of the imported donor s
 
 - `osint-recon`: catalog/lookup reference for `rawfilejson/awesome-osint-arsenal` (753+ OSINT/recon/red-team/blue-team tools), linked from `recon-for-sec`'s Skill Map.
 
-## Upstream Synced Modules (v1.0.1)
+## Bundled Security Modules
 
-Imported from the upstream `reverse-skill` repository v1.0.1, converted to local `MODULE.md` format:
+Bundled security-research modules, converted to local `MODULE.md` format:
 
 - `attack-chain`: full attack-chain methodology (recon → exploit → persistence → cleanup)
 - `browser-automation`: headless browser automation for authorized testing

@@ -1,6 +1,6 @@
 ﻿# Added Reverse Modules
 
-This directory preserves reverse-only modules copied from the upstream `reverse-skill` repository without overwriting local files in the main skill.
+This directory preserves reverse-only modules bundled into the reverse-engineering-workflow package as local internal modules.
 
 ## Included Modules
 
@@ -15,7 +15,7 @@ This directory preserves reverse-only modules copied from the upstream `reverse-
   - Focus: IDA MCP workflow, server startup, and binary open helpers.
 - `skills/x64dbg-reverse/`
   - Entry: `skills/x64dbg-reverse/MODULE.md`
-  - Focus: x64dbg-mcp-server (duty1g) plugin deployment, token/port handling, and the 71-tool runtime debugging workflow.
+  - Focus: x64dbg-mcp-server plugin deployment, token/port handling, and the 71-tool runtime debugging workflow.
 - `skills/ce-reverse/`
   - Entry: `skills/ce-reverse/MODULE.md`
   - Focus: Cheat Engine MCP (ce_mcp) Lua-bridge deployment and the 127-tool memory scanning/pointer-chain/hook workflow.
@@ -75,15 +75,15 @@ This directory preserves reverse-only modules copied from the upstream `reverse-
   - Focus: JavaScript-based custom DSL/VM interpreters, opcode dispatch tables, bytecode semantics recovery, risk-control engine reverse.
 - `skills/web-api-reverse/`
   - Entry: `skills/web-api-reverse/MODULE.md`
-  - Focus: web backend API reverse: recover internal API protocol from traffic/HAR/cURL, REST/GraphQL/batchexecute/gRPC-web detection, auth detection, generate Python httpx / TypeScript client + API docs (integrated from metterian/reverse-api-skill and Luis247911/claude-skill-reverse-engineering-api).
+  - Focus: web backend API reverse: recover internal API protocol from traffic/HAR/cURL, REST/GraphQL/batchexecute/gRPC-web detection, auth detection, generate Python httpx / TypeScript client + API docs.
 - `skills/web-js-reverse/`
   - Entry: `skills/web-js-reverse/MODULE.md`
-  - Focus: web frontend JS reverse: obfuscation grading and deobfuscation, JSVMP 5-step methodology, CDP detection bypass, TLS/HTTP2/QUIC fingerprint, env patching, WASM reverse, layered anti-crawler bypass (integrated from kings0527/web-reverse-engineering-skill).
+  - Focus: web frontend JS reverse: obfuscation grading and deobfuscation, JSVMP 5-step methodology, CDP detection bypass, TLS/HTTP2/QUIC fingerprint, env patching, WASM reverse, layered anti-crawler bypass.
 - `skills/web-crypto-reverse/`
   - Entry: `skills/web-crypto-reverse/MODULE.md`
-  - Focus: web/APK crypto reverse: identify and rebuild encryption/signing algorithms in Python from Web JS and Android APK, 30-specialist index, Web2/Web3 determination, online verification loop (integrated from osloxdao/thefounds).
+  - Focus: web/APK crypto reverse: identify and rebuild encryption/signing algorithms in Python from Web JS and Android APK, 30-specialist index, Web2/Web3 determination, online verification loop.
 
-## New References (synced from upstream)
+## New References
 
 - `skills/reverse-engineering/references/nonpe-format-cookbook.md` — non-PE binary formats cookbook
 - `skills/reverse-engineering/references/ollvm-deobfuscation.md` — OLLVM deobfuscation
@@ -93,13 +93,13 @@ This directory preserves reverse-only modules copied from the upstream `reverse-
 - `skills/ida-reverse/scripts/start-gui.ps1` — GUI-plugin start fallback
 - `skills/ida-reverse/scripts/run-supervisor.py` — Python supervisor equivalent
 - `skills/ida-reverse/scripts/IdaOpenHelpers.ps1` — shared open-lock policy
-- `skills/ida-reverse/LOCAL-SETUP.md` — IDA ↔ reverse-skill install/configure notes
+- `skills/ida-reverse/LOCAL-SETUP.md` — IDA ↔ reverse-engineering-workflow install/configure notes
 
-## Shared Upstream Support
+## Shared Support Scripts
 
 - `skills/scripts/bootstrap-manifest.json`
 - `skills/scripts/bootstrap-reverse.ps1`
 - `skills/scripts/refresh-tool-index.ps1`
 - `skills/scripts/lib/ToolDiscovery.ps1`
 
-These files were copied together because several upstream module scripts depend on the same relative layout under `skills/scripts/`.
+These files are bundled together because several modules depend on the same relative layout under `skills/scripts/`.

@@ -14,9 +14,9 @@ This directory preserves suimi local reverse recovery modules for authorized Win
   - Entry: `skills/windows-local-service-persistence/MODULE.md`
   - Focus: Windows loopback (127.0.0.1) helper service startup repair, Startup-folder/PowerShell launcher patterns, scheduled-task fallback, port no-op duplicate guards, and cold-start verification.
 
-## Shared Upstream Support
+## Shared Support Scripts
 
-These local modules are authored by suimi and depend only on the root package scripts (`scripts/`) and references; they bundle no upstream donor tooling.
+These local modules are authored by suimi and depend only on the root package scripts (`scripts/`) and references; they bundle no external tooling.
 
 ## Registration
 

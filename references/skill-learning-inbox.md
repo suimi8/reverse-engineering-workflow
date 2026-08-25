@@ -399,8 +399,8 @@ rawfilejson/awesome-osint-arsenal（2054 star/307 fork/MIT/最近 push 2026-07-2
 1) 先判断仓库性质决定落点——二进制/APK/调试类工具挂 github-reverse-modules/skills/，Web/API/认证/侦察类安全知识或工具目录挂 security-research-modules/skills/，新建 <name>/MODULE.md，不要塞进无关既有模块。
 2) frontmatter 必须是 name 后立刻紧跟 description（---\nname: kebab-case\ndescription: >-），中间不能插其它字段，否则 healthcheck 的 markdown 模块正则判失败。
 3) 正文原样保留标准"新技能/方法反馈"闭环段落（含 finish_skill_run.ps1/record_skill_lesson.ps1/review_skill_lessons.ps1/promote_skill_lesson.ps1 五个 token），否则 mandatory-final-feedback-contract 检查会挂。
-4) 同步四处登记：chinese-skill-names.json 加 path+display_name、unified-skills-entry.md 加表格行、直接上游路由模块（如 recon-for-sec）的 Skill Map 里加相对链接、若所属目录树的 INDEX.md 自称是"donor 导入清单"则另加一节说明这是本地新增而非 donor 内容，以免文档失实。
-5) 是否要给 select_skill.ps1 加正则不是强制项——多数 P2 主题模块（recon-for-sec/recon-and-methodology/dependency-confusion 等）都没有专属规则，靠上游路由器 Skill Map 或 resolve_skill.ps1 按路径/关键词即可触达，盲目加规则反而可能撞上 healthcheck 里 selector 的固定回归用例。
+4) 同步四处登记：chinese-skill-names.json 加 path+display_name、unified-skills-entry.md 加表格行、直接路由模块的 Skill Map 里加相对链接、若所属目录树的 INDEX.md 自称是"donor 导入清单"则另加一节说明这是本地新增而非 donor 内容，以免文档失实。
+5) 是否要给 select_skill.ps1 加正则不是强制项——多数 P2 主题模块（recon-for-sec/recon-and-methodology/dependency-confusion 等）都没有专属规则，靠路由器 Skill Map 或 resolve_skill.ps1 按路径/关键词即可触达，盲目加规则反而可能撞上 healthcheck 里 selector 的固定回归用例。
 6) 若源仓库自带一键安装脚本，不要顺手写进 github-reverse-modules/skills/scripts/bootstrap-manifest.json 自动装——该清单每条 capability 应对应单一、边界清楚的工具；"一次装几百个工具、其中混了 C2/RAT/钓鱼套件"这类 meta-installer 只适合当只读目录记录用法与安全边界。
 7) 全部编辑完必须跑一次 scripts/healthcheck.ps1，它串联了 registry 计数、frontmatter 正则、相对链接可达性、中文名同步、mandatory-final-feedback-contract、Pester 单测等校验，任何一步 fail 说明注册没做全。
 
@@ -435,10 +435,10 @@ osint-recon 模块从"只写现查 tools.json 的 curl/jq 命令"升级为"本�
 ### Lesson
 
 当某个 skill 依赖的第三方数据源"体量大、类别多、但可以用一个稳定字段做二级索引"时（比如这个 OSINT 仓库的 tools.json 用 category 字段分 26 类 753 条），不要因为"要覆盖全部数据"就机械展开成一个类别一个 MODULE.md。正确做法是三层分离：
-1) 完整数据本地打快照（如 references/tools-snapshot.json），一次性把全量数据落盘进模块目录，解决"未来查询是否完整、上游是否可达"的问题——这次实测 raw.githubusercontent.com 在本机会间歇性 schannel 握手失败（同一批文件里有的成功有的直接报错），只写"现查上游"这一条路径不够可靠，必须有本地兜底。
+1) 完整数据本地打快照（如 references/tools-snapshot.json），一次性把全量数据落盘进模块目录，解决"未来查询是否完整、来源是否可达"的问题——这次实测 raw.githubusercontent.com 在本机会间歇性 schannel 握手失败（同一批文件里有的成功有的直接报错），只写"现查来源"这一条路径不够可靠，必须有本地兜底。
 2) 正文只放"索引字段的完整分类表"（分类名+数量+几个示例名），不展开每条记录——分类表本身就是给 Agent 用的路由依据，让它一眼选对 category 取值，不用先跑一次 unique 查询。
 3) 具体某条记录的详情，只在真正要用某个工具时才用 jq/ConvertFrom-Json 按分类过滤读取快照，绝不建议把整份大文件读进对话上下文。
-这样"一个主入口 MODULE.md + 一份本地数据快照"就同时满足了：入口不膨胀、覆盖率是完整的（不是抽样几个类别举例）、且不依赖不稳定的实时网络。快照会随上游更新而过时，需要在正文写明快照日期和刷新命令，而不是假装它会自动保持最新。
+这样"一个主入口 MODULE.md + 一份本地数据快照"就同时满足了：入口不膨胀、覆盖率是完整的（不是抽样几个类别举例）、且不依赖不稳定的实时网络。快照会随来源更新而过时，需要在正文写明快照日期和刷新命令，而不是假装它会自动保持最新。
 
 ### Validation
 
@@ -649,18 +649,18 @@ Promoted to `references/reverse-task-recipes.md` by `scripts/promote_skill_lesso
 - status: promoted
 - category: method
 - confidence: 4/5
-- applies_to: upstream skill merge / module family import
-- purpose_zh: 上游仓库的侧车模块族（orchestrator + 41 个 downstream 专精）导入本地时，把 orchestrator 注册为 P1 路由器（加入 healthcheck.ps1 的 routers 与 new_module.ps1 的 routerNames），并在其 MODULE.md 加 Core Skill Map 链接全部下游模块，即可让整族通过 orphan 检查，无需逐个链接旧 P1。
+- applies_to: module merge / module family import
+- purpose_zh: 侧车模块族（orchestrator + 41 个 downstream 专精）导入本地时，把 orchestrator 注册为 P1 路由器（加入 healthcheck.ps1 的 routers 与 new_module.ps1 的 routerNames），并在其 MODULE.md 加 Core Skill Map 链接全部下游模块，即可让整族通过 orphan 检查，无需逐个链接旧 P1。
 - target_skill_path: scripts/healthcheck.ps1
 - tags: merge, routing, healthcheck
 
 ### Evidence
 
-reverse-skill v1.0.1 CTF-Sandbox-Orchestrator 42 模块导入：ctf-sandbox-orchestrator 加入 routers 后 healthcheck 24/24 PASS，chinese-skill-names 138 条 0 missing，select_skill 实测 CTF 任务正确路由 conf=0.9。
+CTF-Sandbox-Orchestrator 42 模块导入：ctf-sandbox-orchestrator 加入 routers 后 healthcheck 24/24 PASS，chinese-skill-names 138 条 0 missing，select_skill 实测 CTF 任务正确路由 conf=0.9。
 
 ### Lesson
 
-导入 upstream sidecar 模块族时，先识别族内默认入口（orchestrator），将其注册为本地 P1 路由器并链接全部 downstream 模块，整族一次通过 orphan 与 cross-reference 检查。
+导入外部 sidecar 模块族时，先识别族内默认入口（orchestrator），将其注册为本地 P1 路由器并链接全部 downstream 模块，整族一次通过 orphan 与 cross-reference 检查。
 
 ### Validation
 
@@ -674,24 +674,24 @@ review
 
 Promoted to `references/module-onboarding-spec.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-25 05:16:19 +08:00.
 
-## 2026-08-25 05:15:45 +08:00 - 上游 sidecar 参考文件（ops/field-journal）导入落点：references/ 子目录
+## 2026-08-25 05:15:45 +08:00 - sidecar 参考文件（ops/field-journal）导入落点：references/ 子目录
 
-- id: 20260825-051545-上游-sidecar-参考文件-ops-field-journal-导入落点-reference
+- id: 20260825-051545-sidecar-参考文件-ops-field-journal-落点-reference
 - status: promoted
 - category: other
 - confidence: 4/5
-- applies_to: upstream skill merge / reference files
-- purpose_zh: 上游仓库的 ops 作战契约层与 field-journal 实战日志并非模块，不应注册为 skill，而应整目录导入本地 references/ops/ 与 references/field-journal/，并在 manifest.json references 中登记入口文件，保持与模块树分离。
+- applies_to: module merge / reference files
+- purpose_zh: 外部仓库的 ops 作战契约层与 field-journal 实战日志并非模块，不应注册为 skill，而应整目录导入本地 references/ops/ 与 references/field-journal/，并在 manifest.json references 中登记入口文件，保持与模块树分离。
 - target_skill_path: references/ops/README.md
 - tags: merge, references, manifest
 
 ### Evidence
 
-reverse-skill v1.0.1 导入：ops 10 文件 + field-journal 44 文件（17 篇实战日志 + 17 seed 案例）完整复制到 references/ 子目录，manifest-paths 61 项 PASS，healthcheck 24/24 PASS。
+导入：ops 10 文件 + field-journal 44 文件（17 篇实战日志 + 17 seed 案例）完整复制到 references/ 子目录，manifest-paths 61 项 PASS，healthcheck 24/24 PASS。
 
 ### Lesson
 
-非模块类上游资产（契约文档、实战案例库）用 references/ 子目录整目录导入并登记 manifest，不注册为 skill；实战日志与 seed 案例保留原文件名便于日后检索复用。
+非模块类外部资产（契约文档、实战案例库）用 references/ 子目录整目录导入并登记 manifest，不注册为 skill；实战日志与 seed 案例保留原文件名便于日后检索复用。
 
 ### Validation
 
@@ -706,24 +706,24 @@ review
 Promoted to `references/ops/README.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-25 05:16:52 +08:00.
 
 
-## 2026-08-25 06:33:45 +08:00 - 双基准diff验证法-上游本地文件树对比
+## 2026-08-25 06:33:45 +08:00 - 双基准diff验证法-外部本地文件树对比
 
-- id: 20260825-063345-双基准diff验证法-上游本地文件树对比
+- id: 20260825-063345-双基准diff验证法-外部本地文件树对比
 - status: promoted
 - category: method
 - confidence: 4/5
-- applies_to: upstream skill merge / file integrity verification
-- purpose_zh: 上游模块导入后，用 find | sort | diff 双基准对比文件树，确保零丢失导入
+- applies_to: module merge / file integrity verification
+- purpose_zh: 外部模块导入后，用 find | sort | diff 双基准对比文件树，确保零丢失导入
 - target_skill_path: references/module-onboarding-spec.md
 - tags: diff,verification,import
 
 ### Evidence
 
-在上游 pentest-tools 导入验证中，用 find | sort | diff 对比上游 114 文件和本地 114 文件，差异仅为 2 个合规改名（SKILL.md→MODULE.md, src-hunter/SKILL.md→src-hunter.md），确认零丢失。
+在外部 pentest-tools 导入验证中，用 find | sort | diff 对比外部 114 文件和本地 114 文件，差异仅为 2 个合规改名（SKILL.md→MODULE.md, src-hunter/SKILL.md→src-hunter.md），确认零丢失。
 
 ### Lesson
 
-导入上游模块后，用 diff <(find REPO -type f | sort) <(find LOCAL -type f | sort) 对比文件树，精确确认迁移零丢失（114=114），比目录数对比可靠得多。
+导入外部模块后，用 diff <(find REPO -type f | sort) <(find LOCAL -type f | sort) 对比文件树，精确确认迁移零丢失（114=114），比目录数对比可靠得多。
 
 ### Validation
 

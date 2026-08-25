@@ -1,6 +1,6 @@
 # Timeline + WorkItem / Coverage
 
-> 可回放作战记录（Z3r0 timeline 思想）+ 覆盖勾选（WorkItem 思想）。  
+> 可回放作战记录（timeline 思想）+ 覆盖勾选（WorkItem 思想）。  
 > 全部落在 **`work/<case>/`**（仓库 gitignore），不进 skill 包正文。
 
 ## 目录约定

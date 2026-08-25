@@ -6,7 +6,7 @@
 
 本包**可执行脚本面**静态审计（后门 / 删库 / 管道执行）：[`docs/PACKAGE-SECURITY-AUDIT.md`](../../docs/PACKAGE-SECURITY-AUDIT.md)。
 
-## 1. 为什么 reverse-skill 要单独管这个
+## 1. 为什么 reverse-engineering-workflow 要单独管这个
 
 本包会：
 
@@ -38,7 +38,7 @@
 □ 无神秘外连、无读取 ~/.ssh / 浏览器库 的默认步骤
 □ 与本包路由冲突时：以本包 MASTER-ROUTING + scope 为准
 □ 不复制进 monorepo 除非走 CONTRIBUTING 与脱敏
-□ 更新 skills/references/community-security-skills.md 记录来源日期
+□ 更新 domain-coverage-map.md 记录来源日期
 ```
 
 ## 4. 与 bootstrap / MCP 的边界
@@ -52,7 +52,7 @@
 ## 5. 本包作者/贡献者
 
 - 新 skill：CONTRIBUTING + ACTION REQUIRED + 完成自检  
-- 引用社区内容：标注 URL + 日期（本文件 / community-security-skills.md）  
+- 引用社区内容：标注 URL + 日期（本文件 / domain-coverage-map.md）  
 - 发现可疑行为：停止执行，告知用户，不自动「尝试绕过」
 
 ## 6. 快速自检（每次合并外部材料前）
@@ -67,5 +67,5 @@ Get-ChildItem -Recurse -Include *.ps1,*.sh,*.py,*.js | Select-Object FullName
 ## 7. 相关
 
 - 身份：`IDENTITY.md`  
-- 外部目录：`../references/community-security-skills.md`  
+- 外部目录对照：`../references/domain-coverage-map.md`  
 - 授权：`scope-contract.md` + `field-journal/precedent-auth.md`  
