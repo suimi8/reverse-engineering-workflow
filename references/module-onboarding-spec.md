@@ -310,3 +310,23 @@ healthcheck 24/24 PASS；unit-tests 22/22 PASS；select_skill CTF 路由 conf=0.
 **Validation**
 
 文件数 114=114 一致，healthcheck 24/24 PASS，unit-tests 22/22 PASS。
+
+### new_module.ps1 的 [appended] 输出不可信，注册必须经 healthcheck 交叉验证
+
+- source: `20260825-074942-new-module-ps1-的-appended-输出不可信-注册必须经-healthchec`
+- category: tooling
+- applies_to: module-onboarding, healthcheck, registry
+- purpose_zh: new_module.ps1 宣称已追加注册（unified-skills-entry.md/INDEX.md/SKILL.md/chinese-skill-names.json），实际多次未写入；必须以 healthcheck 的 cross-reference-completeness 与 chinese-skill-names 检查为准，缺了就手动补齐
+- confidence: 3/5
+
+**Lesson**
+
+规则：任何 new_module.ps1 执行后，先跑 scripts/healthcheck.ps1 确认 cross-reference-completeness PASS 再继续；若 FAIL 按报告逐文件补注册行，补完重跑至 PASS 才可发布
+
+**Evidence**
+
+3 个新模块经 new_module.ps1 创建后均报 [appended]，但 package_release 健康门禁 FAIL 列出 3 处缺失（unified-skills-entry.md/INDEX.md/SKILL.md），手动补齐 4 文件后 PASS
+
+**Validation**
+
+手动补齐 chinese-skill-names.json 3 条 + unified-skills-entry.md 3 行 + INDEX.md 3 块 + SKILL.md 3 行后，healthcheck 25/25 PASS，manifest 1.23.2 发布成功

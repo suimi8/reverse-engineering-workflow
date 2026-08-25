@@ -85,40 +85,80 @@
 | [4] | 环境检测 | 设备/浏览器信息采集 |
 | [5] | 轨迹管理 | `appendTrack(数据, 轨迹, 参数)`（内部调模块[42] gzip） |
 | [13] | jsonp 加载器 | `jsonp / load / isLoad / vsChange / loadSVG / loadBase64Img` |
-| [32] | w 加密（pt=1） | `default(明文JSON, instance)` → `{c: 对称密文hex, u: RSA加密key 256hex}` |
+| [32] | w 加密（pt=1） | `default(明文JSON, instance)` → `c`(对称密文hex)+`u`(RSA加密key 256hex) |
+| [34] | CryptoJS AES（nRounds=6+keyWords） | `default.encrypt(data, key, iv)` |
+| [35] | RSA 公钥加密（n/e 硬编码） | `default → encrypt(s)` |
 | [42] | **gzip+base64url 编码器（td）** | `default(obj) → base64url(gzip(JSON.stringify(obj)))` |
 | [43] | base64url 编码器（无 padding） | `default(Uint8Array) → string`，字符集含 `-` `_` |
 | [44] | fflate | `gzipSync / strToU8` |
 | [65] | td/td_sign | `default(数据, lot_number)`：取 new_track、写 td_sign、删 new_track、返回 new_track |
 
-## 六、Python 复现（自包含，直接可用）
+## 六、w 加密（模块[32] pt=1，Python 已完全复现验证）
 
-```python
-import gzip, json, hmac, hashlib, base64
+### 算法
 
-def make_td(track_obj):
-    """td = base64url(gzip(JSON(轨迹对象)))；无 padding"""
-    raw = json.dumps(track_obj, separators=(',', ':'), ensure_ascii=False).encode('utf-8')
-    gz = gzip.compress(raw, compresslevel=6, mtime=0)   # mtime 解压端不校验
-    return base64.urlsafe_b64encode(gz).rstrip(b'=').decode()
-
-def make_td_sign(lot_number, td):
-    """td_sign = HMAC-SHA256(key=lot_number, msg=td 字符串)"""
-    return hmac.new(lot_number.encode(), td.encode(), hashlib.sha256).hexdigest()
-
-def decode_td(td_b64):
-    """解压校验：gzip 头 + deflate 用 wbits=31"""
-    import zlib
-    raw = base64.urlsafe_b64decode(td_b64 + "=" * (-len(td_b64) % 4))
-    return zlib.decompress(raw, 31)
+```
+s = guid()               # 16 个 hex 字符（16 字节 ASCII），如 c9489671178f48ee
+c = AES-CBC(key=ascii(s), iv=ascii("0000000000000000"), PKCS7).encrypt(JSON字符串)
+u = RSA-1024 PKCS1v15(Type2, e=65537, n=硬编码).encrypt(ascii(s))   # 256 hex
+w = hex(c) + u           # 如数据 320B → w = 640 hex + 256 hex = 896 hex
 ```
 
-要点：
-- JSON 无空格（`separators=(',', ':')`）；base64url 去 `=`；字符集 `A-Za-z0-9-_`。
-- **td_sign 消息 = gzip base64 的 td 字符串，不是解压后的 JSON**（早期误判已修正）。
-- gzip 解压用 `wbits=31`；Python 默认压缩级别(6)与 fflate 不同 → td 长度可不同（服务端只解压校验内容）。
-- 提取 URL 参数中的 td 勿用 `parse_qs`（`+`→空格损坏 base64），用正则或先 `%XX` 解码。
-- w 为对称密文 + RSA 加密 key：**无私钥不可解密**（服务端持有），仅能校验格式（密文 hex + 256hex）。
+### 关键细节
+
+- **AES 是 CryptoJS 变体**：`nRounds = 6 + keyWords`（guid 16 字节 = 4 words → 标准 AES-128，10 轮）；
+  key/iv 用 `Latin1.parse` 即逐字节 ASCII（不是 UTF-8）；
+  **iv 是 ASCII 字符 `'0'`×16（0x30），不是零字节**——早期复现失败即因此。
+- **RSA 公钥**：n/e 硬编码于模块[35] 的 `setPublic`（n 256 hex，e=0x10001，1024-bit），
+  PKCS1v15 Type2 填充（`00 02 PS 00 data`，PS 非零随机，SDK 用 RC4 伪随机，服务端不校验）；
+  输出 `toString(16)` 补齐 256 hex。
+- **pt=0 分支**：w = 明文 base64url JSON（不含 RSA 部分），已验证可解码。
+- **pt=2 分支**：AES-CBC(key=s, iv 同) + ECC，未验证。
+- guid() 实测返回 16 个 hex 字符（非 36 字符 UUID，deob 中 UUID 模板属于其他分支，以运行时为准）。
+
+### Python 复现（完整版见 `gt_crypto.py`，要点）
+
+```python
+import secrets, json, hashlib, hmac, gzip, base64
+
+# AES：CryptoJS 变体（nRounds=6+keyWords），SBOX=标准AES S-box（256字节，略）
+# 核心：key=ascii(guid) 16字节 → 4 words → 标准 AES-128 轮函数，CBC + PKCS7，iv=b'0'*16
+def aes_cbc_encrypt(data: bytes, key: bytes, iv: bytes) -> bytes:
+    n_words = len(key) // 4
+    nr = 6 + n_words                     # key 16B → 10 轮（标准 AES-128）
+    kw = [int.from_bytes(key[i:i+4],'big') for i in range(0,len(key),4)]
+    # key 扩展：CryptoJS 风格（RotWord+SubWord+Rcon，RCON 越界按 0）
+    w = list(kw)
+    for i in range(n_words, 4*(nr+1)):
+        t = w[i-1]
+        if i % n_words == 0:
+            rcon = RCON[i//n_words] if i//n_words < len(RCON) else 0
+            t = sub_word(rot_word(t)) ^ (rcon<<24)
+        elif n_words > 6 and i % n_words == 4:
+            t = sub_word(t)
+        w.append(w[i-n_words] ^ t)
+    # 标准 AES 轮函数（SubBytes/ShiftRows/MixColumns）+ CBC + PKCS7（略，见 gt_crypto.py）
+    ...
+
+def make_w(data_obj: dict, guid: str = None) -> str:
+    """w = hex(AES-CBC(key=ascii(guid), iv='0'*16)) + hex(RSA-1024 PKCS1v15(ascii(guid)))"""
+    if guid is None:
+        guid = format(secrets.randbits(64), '016x')
+    s = guid.encode('ascii')
+    c = aes_cbc_encrypt(json.dumps(data_obj, separators=(',',':'), ensure_ascii=False).encode(), s, b'0'*16)
+    n = int("<模块[35] setPublic 的 n，256 hex>", 16)   # e=0x10001
+    while True:
+        ps = bytes(secrets.randbelow(255)+1 for _ in range(128-len(s)-3))
+        m = int.from_bytes(b'\x00\x02'+ps+b'\x00'+s, 'big')
+        if m < n: break
+    u = format(pow(m, 0x10001, n), 'x').zfill(256)
+    return c.hex() + u
+```
+
+### 验证要点
+- AES 部分：固定 guid 时 Python 输出与 SDK **逐字节一致**（key 8/16/36 字节 3 组向量已验证）。
+- RSA 部分：随机填充导致每次不同，但格式正确（256 hex、`< n`、PKCS1v15 结构）。
+- 完整 w 长度：c(640 hex) + u(256 hex) = 896 hex（数据约 320 字节时）。
 
 ## 七、环境陷阱（踩坑记录，务必先看）
 
@@ -136,9 +176,10 @@ def decode_td(td_b64):
 ## 八、更新与扩展指南（可更新性）
 
 - **SDK 更新（模块表漂移）**：重跑模块导出枚举（`req(i)` 打印导出名），按第五节"关键导出"列
-  重新定位 42/43/44/65。
+  重新定位 32/34/35/42/43/44/65。
 - **新验证数据**：用第三节方法抓新 verify 请求，替换 `lot_number` 与 `td` 常量重跑验证脚本。
 - **pt=0 分支**：模块[32] 不加密，w 为明文 base64url JSON（已验证可解码）。
+- **pt=2 分支**：AES-CBC(key=s, iv 同) + ECC（未验证，需先解 ECC 公钥）。
 - **协议可用性缺口（纯 Python 无浏览器提交时需先攻破）**：
   1. `register` 需服务端签名（gt_key）——浏览器侧无法直接调，需破解站点后端调用；
   2. `payload`/`process_token` 获取：随站点后端下发（如 gsxt 的搜索接口响应），非 SDK 生成；

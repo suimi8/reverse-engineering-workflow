@@ -14,6 +14,10 @@ add web-api-reverse / web-js-reverse / web-crypto-reverse modules; routing-rules
 
 ## [Unreleased]
 
+### Changed
+
+- `github-reverse-modules/skills/js-reverse/references/gcaptcha4-captcha-re.md`：**极验 v4 逆向专案更新**——补充 w 加密完整算法（AES-CBC 变体 + RSA-1024 PKCS1v15）、CryptoJS 细节（iv=ASCII '0'×16、nRounds=6+keyWords）、Python 复现核心代码、验证证据表（3 组 AES 向量 + 完整 w 对照）、协议可用性缺口（ctct_bundle 加密 / NWAF / register 403）。
+
 ### Fixed
 
 - 修复 `references/skill-learning-inbox.md` 结构损坏：被吞进上一条目的 Nuxt3 SSR 经验条目恢复为独立条目；被晋级行粘连的 HAR、Vite 两条经验恢复可解析（此前解析器只识别到 4/7 条）；APK smali 经验的晋级目标更正为 `github-reverse-modules/skills/apk-reverse/MODULE.md`，并清理 `security-research-modules/skills/recon-for-sec/MODULE.md` 中错误的 "APK smali" 标题（该小节实为 Nuxt3 前端经验）。

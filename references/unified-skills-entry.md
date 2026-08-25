@@ -192,3 +192,25 @@
 4. 任务结束或出现新思路：读“suimi技能学习闭环”，先写入候选池，再按验证结果晋级。
 5. 逆向发现接口、后台、认证或上传下载面：加载“suimi安全研究总入口”。
 6. 已明确漏洞类型或逆向子方向：直接加载上表对应专题技能。
+
+## Promoted Learning Notes
+
+### Web 逆向路由必须指向统一根入口而非子模块
+
+- source: `20260825-074923-web-逆向路由必须指向统一根入口而非子模块`
+- category: method
+- applies_to: web-api-reverse, web-js-reverse, web-crypto-reverse, routing
+- purpose_zh: 新增 web 逆向子模块时，routing-rules.json 的规则目标必须设为根入口 reverse-engineering-workflow（0.85 置信度），由根 SKILL.md 按需加载内部 MODULE.md，避免绕过统一入口造成多入口分裂
+- confidence: 3/5
+
+**Lesson**
+
+规则：select_skill.ps1 的 task-rule 目标只允许根入口或安全/本地既有模块；新增子模块只注册进 unified-skills-entry.md/INDEX.md/SKILL.md/chinese-skill-names.json 四文件，不新增顶层路由规则
+
+**Evidence**
+
+3 条指向 web-api-reverse/web-js-reverse/web-crypto-reverse 的路由规则改为 1 条合并规则指向 reverse-engineering-workflow 后，6 个 NL 路由用例全部命中根入口；回归测试同步更新
+
+**Validation**
+
+healthcheck cross-reference-completeness PASS（38→36 规则一致）；routing.Tests.ps1 25 用例全过；APK/BOLA/x64dbg 等非 web 场景路由不变

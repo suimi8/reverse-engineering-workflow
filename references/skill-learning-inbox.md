@@ -772,7 +772,7 @@ Promoted to `references/skill-learning-loop.md` by `scripts/promote_skill_lesson
 ## 2026-08-25 07:49:23 +08:00 - Web 逆向路由必须指向统一根入口而非子模块
 
 - id: 20260825-074923-web-逆向路由必须指向统一根入口而非子模块
-- status: candidate
+- status: promoted
 - category: method
 - confidence: 3/5
 - applies_to: web-api-reverse, web-js-reverse, web-crypto-reverse, routing
@@ -795,10 +795,15 @@ healthcheck cross-reference-completeness PASS（38→36 规则一致）；routin
 ### Next Action
 
 review
+
+### Promotion
+
+Promoted to `references/unified-skills-entry.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-25 07:58:16 +08:00.
+
 ## 2026-08-25 07:49:42 +08:00 - new_module.ps1 的 [appended] 输出不可信，注册必须经 healthcheck 交叉验证
 
 - id: 20260825-074942-new-module-ps1-的-appended-输出不可信-注册必须经-healthchec
-- status: candidate
+- status: promoted
 - category: tooling
 - confidence: 3/5
 - applies_to: module-onboarding, healthcheck, registry
@@ -821,3 +826,8 @@ review
 ### Next Action
 
 review
+
+### Promotion
+
+Promoted to `references/module-onboarding-spec.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-25 08:00:16 +08:00.
+
