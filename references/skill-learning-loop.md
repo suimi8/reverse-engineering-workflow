@@ -192,3 +192,23 @@ Before closing a reverse-engineering task:
 **Validation**
 
 YAML 校验通过，healthcheck 24/24 PASS，invoke_skill 实测路由 pentest-tools 0.94。
+
+### promote_skill_lesson 超时判定法
+
+- source: `20260825-103459-promote-skill-lesson-超时判定法`
+- category: method
+- applies_to: general reverse workflow
+- purpose_zh: promote 脚本输出超时但实际成功时的正确判定与处理
+- confidence: 3/5
+
+**Lesson**
+
+promote_skill_lesson.ps1 在 Windows PowerShell 5.1 下常出现命令输出超时（60s 未返回）但实际已成功写入的现象；判定依据是目标文件（如 references/module-onboarding-spec.md）中是否出现 '- source: <id>' 且 inbox 条目状态变为 promoted，而非命令退出码；确认成功后不要重跑（会报 already promoted 错误），直接继续验证（healthcheck + sync_installed_skill）
+
+**Evidence**
+
+两次实践（20260825-094952 三层接入、20260825-101848 路由规则补全）均出现 60s 超时后实际成功：grep 确认 module-onboarding-spec.md 已含 source 行、inbox status=promoted，healthcheck 24/24 PASS
+
+**Validation**
+
+2026-08-25 第三次实践验证：本次 promote 20260825-103459 再次出现 60s 超时，grep 确认目标文件已含 source 行、inbox status=promoted；与前两次（094952、101848）行为一致，判定法可靠。

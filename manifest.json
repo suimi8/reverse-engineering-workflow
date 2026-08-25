@@ -1,6 +1,6 @@
-{
+﻿{
   "name": "reverse-engineering-workflow",
-  "version": "1.23.2",
+  "version": "2.0.0",
   "language": "zh-CN",
   "short_description": "Suimi-supported authorized reverse engineering workflow",
   "packaging": {
@@ -49,7 +49,17 @@
     "local-reverse-modules/skills/windows-python-app-recovery/MODULE.md",
     "local-reverse-modules/skills/windows-python-app-recovery/references/windows-recovery-checklist.md",
     "local-reverse-modules/skills/windows-local-service-persistence/MODULE.md",
-    "local-reverse-modules/skills/windows-local-service-persistence/references/service-persistence-checklist.md"
+    "local-reverse-modules/skills/windows-local-service-persistence/references/service-persistence-checklist.md",
+    "github-reverse-modules/skills/game-security-research/references/official-skills/anti-cheat-systems.md",
+    "github-reverse-modules/skills/game-security-research/references/official-skills/awesome-game-security-overview.md",
+    "github-reverse-modules/skills/game-security-research/references/official-skills/dma-attack-techniques.md",
+    "github-reverse-modules/skills/game-security-research/references/official-skills/game-engine-resources.md",
+    "github-reverse-modules/skills/game-security-research/references/official-skills/game-hacking-techniques.md",
+    "github-reverse-modules/skills/game-security-research/references/official-skills/graphics-api-hooking.md",
+    "github-reverse-modules/skills/game-security-research/references/official-skills/mobile-security.md",
+    "github-reverse-modules/skills/game-security-research/references/official-skills/research-rigor.md",
+    "github-reverse-modules/skills/game-security-research/references/official-skills/reverse-engineering-tools.md",
+    "github-reverse-modules/skills/game-security-research/references/official-skills/windows-kernel-security.md"
   ],
   "scripts": [
     "scripts/pyqt_visible_dialogs_probe.py",

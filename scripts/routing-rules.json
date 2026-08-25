@@ -18,6 +18,12 @@
     "reason": "Task text matches lost-source Windows Python packaged app recovery or local helper/state repair."
   },
   {
+    "name": "game-security-research",
+    "pattern": "game.{0,6}(hack|cheat|security)|gamehack|gamehacking|game cheat|game hack|anti.?cheat|anticheat|\\u53cd\\u4f5c\\u5f0a|\\u6e38\\u620f\\u5b89\\u5168|\\u6e38\\u620f.{0,4}(\\u7834\\u89e3|\\u5916\\u6302|\\u4f5c\\u5f0a|\\u8f85\\u52a9|\\u4fee\\u6539\\u5668)|\\u5916\\u6302|\\u4f5c\\u5f0a\\u5668|\\u6e38\\u620f\\u9006\\u5411|eac|battleye|vanguard|faceit|byfron|vac.{0,3}(system|ban|bypass)|dma.{0,6}(cheat|attack|\\u5916\\u6302|\\u653b\\u51fb)|byovd|vulnerable driver|\\u6613\\u53d7\\u653b\\u51fb\\u9a71\\u52a8|kernel.{0,6}anticheat|w2s|triggerbot|aimbot|hwid.{0,4}(spoof|\\u4fee\\u6539)|rpm.{0,3}wpm|overlay.{0,6}(esp|\\u7ed8\\u5236|draw)|game.{0,4}engine.{0,6}security|\\u6e38\\u620f\\u5f15\\u64ce.{0,4}\\u5b89\\u5168|\\u6a21\\u62df\\u5668.{0,4}(\\u5916\\u6302|\\u4f5c\\u5f0a|detection)|cheat.{0,4}engine.{0,8}\\u7814\\u7a76|\\u53cd\\u4f5c\\u5f0a\\u7ed5\\u8fc7|\\u53cd\\u4f5c\\u5f0a.{0,4}\\u7814\\u7a76",
+    "confidence": 0.86,
+    "reason": "Task text matches game security research directory (game hacking/cheat, anti-cheat systems, DMA/BYOVD, game engine security, emulator game security); read-only curated directory with offline snapshot."
+  },
+  {
     "name": "radare2",
     "pattern": "radare2|(^|[^a-z0-9])r2([^a-z0-9]|$)|rizin|\\u547d\\u4ee4\\u884c\\u9006\\u5411",
     "confidence": 0.9,

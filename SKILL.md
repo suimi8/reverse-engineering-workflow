@@ -221,6 +221,7 @@ The following upstream reverse-only modules were appended without replacing loca
 - `github-reverse-modules/skills/web-api-reverse/MODULE.md`: Web backend API reverse, recover internal API protocol from traffic/HAR/cURL, generate Python httpx / TypeScript client + API docs.
 - `github-reverse-modules/skills/web-js-reverse/MODULE.md`: Web frontend JS reverse, obfuscation deobfuscation, JSVMP methodology, CDP bypass, TLS fingerprint, env patching, WASM reverse, anti-crawler.
 - `github-reverse-modules/skills/web-crypto-reverse/MODULE.md`: Web/APK crypto reverse, identify and rebuild encryption/signing algorithms in Python, specialist index, online verification.
+- `github-reverse-modules/skills/game-security-research/MODULE.md`: read-only game security research directory (awesome-game-security snapshot, 4231 entries / 36 categories): game hacking, anti-cheat, DMA, vulnerable drivers, kernel protection, engine security, mobile game security, graphics API hooking, emulators; offline snapshot JSON included.
 
 ## Shared Upstream Scripts
 

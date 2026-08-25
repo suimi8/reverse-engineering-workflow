@@ -53,6 +53,7 @@
 | suimi Web 后端 API 逆向 | `github-reverse-modules/skills/web-api-reverse/MODULE.md` | suimi 支持的从网络请求/HAR/cURL 逆向内部 API 协议，REST/GraphQL/batchexecute/gRPC-web 多协议检测、认证检测、生成 Python httpx / TypeScript 客户端 + API 文档 |
 | suimi Web 前端 JS 逆向 | `github-reverse-modules/skills/web-js-reverse/MODULE.md` | suimi 支持的 JS 混淆分级与还原、JSVMP 五步逆向法、CDP 检测绕过、TLS/HTTP2/QUIC 指纹、环境修补、WASM 逆向、反爬分层击破 |
 | suimi Web/APK 加密算法逆向 | `github-reverse-modules/skills/web-crypto-reverse/MODULE.md` | suimi 支持的从 Web JS 与 Android APK 识别并 Python 重构加密/签名算法，30 个 specialist 索引、Web2/Web3 判定、线上验证闭环 |
+| suimi游戏安全研究 | `github-reverse-modules/skills/game-security-research/MODULE.md` | suimi 支持的游戏安全攻防目录检索：游戏破解/外挂（Cheat）、反作弊（EAC/BattlEye/Vanguard）、DMA/RPM、易受攻击驱动、内核保护（PatchGuard/DSE）、引擎安全、移动游戏安全、图形 API Hook、模拟器；含 4231 条目离线快照与官方 10 技能对照 |
 
 ## 本地逆向恢复技能
 

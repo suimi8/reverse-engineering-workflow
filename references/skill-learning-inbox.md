@@ -831,3 +831,163 @@ review
 
 Promoted to `references/module-onboarding-spec.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-25 08:00:16 +08:00.
 
+
+## 2026-08-25 09:49:52 +08:00 - awesome-* 大仓库三层接入：主入口MODULE+离线快照JSON+分类索引表
+
+- id: 20260825-094952-awesome-大仓库三层接入-主入口module-离线快照json-分类索引表
+- status: promoted
+- category: method
+- confidence: 3/5
+- applies_to: general reverse workflow
+- purpose_zh: 外部 awesome-* 类大目录仓库接入本地 skills 时的固定做法
+- target_skill_path: references/module-onboarding-spec.md
+- tags: none
+
+### Evidence
+
+gmh5225/awesome-game-security 54091 文件/4231 条目接入：README 358KB 解析为 550KB 快照 JSON，官方 10 技能主题对照本地既有模块避免重复建模块；healthcheck 24/24 PASS，registry 143 条，resolve_skill 按机器名和中文名均命中
+
+### Lesson
+
+接入体量大、条目多、分类稳定的 awesome-* 仓库时，不要克隆全文或把条目塞进 bootstrap-manifest 自动安装；按三层接入：建主入口 MODULE.md（含安全边界+完整分类索引表）+ 本地离线快照 references/*-snapshot.json（解析 README 的 ## 分类 / > 子分类 / - url [desc] 结构为 JSON）+ 官方 skills 主题映射表；写中文 MODULE.md 后必须转 UTF-8 with BOM，否则 PowerShell 5.1 Get-Content 读取乱码导致 mandatory-final-feedback-contract 中文 token 检查 FAIL
+
+### Validation
+
+2026-08-25 实践验证：game-security-research 模块按三层接入成功入库，healthcheck 24/24 PASS（含 BOM 修复前后对比：无 BOM 时 mandatory-final-feedback-contract FAIL，加 BOM 后 PASS），resolve_skill 按机器名与中文名均命中，sync_installed_skill 同步成功。
+
+### Next Action
+
+review
+
+### Promotion
+
+Promoted to `references/module-onboarding-spec.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-25 09:54:24 +08:00.
+
+
+## 2026-08-25 10:18:48 +08:00 - 新增目录型模块必须同步补路由规则
+
+- id: 20260825-101848-新增目录型模块必须同步补路由规则
+- status: promoted
+- category: method
+- confidence: 3/5
+- applies_to: general reverse workflow
+- purpose_zh: 防止新增模块入库后统一入口无法命中
+- target_skill_path: references/module-onboarding-spec.md
+- tags: none
+
+### Evidence
+
+game-security-research 模块初入库时未加规则，'游戏反作弊资料'任务回落到 generic reverse-engineering；补规则（confidence 0.86，37 条规则）后 3 组研究任务命中 game-security-research，'cheat engine 扫描内存'仍正确命中 ce-reverse，healthcheck 24/24 PASS
+
+### Lesson
+
+新增模块入库（MODULE.md + 4 处登记 + healthcheck）后，必须同步在 scripts/routing-rules.json 登记路由规则：pattern 需同时含中英文关键词，confidence 应低于具体工具类规则（如 ce-reverse 0.89、x64dbg 0.89）且高于 generic 规则（reverse-engineering 0.68），保证工具任务优先走工具模块、研究/目录任务走新模块；登记后必须回归 select_skill 多组测试用例并重跑 healthcheck（cross-reference-completeness 校验规则 refs 与 registry 一致性）
+
+### Validation
+
+2026-08-25 实践验证：game-security-research 模块补路由规则前后对比——无规则时 select_skill 对'游戏反作弊资料'回落到 generic reverse-engineering（confidence 0.68），补规则后命中 game-security-research（0.86）；4 组回归用例全部符合预期，healthcheck 24/24 PASS（cross-reference-completeness 确认 37 条规则 refs 与 registry 一致），sync_installed_skill 同步成功。
+
+### Next Action
+
+review
+
+### Promotion
+
+Promoted to `references/module-onboarding-spec.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-25 10:19:07 +08:00.
+
+
+## 2026-08-25 10:34:59 +08:00 - promote_skill_lesson 超时判定法
+
+- id: 20260825-103459-promote-skill-lesson-超时判定法
+- status: promoted
+- category: method
+- confidence: 3/5
+- applies_to: general reverse workflow
+- purpose_zh: promote 脚本输出超时但实际成功时的正确判定与处理
+- target_skill_path: references/skill-learning-loop.md
+- tags: none
+
+### Evidence
+
+两次实践（20260825-094952 三层接入、20260825-101848 路由规则补全）均出现 60s 超时后实际成功：grep 确认 module-onboarding-spec.md 已含 source 行、inbox status=promoted，healthcheck 24/24 PASS
+
+### Lesson
+
+promote_skill_lesson.ps1 在 Windows PowerShell 5.1 下常出现命令输出超时（60s 未返回）但实际已成功写入的现象；判定依据是目标文件（如 references/module-onboarding-spec.md）中是否出现 '- source: <id>' 且 inbox 条目状态变为 promoted，而非命令退出码；确认成功后不要重跑（会报 already promoted 错误），直接继续验证（healthcheck + sync_installed_skill）
+
+### Validation
+
+2026-08-25 第三次实践验证：本次 promote 20260825-103459 再次出现 60s 超时，grep 确认目标文件已含 source 行、inbox status=promoted；与前两次（094952、101848）行为一致，判定法可靠。
+
+### Next Action
+
+review
+
+### Promotion
+
+Promoted to `references/skill-learning-loop.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-25 10:35:16 +08:00.
+
+
+## 2026-08-25 10:51:22 +08:00 - 路由规则必须同步补回归用例且合规审计不能只看healthcheck
+
+- id: 20260825-105122-路由规则必须同步补回归用例且合规审计不能只看healthcheck
+- status: promoted
+- category: method
+- confidence: 3/5
+- applies_to: general reverse workflow
+- purpose_zh: 新增路由规则后补 tests 回归用例，以及健康检查 0 fail 不等于完全合规
+- target_skill_path: references/module-onboarding-spec.md
+- tags: none
+
+### Evidence
+
+game-security-research 入库后 healthcheck 24/24 PASS 但 tests/routing.Tests.ps1 无该模块用例；按规范补齐 2 条用例后 Pester 15/15 通过，healthcheck unit-tests 25→27；规范符合性审计据此发现并修复了唯一缺口
+
+### Lesson
+
+1) 新增/修改 routing-rules.json 规则后，必须同步给 tests/routing.Tests.ps1 补回归用例（正向命中 + 既有工具模块对照不抢占各一条），否则规范第 6 节不达标，healthcheck 不会自动发现（它只跑既有用例）；2) 用户询问是否符合规范时，healthcheck 0 fail 是必要条件但不是完备证据，需按 module-onboarding-spec.md 第 12 节 checklist 逐项人工核验 + 抽查快照/官方副本/安全边界，才能发现 healthcheck 覆盖不到的缺口
+
+### Validation
+
+2026-08-25 实践验证：game-security-research 模块规范符合性审计中发现 tests/routing.Tests.ps1 缺失回归用例（healthcheck 当时 24/24 PASS 未报）；补齐 2 条用例（正向 game-security-research + 对照 ce-reverse 不抢占）后 Pester 15/15 通过、healthcheck unit-tests 25→27、24/24 PASS；证明"healthcheck 0 fail ≠ 完全合规"，需按 checklist 人工核验。
+
+### Next Action
+
+review
+
+### Promotion
+
+Promoted to `references/module-onboarding-spec.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-25 10:51:39 +08:00.
+
+
+## 2026-08-25 11:08:24 +08:00 - 入库规范必须含逆向内容完整性与脱敏边界章节
+
+- id: 20260825-110824-入库规范必须含逆向内容完整性与脱敏边界章节
+- status: promoted
+- category: method
+- confidence: 3/5
+- applies_to: general reverse workflow
+- purpose_zh: 规范健康检查覆盖不等于规范完整；逆向内容不脱敏、仅凭据脱敏；官方skills五步收录法
+- target_skill_path: references/module-onboarding-spec.md
+- tags: none
+
+### Evidence
+
+规范审计发现 24 项检查中 4 项（reusable-skill-resolver/installed-skill-sync/generated-caches/环境可选）在规范第 9 节检查表无对应行，且全文无'脱敏/内容完整性'主题；本次新增规范第 13 节（逆向内容完整性与脱敏边界，白名单/黑名单/判定标准/完整性验收/官方skills五步收录法）与第 14 节（内容完整性与同步验收）；game-security-research 快照 4231 条目 0 缺 URL、官方 10 skills 完整无损（TRUNCATED=0）验证了验收方法
+
+### Lesson
+
+1) 入库规范完整性审计方法：拉出 healthcheck 全部检查项做覆盖矩阵，找 0 覆盖项（本次发现 generated-caches/installed-sync/resolver 未入表）与主题缺口（脱敏边界完全缺失）；2) 逆向内容完整性原则：AOB/算法/寄存器/协议字段/公开仓库 URL 一律原文保留，只有真实凭据（API Key/Token/私钥/私有域名/内网IP）用占位符，判定标准是'公开可达的技术事实保留、非公开凭据脱敏'；3) 外部仓库自带官方 AI skills 的完整收录法：重命名 .md（禁保留 SKILL.md 防 single-installable 冲突）+ 改写 ../xxx/SKILL.md 相对链接 + 保留 frontmatter/许可证 + manifest 登记 + 不注册为可路由技能；4) 内容完整性验收：条目数核对、URL 缺失率必须 0、TRUNCATED 截断标记必须 0（代码示例省略号除外）
+
+### Validation
+
+2026-08-25 实践验证：对 module-onboarding-spec.md 做覆盖矩阵审计，发现 4 项检查未入表 + 脱敏边界主题完全缺失；新增第 13/14 节后 healthcheck 24/24 PASS、0 FAIL；对照 game-security-research 快照（4231 条目 0 缺 URL）与官方 10 skills（无 TRUNCATED 标记）验证验收方法可行；该审计法此前已两次发现 healthcheck 覆盖不到的缺口（路由回归用例缺失），证明"healthcheck 全绿 ≠ 规范完整"。
+
+### Next Action
+
+review
+
+### Promotion
+
+Promoted to `references/module-onboarding-spec.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-25 11:08:38 +08:00.
+

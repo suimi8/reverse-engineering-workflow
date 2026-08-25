@@ -82,6 +82,9 @@ This directory preserves reverse-only modules bundled into the reverse-engineeri
 - `skills/web-crypto-reverse/`
   - Entry: `skills/web-crypto-reverse/MODULE.md`
   - Focus: web/APK crypto reverse: identify and rebuild encryption/signing algorithms in Python from Web JS and Android APK, 30-specialist index, Web2/Web3 determination, online verification loop.
+- `skills/game-security-research/`
+  - Entry: `skills/game-security-research/MODULE.md`
+  - Focus: read-only curated directory of game security resources based on the awesome-game-security snapshot (4231 entries, 36 categories): game hacking (Cheat), anti-cheat (EAC/BattlEye/Vanguard), DMA/RPM, vulnerable drivers, kernel protection, engine security, mobile game security, graphics API hooking, emulators. Includes `references/awesome-game-security-snapshot.json` offline snapshot and the official 10-skill topic mapping. Directory only — never auto-installs listed tools.
 
 ## New References
 

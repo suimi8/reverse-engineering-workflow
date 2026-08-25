@@ -4,6 +4,56 @@
 
 
 
+## [2.0.0] - 2026-08-25
+
+【大规模更改】规范体系全面完善：新增第 13 章（逆向内容完整性与脱敏边界）、第 14 章（内容完整性与同步验收）、第 10.1 节（版本号规则——每次更新自增版本、大规模更改升 major），覆盖矩阵 24 项检查全部对齐
+
+### Added
+
+- `references/module-onboarding-spec.md` 第 13 章「逆向内容完整性与脱敏边界」：13.1 绝不脱敏白名单/13.2 必须脱敏黑名单/13.3 公开可达判定标准/13.4 内容完整性验收四步法/13.5 官方 skills 完整收录五步法。
+- `references/module-onboarding-spec.md` 第 14 章「内容完整性与同步验收」：完整性审计/同步确认/diff 验证/缓存清理 + 14.5 规范自身变更流程（覆盖矩阵审计前置 → 编码结构验证 → 版本发布 → 学习闭环 → 同步）。
+- `references/module-onboarding-spec.md` 第 10.1 节「版本号规则」：patch/minor/major 三级语义 + 判定标准 + 每次更新必须自增版本禁止同版本重复提交。
+- `references/module-onboarding-spec.md` 第 9 节检查表补全：`reusable-skill-resolver`/`installed-skill-sync`/`generated-caches`/环境可选项 4 行。
+- `references/module-onboarding-spec.md` 第 12 节 checklist 新增 3 项：逆向技术内容完整性/含外部快照官方 skills 验收/缓存清理。
+- `references/module-onboarding-spec.md` 第 1 节补官方 skills 收录指引（指向 13.5）。
+- 学习闭环晋级：`入库规范必须含逆向内容完整性与脱敏边界章节`（id `20260825-110824`）已 promote 到 Promoted Learning Notes。
+- 学习闭环晋级：`路由规则必须同步补回归用例且合规审计不能只看healthcheck`（id `20260825-105122`）已 promote 到 Promoted Learning Notes。
+
+### Changed
+
+- `references/module-onboarding-spec.md` 14.5 节版本规则：从"patch 发布"改为"按 10.1 规则——小改 patch、模块级 minor、规范重写/新增完整大节 major"。
+
+## [1.24.2] - 2026-08-25
+
+完善入库规范：新增 14.5 规范自身变更流程（覆盖矩阵审计前置 + 编码/结构验证 + patch 发布 + 学习闭环）
+
+### Added
+
+- `references/module-onboarding-spec.md`：新增 14.5 节「规范自身变更流程」——变更前先做覆盖矩阵审计确认缺口真实存在；变更后立即验证 healthcheck 24/24 PASS + UTF-8 with BOM 编码检查 + 小节编号连续 + Promoted Learning Notes 与 inbox 一致；文档完善类变更按 patch 发布（CHANGELOG 说明改了哪节）；变更方法本身验证过则 record → promote 回本规范形成正循环；最后 sync + diff 验证。
+
+## [1.24.1] - 2026-08-25
+
+完善入库规范：新增逆向内容完整性与脱敏边界章节（不脱敏白名单/脱敏黑名单/判定标准/完整性验收/官方skills五步收录法）
+
+### Added
+
+- `references/module-onboarding-spec.md`：新增第 13 节「逆向内容完整性与脱敏边界」——明确 AOB/算法/寄存器/协议字段/公开仓库 URL 等逆向技术内容**一律不脱敏、不占位符化、不删减**，仅真实凭据与私有基础设施使用占位符；含 13.4 内容完整性验收（条目数核对/URL 缺失率必须 0/TRUNCATED 截断标记必须 0）与 13.5 官方 skills 完整收录五步法（重命名 .md 防 single-installable 冲突 + 改写 ../xxx/SKILL.md 链接 + 保留 frontmatter/许可证 + manifest 登记 + 不注册为可路由技能）。
+- `references/module-onboarding-spec.md`：新增第 14 节「内容完整性与同步验收」——完整性审计 + 实际同步后 diff 验证（`would-sync` 为 dry-run 预期动作，非失败）+ 缓存清理。
+- `references/module-onboarding-spec.md`：第 9 节检查表补齐 `reusable-skill-resolver` / `installed-skill-sync` / `generated-caches` / 环境可选项 4 行；第 12 节 checklist 新增内容完整性、官方 skills 收录、缓存清理 3 项。
+- 学习闭环晋级：`入库规范必须含逆向内容完整性与脱敏边界章节`经验已 promote 到 `references/module-onboarding-spec.md`（Promoted Learning Notes）。
+
+## [1.24.0] - 2026-08-25
+
+add game-security-research module: read-only awesome-game-security directory (4231 entries / 36 categories, offline snapshot JSON)
+
+### Added
+
+- `scripts/routing-rules.json`：新增 `game-security-research` 路由规则（confidence 0.86，覆盖游戏破解/外挂/反作弊/DMA/BYOVD/游戏引擎安全/模拟器检测等中英文关键词），游戏安全研究类任务现可经统一入口直达该模块；具体工具任务（如 Cheat Engine 扫描）仍优先走 `ce-reverse` 等工具模块。
+- `github-reverse-modules/skills/game-security-research/references/official-skills/`：**上游 awesome-game-security 官方 10 个 AI Agent skills 完整本地副本**（anti-cheat-systems、dma-attack-techniques、game-hacking-techniques、graphics-api-hooking、mobile-security、windows-kernel-security、reverse-engineering-tools、game-engine-resources、research-rigor、awesome-game-security-overview，共 259KB），改写跨文件链接为本地可达，无需在线安装；manifest references 同步登记。
+- 学习闭环晋级：`awesome-* 大仓库三层接入`经验已 promote 到 `references/module-onboarding-spec.md`（Promoted Learning Notes）。
+- 学习闭环晋级：`新增目录型模块必须同步补路由规则`经验已 promote 到 `references/module-onboarding-spec.md`（Promoted Learning Notes，与三层接入经验合并构成完整入库流程）。
+- 学习闭环晋级：`promote_skill_lesson 超时判定法`经验已 promote 到 `references/skill-learning-loop.md`（Promoted Learning Notes）。
+
 ## [1.23.2] - 2026-08-25
 
 unify web reverse routing through single root entry (reverse-engineering-workflow); merge 3 web rules into one

@@ -38,6 +38,20 @@ Describe 'Skill routing scripts' {
         $result.ok | Should Be $true
         (([string]$result.skill.path) -match 'x64dbg-reverse') | Should Be $true
     }
+
+    It 'select_skill routes a game-security research task to the game-security-research module' {
+        $json = & (Join-Path $rootDir 'scripts\select_skill.ps1') -TaskText '帮我查一下有哪些游戏反作弊的逆向资料和开源项目' -AsJson | Out-String
+        $result = $json | ConvertFrom-Json
+        $result.ok | Should Be $true
+        (([string]$result.skill.path) -match 'game-security-research') | Should Be $true
+    }
+
+    It 'select_skill still routes a Cheat Engine tool task to ce-reverse (not preempted by game-security-research)' {
+        $json = & (Join-Path $rootDir 'scripts\select_skill.ps1') -TaskText '我想用 cheat engine 扫描内存找基址' -AsJson | Out-String
+        $result = $json | ConvertFrom-Json
+        $result.ok | Should Be $true
+        (([string]$result.skill.path) -match 'ce-reverse') | Should Be $true
+    }
 }
 
 Describe 'Learning loop scripts' {
