@@ -52,9 +52,10 @@ function suimiFind-SkillByPath {
     )
 
     $needle = suimiNormalize -Value $Path
-    $matches = @($Skills | Where-Object { (suimiNormalize -Value $_.path) -eq $needle })
-    if ($matches.Count -eq 1) {
-        return $matches[0]
+    # Use a private variable name here: $matches is a PowerShell automatic variable
+    $found = @($Skills | Where-Object { (suimiNormalize -Value $_.path) -eq $needle })
+    if ($found.Count -ge 1) {
+        return $found[0]
     }
 
     return $null

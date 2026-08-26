@@ -1,0 +1,18 @@
+# Line-ending policy (targeted; does not force renormalization of existing .md/.json)
+# Shell scripts MUST stay LF or they break on Linux/macOS
+*.sh   text eol=lf
+*.py   text eol=lf
+# Windows-side scripts keep CRLF (they also carry a UTF-8 BOM by convention)
+*.ps1  text eol=crlf
+*.psm1 text eol=crlf
+*.psd1 text eol=crlf
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+# Binary assets — never touch
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.zip  binary
+*.pdf  binary

@@ -19,6 +19,8 @@
 - `pentest-tools/src-hunter`：README（中/英）删除并不存在的 `h1-reports/`（"2887 份报告"）目录树条目与夸大数据来源表述，改为真实描述；`.gitignore` 移除外部工具链残留（`# Agent runtime state (OMC)` / `.omc/`）。
 - `malware-analysis/MODULE.md`：正文内联参考路径补全 `../` 前缀，与文内既有可达链接一致。
 - 工程卫生：将 2.1.0/2.2.0 已完成但从未提交的成果（3 个新模块 60 文件 + 12 处改动）落盘，修复"工作区成果未提交且位于云同步目录"的丢失风险（C1）。
+- 一致性加固：`select_skill.ps1` 的 `suimiFind-SkillByPath` 与 `suimiFind-SkillByName` 同样停止复用自动变量 `$matches` 并放宽为"≥1 取首"，消除按目标路径路由时的同源竞态隐患（正常单命中行为不变）。
+- 新增 `.gitattributes`：钉死 `*.sh`/`*.py` 为 LF、`*.ps1`/`*.bat` 为 CRLF、并标注二进制资产，避免 shell 脚本被 autocrlf 破坏；不强制重归一化既有 `.md`/`.json`（避免云同步目录海量 churn）。
 
 ## [2.2.0] - 2026-08-26
 
