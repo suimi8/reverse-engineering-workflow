@@ -31,7 +31,7 @@
   },
   {
     "name": "ida-reverse",
-    "pattern": "ida|idapro|ida pro|mcp|\\u4f2a\\u4ee3\\u7801|\\u4ea4\\u53c9\\u5f15\\u7528|xref",
+    "pattern": "(^|[^a-z0-9])ida([^a-z0-9]|$)|idapro|ida pro|(^|[^a-z0-9])mcp([^a-z0-9]|$)|\\u4f2a\\u4ee3\\u7801|\\u4ea4\\u53c9\\u5f15\\u7528|xref",
     "confidence": 0.88,
     "reason": "Task text matches IDA or IDA-MCP reverse workflow."
   },
@@ -205,7 +205,7 @@
   },
   {
     "name": "reverse-engineering",
-    "pattern": "reverse|\\u9006\\u5411|\\u8131\\u58f3|unpack|binary|\\u4e8c\\u8fdb\\u5236|elf|pe|dll|exe|so|firmware|\\u56fa\\u4ef6",
+    "pattern": "reverse|\\u9006\\u5411|\\u8131\\u58f3|unpack|binary|\\u4e8c\\u8fdb\\u5236|(^|[^a-z0-9])(elf|pe|dll|exe|so)([^a-z0-9]|$)|firmware|\\u56fa\\u4ef6",
     "confidence": 0.68,
     "reason": "Task text matches generic reverse-engineering methodology."
   },

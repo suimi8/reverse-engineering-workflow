@@ -22,6 +22,12 @@
 - 一致性加固：`select_skill.ps1` 的 `suimiFind-SkillByPath` 与 `suimiFind-SkillByName` 同样停止复用自动变量 `$matches` 并放宽为"≥1 取首"，消除按目标路径路由时的同源竞态隐患（正常单命中行为不变）。
 - 新增 `.gitattributes`：钉死 `*.sh`/`*.py` 为 LF、`*.ps1`/`*.bat` 为 CRLF、并标注二进制资产，避免 shell 脚本被 autocrlf 破坏；不强制重归一化既有 `.md`/`.json`（避免云同步目录海量 churn）。
 
+### Changed
+
+- 补厚 9 个偏薄模块（多子代理并行撰写、每处均保留 frontmatter/中文名/5-token 契约）：6 个 github 通用技法卡 ghidra-reverse(84→179)、go-rust-reverse(68→131)、macos-reverse(71→157)、thick-client(76→182)、browser-extension-reverse(71→168)、protocol-reverse(94→192)，补入标准开源工具链、编号工作流、证据与回滚与可用命令示例（仅公认工具、无编造 CVE/偏移/样本）；3 个本地诊断模块 flet-desktop-diagnostics/windows-python-app-recovery/windows-local-service-persistence 补通用骨架与证据与回滚，含 11 处 `（待 suimi 补充实测：…）` 占位符待回填。
+- competition-* 归一化去重：给 14 个与主树概念重复的 competition 模块顶部加"归一化指针"，把读者导向更完整的主模块（competition-ssrf→ssrf、competition-jwt→jwt-oauth-token-attacks、4× windows/identity/kerberos/lsass→windows-ad、forensic-timeline→digital-forensics 等），**纯增量不删内容、保留 CTF 沙箱场景职责**，链接经 healthcheck 交叉引用校验可达。
+- 路由 regex 收窄：给 `ida-reverse`(裸 `ida`/`mcp`) 与 `reverse-engineering`(裸 `pe/so/exe/elf/dll`) 加词边界（复用仓库既有 `(^|[^a-z0-9])x([^a-z0-9]|$)` 写法），消除 "candidate/type/also" 等子串误命中；run_tests 30/30、6 个选择器用例仍确定命中、真 IDA/固件任务不受影响。
+
 ## [2.2.0] - 2026-08-26
 
 【中改】完成 `wechat-miniapp-protocol-re` 入库补全 + 给 `pentest-orchestration` 增加多步检测链引擎与批量配方库。

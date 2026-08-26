@@ -56,6 +56,42 @@ Do not use this module for unauthorized third-party license bypass, cracking, cr
    - When safe, stop only the helper process, invoke the persistence entry, and verify the helper returns from the expected path.
    - Close with a concrete status report and no secrets.
 
+## Unpacking and Decompilation
+
+When the goal is to recover lost source from a packaged Python app, work through the layers in order. Choose the toolchain by packager, and treat decompiled output as a lead to verify, not as ground truth.
+
+1. Identify the packager precisely.
+   - PyInstaller: `MEI`/`pyi-` strings, a `_internal` (one-dir) or extracted `_MEI*` temp dir (one-file), `base_library.zip`, and a `PYZ` archive embedded in the `.exe`.
+   - py2exe: a `PYTHONSCRIPT` resource plus a `library.zip` of `.pyc` bound to the loader.
+   - cx_Freeze / Nuitka: `library.zip` + `lib/` for cx_Freeze; compiled C (no plain bytecode) for Nuitka, which is NOT bytecode-decompilable and needs binary RE instead.
+   - Detected packager and version for this app: （待 suimi 补充实测：本应用实际打包器与版本）。
+
+2. Unpack the container.
+   - PyInstaller one-file: extract with `pyinstxtractor` (or `pyinstxtractor-ng` for newer builds): `python pyinstxtractor.py app.exe`, producing an `app.exe_extracted/` tree with the `PYZ-00.pyz` contents and top-level `.pyc` modules.
+   - Recover the interpreter version first (the extractor reports it, or read it from `python3X.dll`); it selects both the decompiler and the correct bytecode magic.
+   - Reattach missing `.pyc` headers (magic number + timestamp) when the extractor strips them, or the decompiler will reject the file.
+
+3. Decompile the bytecode.
+   - Python <= 3.8: `uncompyle6` or `decompyle3` (`decompyle3 -o out/ module.pyc`) usually reconstruct readable source.
+   - Python 3.9+: prefer `pycdc`/`pycdas` (the `decompyle++` project), since `uncompyle6`/`decompyle3` do not cover newer opcodes; expect partial output and rebuild by hand where it fails.
+   - Cross-check decompiled logic against runtime behavior (strings, hooked calls, observed I/O) before relying on it.
+
+4. Locate dependencies and resources.
+   - Enumerate bundled third-party packages under the extracted tree / `library.zip` / `_internal` to rebuild a requirements list.
+   - Find data files, templates, assets, `.env`/config, certificates, and SQLite databases the app reads at runtime; packaged copies may differ from the live `%LOCALAPPDATA%`/`%APPDATA%` copies, so diff them.
+   - Entry module and key resources to recover for this app: （待 suimi 补充实测：本应用实际入口模块与关键资源清单）。
+
+## Evidence and Rollback（证据与回滚）
+
+Recovery work touches user state and sometimes the binary; keep all of it reversible.
+
+1. Baseline before any change: back up the target config/state/DB file to a timestamped copy, record process/window/port state, and note each file's `LastWriteTime` and hash. Save the exact command and its output.
+2. Change one artifact at a time and re-capture the same evidence so each before/after delta maps to a single change.
+3. Keep a change log: command run, file touched, backup path, before value, after value, observed effect.
+4. Roll back by restoring the timestamped backups, stopping any helper you started, then re-running the baseline capture to confirm the pre-change state.
+5. Patch the binary only after config/state/helper repair is proven insufficient; save the original bytes (and a copy of the whole `.exe`) so it can be byte-restored, and record the offset plus original and new bytes.
+   - Concrete backup targets and rollback commands for this app: （待 suimi 补充实测：本应用实际需备份的状态/数据库/配置路径与回滚命令）。
+
 ## Reference Checklist
 
 Read `references/windows-recovery-checklist.md` for PowerShell command patterns covering package triage, AppData discovery, Flet process checks, loopback helper validation, Startup-folder persistence, and cold-start verification.
