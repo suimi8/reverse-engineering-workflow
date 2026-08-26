@@ -4,6 +4,22 @@
 
 
 
+## [2.2.1] - 2026-08-27
+
+【小改/加固】多子代理审计后的一致性与健壮性修复；**无新增/删除模块**，145 个 MODULE.md 与全部注册表计数不变，`healthcheck` 24 项全绿、`unit-tests` 30 通过。
+
+### Fixed
+
+- 路由脚手架致命 bug（`new_module.ps1 -AddRoutingRule`）：旧锚点正则 `^\$rules = @\(` 会误匹配 `select_skill.ps1` 的 `$rules = @($parsedRules)` 并把路由器写崩、新规则也进不了 `routing-rules.json`。改为安全追加进 `routing-rules.json`（`ConvertFrom-Json` 回校 + 保留 BOM），`target` 标签同步更正。
+- 路由非确定性：`select_skill.ps1` 两处 `Sort-Object confidence -Descending` 加 `-Stable`（同分按规则文件顺序确定性胜出）；`suimiFind-SkillByName` 停止复用自动变量 `$matches`，并把"恰好 1 个"放宽为"≥1 取首"，消除云同步重复枚举下静默丢规则。6 个选择器用例连跑确定且命中期望胜者。
+- `lib/SkillLearning.ps1`：无 status 行时的全局 `-replace`（会在每个换行后插入、破坏记录）改为单行插入；晋级备注不再把用户可控 `-Note` 当作正则替换串（堵住 `$1/$&` 回引用注入）。
+- 触发词跨入口失同步（H1）：把 `SKILL.md` frontmatter 已有的授权渗透测试工具链触发语义（nmap/nuclei/sqlmap/ffuf/hashcat/ZAP/Burp、src/bug bounty）同步补入 `CLAUDE.md`/`AGENTS.md`/`README.md` 与 `SKILL.md` 正文 Automatic Skill Routing 触发列表，避免这些 agent 入口漏触发。
+- `references/domain-coverage-map.md`：修正陈旧命名（`api-security`→`api-sec`、`CTF-Sandbox-Orchestrator/`→`ctf-sandbox-orchestrator/`）、更新日期，并声明本文件为跨包概念图（非模块清单）。
+- `references/module-onboarding-spec.md`：明确模板 4 个 H2（适用范围/工作流/证据与回滚/参考）为**推荐非强制**结构，消除"模板漂移"误判。
+- `pentest-tools/src-hunter`：README（中/英）删除并不存在的 `h1-reports/`（"2887 份报告"）目录树条目与夸大数据来源表述，改为真实描述；`.gitignore` 移除外部工具链残留（`# Agent runtime state (OMC)` / `.omc/`）。
+- `malware-analysis/MODULE.md`：正文内联参考路径补全 `../` 前缀，与文内既有可达链接一致。
+- 工程卫生：将 2.1.0/2.2.0 已完成但从未提交的成果（3 个新模块 60 文件 + 12 处改动）落盘，修复"工作区成果未提交且位于云同步目录"的丢失风险（C1）。
+
 ## [2.2.0] - 2026-08-26
 
 【中改】完成 `wechat-miniapp-protocol-re` 入库补全 + 给 `pentest-orchestration` 增加多步检测链引擎与批量配方库。

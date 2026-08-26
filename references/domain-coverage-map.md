@@ -1,7 +1,7 @@
 ﻿# 本包领域覆盖图（深度优先）
 
 > 对照社区「几百个微 skill」：我们用 **少量深 skill + 路由 + ops** 覆盖主战场。  
-> 日期：2026-07-18
+> 日期：2026-08-27（本文件为跨包领域概念图，非模块清单；以 references/unified-skills-entry.md 与各 INDEX.md 为准，表中路径为语义指向、命名可能滞后于实际目录）
 
 ## 域 → 本包入口
 
@@ -32,20 +32,20 @@
 | 硬件调试口 | `hardware-security/` | 交接 firmware-pentest |
 | 数据库 | `database-security/` | |
 | 邮件 / 钓鱼 | `email-security/` | |
-| 联邦身份 SSO | `identity-federation/` | 与 api-security JWT 互补 |
+| 联邦身份 SSO | `identity-federation/` | 与 api-sec JWT 互补 |
 | RF / SDR | `radio-sdr/` | 默认只收；非 Wi-Fi |
 | 多阶段攻击 | `attack-chain/` | |
 | Pwn | `pwn-chain/` | |
 | N-day 补丁 | `patch-diff-exploit/` | |
 | EDR 研究 | `edr-bypass-re/` | |
-| API | `api-security/` | |
+| API | `api-sec/` | |
 | 供应链 SBOM | `supply-chain-security/` | |
 | LLM/Agent | `llm-security/` | + `references/ops/skill-supply-chain.md` |
 | 浏览器自动化 | `browser-automation/` | |
 | 报告/图 | `docs-generator/` `diagram-generator/` | |
 | 符号迁移 | `binary-diff/` | |
 | 作战契约 | `ops/` | **特色** |
-| CTF 编排 | `CTF-Sandbox-Orchestrator/` | |
+| CTF 编排 | `ctf-sandbox-orchestrator/` | |
 | 密码学模式识别 | `reverse-engineering` 模式文档 | 与逆向任务共用，不维护独立扩展包 |
 
 ## 明确不整库并入的域（路由未命中时的策略）

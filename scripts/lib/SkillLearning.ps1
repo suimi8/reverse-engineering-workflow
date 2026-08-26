@@ -252,7 +252,11 @@ function suimiSet-LearningInboxEntryStatus {
     if ($updated -match '(?m)^-\s+status:\s*.*$') {
         $updated = [regex]::Replace($updated, '(?m)^-\s+status:\s*.*$', "- status: $Status", 1)
     } else {
-        $updated = $updated -replace "(\r?\n)", "`$1- status: $Status`$1"
+        # Insert exactly ONE status line, right after the heading (first newline).
+        # A plain -replace "(\r?\n)" is GLOBAL and injects a status line after every
+        # newline in the record, shredding it; cap the substitution at the first match.
+        $firstNewlineRe = [regex]::new('(\r?\n)')
+        $updated = $firstNewlineRe.Replace($updated, "`$1- status: $Status`$1", 1)
     }
 
     if (-not [string]::IsNullOrWhiteSpace($Note)) {
@@ -263,7 +267,18 @@ function suimiSet-LearningInboxEntryStatus {
 $Note
 "@
         if ($updated -match '(?m)^###\s+Promotion\s*$') {
-            $updated = [regex]::Replace($updated, '(?ms)^###\s+Promotion\s*\r?\n.*?(?=^###\s+|\z)', $noteBlock.TrimStart(), 1)
+            # Splice the note in literally. $Note is user-controlled, and as a
+            # [regex]::Replace replacement string any $1 / $& / $$ inside it would be
+            # expanded as a backreference/substitution. Locate the existing Promotion
+            # section span and rebuild by substring concatenation so -Note lands verbatim.
+            # (IgnoreCase mirrors the original call's RegexOptions=1 fourth argument.)
+            $promoRe = [regex]::new('(?ms)^###\s+Promotion\s*\r?\n.*?(?=^###\s+|\z)', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
+            $promoMatch = $promoRe.Match($updated)
+            if ($promoMatch.Success) {
+                $updated = $updated.Substring(0, $promoMatch.Index) + $noteBlock.TrimStart() + $updated.Substring($promoMatch.Index + $promoMatch.Length)
+            } else {
+                $updated = $updated.TrimEnd() + "`r`n" + $noteBlock
+            }
         } else {
             $updated = $updated.TrimEnd() + "`r`n" + $noteBlock
         }

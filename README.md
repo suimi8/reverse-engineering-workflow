@@ -1,6 +1,6 @@
 ﻿# suimi 逆向总入口（reverse-engineering-workflow）
 
-由 suimi 支持的本地授权逆向工程技能包：单一可安装入口 + 自动路由 + 分层内部模块 + 学习闭环。适用于 PE/ELF/APK/固件/沙箱应用的静态与动态分析、运行时诊断、Frida/IDA/x64dbg/Ghidra/WPeGPT 工作流、GUI/网络/认证/更新流程分析、补丁与可逆打包，以及逆向暴露出的 Web/API/Auth 安全评估面。
+由 suimi 支持的本地授权逆向工程技能包：单一可安装入口 + 自动路由 + 分层内部模块 + 学习闭环。适用于 PE/ELF/APK/固件/沙箱应用的静态与动态分析、运行时诊断、Frida/IDA/x64dbg/Ghidra/WPeGPT 工作流、GUI/网络/认证/更新流程分析、补丁与可逆打包、授权渗透测试工具链（nmap 端口扫描、nuclei 漏洞扫描、sqlmap/SQL 注入测试、ffuf 目录爆破、hashcat 口令破解、ZAP/Burp）与 src/bug bounty 漏洞挖掘，以及逆向暴露出的 Web/API/Auth 安全评估面。
 
 ## 安装与使用
 

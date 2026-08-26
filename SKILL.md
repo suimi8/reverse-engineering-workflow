@@ -19,7 +19,7 @@ Keep machine module names and folder names in English for compatibility. Use the
 
 ## Automatic Skill Routing
 
-When this skill is triggered by a reverse-engineering, APK/mobile, firmware, binary, traffic/API extraction, auth/update-flow, patching, packaging, or reverse-discovered security-assessment task, treat this file as the router first:
+When this skill is triggered by a reverse-engineering, APK/mobile, firmware, binary, traffic/API extraction, auth/update-flow, patching, packaging, authorized penetration-testing toolchain (nmap, nuclei, sqlmap, ffuf, hashcat, ZAP/Burp), src/bug-bounty hunting, or reverse-discovered security-assessment task, treat this file as the router first:
 
 1. Run `.\scripts\invoke_skill.ps1 -TaskText "<current user goal>" [-TargetPath "<known target path>"] -AsJson` from this skill directory.
 2. Read the returned repository-relative `skill_path`, then follow that concrete internal `MODULE.md` before using heavy tools or writing patches.

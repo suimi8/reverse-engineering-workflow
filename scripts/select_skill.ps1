@@ -31,9 +31,15 @@ function suimiFind-SkillByName {
         [string]$Name
     )
 
-    $matches = @($Skills | Where-Object { $_.name -eq $Name })
-    if ($matches.Count -eq 1) {
-        return $matches[0]
+    # Use a private variable name here: $matches is a PowerShell automatic variable
+    # (populated by -match), so reusing it risks silent clobbering elsewhere. Also
+    # take the first hit when >=1 match: under cloud-sync races list_skills can
+    # briefly enumerate the same module twice, and the old "exactly 1" test would
+    # then drop the rule (returning $null) and let a lower-confidence rule win.
+    # Same-named modules are the same skill, so taking the first is safe.
+    $found = @($Skills | Where-Object { $_.name -eq $Name })
+    if ($found.Count -ge 1) {
+        return $found[0]
     }
 
     return $null
@@ -229,11 +235,11 @@ if ($candidates.Count -gt 0) {
             }
             $result = suimiNew-Selection -Skill $routerSkill -Source 'mixed-security-router' -Confidence 0.84 -Reason $routerReason -RouteDecision $routeDecision -Candidates $candidateSkills
         } else {
-            $selected = @($candidates | Sort-Object confidence -Descending | Select-Object -First 1)[0]
+            $selected = @($candidates | Sort-Object confidence -Descending -Stable | Select-Object -First 1)[0]
             $result = suimiNew-Selection -Skill $selected.skill -Source $selected.source -Confidence $selected.confidence -Reason $selected.reason -RouteDecision $routeDecision -Candidates (@($candidates | ForEach-Object { $_.skill }))
         }
     } else {
-        $selected = @($candidates | Sort-Object confidence -Descending | Select-Object -First 1)[0]
+        $selected = @($candidates | Sort-Object confidence -Descending -Stable | Select-Object -First 1)[0]
         $result = suimiNew-Selection -Skill $selected.skill -Source $selected.source -Confidence $selected.confidence -Reason $selected.reason -RouteDecision $routeDecision -Candidates (@($candidates | ForEach-Object { $_.skill }))
     }
 } else {

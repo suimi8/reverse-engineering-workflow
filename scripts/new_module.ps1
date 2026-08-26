@@ -386,44 +386,47 @@ if ($Root -eq 'security') {
     $actions += suimiFinalize-Edit -Path $routerPath -TargetLabel ("security-research-modules/skills/$chosenRouter/MODULE.md (Skill Map)") -Info $info -Result $res -WhatIfMode $whatIfMode
 }
 
-# --- 6. optional select_skill.ps1 routing rule -----------------------------
+# --- 6. optional routing-rules.json routing rule ---------------------------
+# Routing rules live in scripts/routing-rules.json; select_skill.ps1 loads them at
+# runtime. Append the new rule as a JSON object rather than editing select_skill.ps1
+# source. The old approach anchored on '^$rules = @(' inside select_skill.ps1, which
+# also matched its own '$rules = @($parsedRules)' line and, once triggered, spliced a
+# stray [pscustomobject] line into that file and broke the whole router at parse time.
 
 $routingWarning = $null
 if ($AddRoutingRule) {
-    $selectPath = Join-Path $rootDir 'scripts\select_skill.ps1'
-    $info = suimiRead-TextFileInfo -Path $selectPath
-    $rulePresence = "name = '" + $Name + "'"
-    if ($info.text.Contains($rulePresence)) {
-        $actions += [pscustomobject][ordered]@{ target = 'scripts/select_skill.ps1 (rule)'; status = 'already-present' }
+    $rulesJsonPath = Join-Path $rootDir 'scripts\routing-rules.json'
+    $rulesInfo = suimiRead-TextFileInfo -Path $rulesJsonPath
+    $existingRules = @($rulesInfo.text | ConvertFrom-Json)
+    $ruleAlreadyPresent = (@($existingRules | Where-Object { $_.name -eq $Name }).Count -gt 0)
+    if ($ruleAlreadyPresent) {
+        $actions += [pscustomobject][ordered]@{ target = 'scripts/routing-rules.json (rule)'; status = 'already-present' }
     } else {
-        $lines = $info.text -split "`r?`n"
-        $anchorIdx = -1
-        for ($i = 0; $i -lt $lines.Count; $i++) {
-            if ($lines[$i] -match '^\$rules = @\(') {
-                $anchorIdx = $i
-                break
-            }
+        $patternWords = ($Name -split '-') -join '|'
+        $newRule = [pscustomobject][ordered]@{
+            name = $Name
+            pattern = $patternWords
+            confidence = 0.75
+            reason = "Task text matches $Name module."
         }
-        if ($anchorIdx -lt 0) {
-            $actions += [pscustomobject][ordered]@{ target = 'scripts/select_skill.ps1 (rule)'; status = 'anchor-not-found' }
+        $combinedRules = @($existingRules) + @($newRule)
+        $newJson = $combinedRules | ConvertTo-Json -Depth 10
+        # Re-parse the serialized array before writing so a malformed edit never lands.
+        try {
+            $null = $newJson | ConvertFrom-Json
+        } catch {
+            throw "routing-rules.json edit would produce invalid JSON: $($_.Exception.Message)"
+        }
+        if ($whatIfMode) {
+            $actions += [pscustomobject][ordered]@{ target = 'scripts/routing-rules.json (rule)'; status = 'would-append' }
         } else {
-            $patternWords = ($Name -split '-') -join '|'
-            $ruleLine = "    [pscustomobject]@{ name = '" + $Name + "'; pattern = '" + $patternWords + "'; confidence = 0.75; reason = 'Task text matches " + $Name + " module.' },"
-            $list = [System.Collections.Generic.List[string]]::new()
-            foreach ($line in $lines) {
-                $list.Add($line)
-            }
-            $list.Insert($anchorIdx + 1, $ruleLine)
-            $newText = [string]::Join($info.eol, $list)
-            if ($whatIfMode) {
-                $actions += [pscustomobject][ordered]@{ target = 'scripts/select_skill.ps1 (rule)'; status = 'would-append' }
-            } else {
-                suimiWrite-TextFile -Path $selectPath -Text $newText -HadBom $info.hadBom
-                $actions += [pscustomobject][ordered]@{ target = 'scripts/select_skill.ps1 (rule)'; status = 'appended' }
-            }
+            # Preserve the file's UTF-8 BOM so select_skill.ps1's
+            # [System.IO.File]::ReadAllText(path, UTF8) keeps reading it cleanly.
+            suimiWrite-TextFile -Path $rulesJsonPath -Text $newJson -HadBom $rulesInfo.hadBom
+            $actions += [pscustomobject][ordered]@{ target = 'scripts/routing-rules.json (rule)'; status = 'appended' }
         }
     }
-    $routingWarning = 'A select_skill.ps1 rule was staged. Per module-onboarding-spec section 6 you MUST run the natural-language batch test and add a tests/routing.Tests.ps1 regression before relying on it.'
+    $routingWarning = 'A routing-rules.json rule was staged. Per module-onboarding-spec section 6 you MUST run the natural-language batch test and add a tests/routing.Tests.ps1 regression before relying on it.'
 }
 
 # --- aggregate + report ----------------------------------------------------

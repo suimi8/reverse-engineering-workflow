@@ -4,7 +4,7 @@ Use `SKILL.md` as source of truth. This file is a compact entrypoint for OpenCla
 
 Operating mode:
 - For the unified Chinese skill name map and single human-facing entry, read `references/unified-skills-entry.md`; keep machine skill names and folder names unchanged for compatibility.
-- Treat this skill as the fixed auto-routing entry. When a user asks for reverse engineering, APK/mobile reverse, firmware, binary analysis, Frida/IDA/x64dbg/Ghidra, traffic/API extraction, auth/update-flow analysis, patching, packaging, or reverse-discovered security assessment, first run `scripts/invoke_skill.ps1 -TaskText <goal> [-TargetPath <path>] -AsJson`, then load and follow the returned concrete internal `MODULE.md`.
+- Treat this skill as the fixed auto-routing entry. When a user asks for reverse engineering, APK/mobile reverse, firmware, binary analysis, Frida/IDA/x64dbg/Ghidra, traffic/API extraction, auth/update-flow analysis, patching, packaging, authorized penetration-testing toolchain (nmap, nuclei, sqlmap, ffuf, hashcat, ZAP/Burp), src/bug-bounty hunting, or reverse-discovered security assessment, first run `scripts/invoke_skill.ps1 -TaskText <goal> [-TargetPath <path>] -AsJson`, then load and follow the returned concrete internal `MODULE.md`.
 - Do not ask the user to run the router. Run it automatically when tools are available. Skip it only when editing this skill package, answering conceptual skill-system questions, or when the user explicitly names one concrete internal module to inspect.
 - Work only on authorized local/sandbox assets.
 - Baseline first; prioritize runtime and traffic evidence over source guesses.
