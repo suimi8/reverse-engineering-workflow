@@ -991,3 +991,56 @@ review
 
 Promoted to `references/module-onboarding-spec.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-25 11:08:38 +08:00.
 
+
+## 2026-08-26 16:36:49 +08:00 - github-repo-recon 免克隆仓库架构逆向法
+
+- id: 20260826-163649-github-repo-recon-免克隆仓库架构逆向法
+- status: candidate
+- category: method
+- confidence: 4/5
+- applies_to: 分析公开 GitHub 安全/逆向项目的真实架构与能力边界
+- purpose_zh: 不 clone 不装依赖，快速还原一个仓库的真实架构与'实际做了什么 vs README 宣称什么'
+- target_skill_path: references/reverse-engineering-methods.md
+- tags: recon, source-analysis, triage, orchestrator
+
+### Evidence
+
+对 1N3/Sn1per 应用本法：trees 得 307 路径、30 modes、211 templates；grep normal.sh 得 nmap×328/msfconsole×41，定位为 nmap+NSE+metasploit 封装；据此产出 pentest-orchestration 模块的三份证据参考。
+
+### Lesson
+
+分析公开仓库时：用 GitHub API git/trees?recursive=1 一次取全树做目录分类统计，再用 raw.githubusercontent.com 定点拉核心文件（主控/安装/配置/1个代表性模块），对入口脚本 grep 参数解析与分发机制、对主流程 grep 外部工具调用词频，即可在不克隆的前提下还原架构与能力边界。据此判断项目'实际做了什么 vs README 宣称什么'（如 Sn1per CE=9.2 是 bash 编排器，README 大量描述的是闭源付费版）。
+
+### Validation
+
+本会话据此拆解产出可运行的 sniper_template_to_recipe.py 转换器（对真实 Pulse VPN 模板转换成功）与 normal.sh 逐行扫描链拆解。
+
+### Next Action
+
+review
+## 2026-08-26 17:10:41 +08:00 - 补全模块注册会激活其路由规则-必须跑兄弟任务回归防抢占
+
+- id: 20260826-171041-补全模块注册会激活其路由规则-必须跑兄弟任务回归防抢占
+- status: candidate
+- category: method
+- confidence: 4/5
+- applies_to: 给本地/安全模块补登记时同步校验其 routing-rules.json 规则不抢占通用兄弟任务
+- purpose_zh: 一个未登记模块补全 cross-reference 后，其路由规则会从'休眠'变'生效'，过宽的业务名词会突然抢占通用逆向任务
+- target_skill_path: references/module-onboarding-spec.md
+- tags: routing, module-onboarding, regression
+
+### Evidence
+
+wechat-miniapp-protocol-re 补全 5.C 登记后，其 0.92 规则的 '签名算法' token 抢走 JSVMP 回归用例（route 到 wechat 而非 root），healthcheck unit-tests FAIL；把通用词改为 (微信|小程序|wechat).{0,16}(...) 共现后 JSVMP 回 root(0.85)、wechat 正向仍 0.92，unit-tests 30 全绿。
+
+### Lesson
+
+补全一个此前未登记模块的 cross-reference 后，select_skill 才会真正应用它的 routing-rules.json 规则（登记前规则对未注册目标不生效）。因此补登记必须同步：(1) 用通用兄弟任务做回归（如 wechat 补登后 JSVMP/加密/内存任务是否被抢），(2) 把规则里的通用业务名词（签名/抓包/内存/任务/抽奖）改为需与领域锚点（微信/小程序/wechat）共现，(3) 补正向命中 + 兄弟不抢占两条 tests/routing.Tests.ps1 用例。
+
+### Validation
+
+healthcheck 24/24 PASS；routing 回归：JSVMP->root、wechat 任务->wechat、通用签名/内存任务->root 均符合预期。
+
+### Next Action
+
+review

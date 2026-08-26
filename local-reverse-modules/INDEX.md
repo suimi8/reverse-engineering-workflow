@@ -13,6 +13,12 @@ This directory preserves suimi local reverse recovery modules for authorized Win
 - `skills/windows-local-service-persistence/`
   - Entry: `skills/windows-local-service-persistence/MODULE.md`
   - Focus: Windows loopback (127.0.0.1) helper service startup repair, Startup-folder/PowerShell launcher patterns, scheduled-task fallback, port no-op duplicate guards, and cold-start verification.
+- `skills/mirasim-godmode-re/`
+  - Entry: `skills/mirasim-godmode-re/MODULE.md`
+  - Focus: Mirasim 桌面单机德州扑克机台（Electron）的 renderer 多副本发现、版本升级失效诊断、补丁串多版本适配、多目标打补丁与 asar 重打包，含 godmode_bot / gui_server 状态读取兼容性。
+- `skills/wechat-miniapp-protocol-re/`
+  - Entry: `skills/wechat-miniapp-protocol-re/MODULE.md`
+  - Focus: 微信 PC 小程序协议逆向与自动化（mitmproxy 抓包、sign/req-id 双盐双层 MD5、V8 内存源码提取、业务接口链路、PySide6 GUI 集成）。
 
 ## Shared Support Scripts
 

@@ -162,6 +162,7 @@ Bundled security-research modules, converted to local `MODULE.md` format:
 - `competition-windows-pivot`: Windows跳板比赛专精
 - `competition-zip-archive`: ZIP归档比赛专精
 - `ctf-sandbox-orchestrator`: CTF比赛总协调器（默认入口，路由到下游专精模块）
+- `pentest-orchestration`: 授权渗透测试的攻击流程编排方法论：把侦察-扫描-利用-报告串成统一可复现流水线，涵盖模式分发(mode dispatch)、分层配置、工作区与loot资产管理、声明式检测配方(detection recipe)、多工具编排与安全边界；用于设计运行扩展一条攻击面评估流水线，对标Sn1per与reconftw的orchestrator架构。
 
 ## Compatibility Notes
 

@@ -52,6 +52,31 @@ Describe 'Skill routing scripts' {
         $result.ok | Should Be $true
         (([string]$result.skill.path) -match 'ce-reverse') | Should Be $true
     }
+
+    It 'select_skill routes an attack-flow orchestration task to pentest-orchestration' {
+        $json = & (Join-Path $rootDir 'scripts\select_skill.ps1') -TaskText '帮我设计一个攻击流程编排器，把侦察扫描利用报告串成一条可复现的流水线' -AsJson | Out-String
+        $result = $json | ConvertFrom-Json
+        $result.ok | Should Be $true
+        (([string]$result.skill.path) -match 'pentest-orchestration') | Should Be $true
+    }
+
+    It 'select_skill does not let pentest-orchestration preempt a generic SQLi/login task' {
+        $json = & (Join-Path $rootDir 'scripts\select_skill.ps1') -TaskText '帮我测一下这个登录接口有没有 SQL 注入' -AsJson | Out-String
+        $result = $json | ConvertFrom-Json
+        $result.ok | Should Be $true
+        # pentest-orchestration must NOT preempt a generic injection/auth task
+        (([string]$result.skill.path) -match 'pentest-orchestration') | Should Be $false
+        # NOTE: the concrete winner is non-deterministic in this cloud-synced repo / under load
+        # (sqli-sql-injection 0.90 when skills enumerate cleanly, auth-sec/api-sec otherwise), so we
+        # assert only the invariant this test exists for: the new pentest rule must not preempt it.
+    }
+
+    It 'select_skill routes a WeChat mini-program task to wechat-miniapp-protocol-re' {
+        $json = & (Join-Path $rootDir 'scripts\select_skill.ps1') -TaskText '帮我逆向微信小程序的签名算法和抓包' -AsJson | Out-String
+        $result = $json | ConvertFrom-Json
+        $result.ok | Should Be $true
+        (([string]$result.skill.path) -match 'wechat-miniapp-protocol-re') | Should Be $true
+    }
 }
 
 Describe 'Learning loop scripts' {

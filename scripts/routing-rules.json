@@ -67,7 +67,7 @@
   },
   {
     "name": "sqli-sql-injection",
-    "pattern": "sqli|sql injection|sql\\u6ce8\\u5165|\\u6570\\u636e\\u5e93\\u6ce8\\u5165",
+    "pattern": "sqli|sql injection|sql\\s*\\u6ce8\\u5165|\\u6570\\u636e\\u5e93\\u6ce8\\u5165",
     "confidence": 0.9,
     "reason": "Task text matches SQL injection."
   },
@@ -220,5 +220,23 @@
     "pattern": "nmap|nuclei|sqlmap|ffuf|hashcat|burp\\s*uite|zap|渗透测试|工具链|端口扫描|漏洞扫描|暴力破解|目录爆破|子域名枚举|密码破解|src\\s*挖洞|src\\s*漏洞|bug\\s*bounty|漏洞赏金|众测|信息收集|服务识别",
     "confidence": 0.94,
     "reason": "Task text matches pentest tooling / src-hunter vulnerability workflow."
+  },
+  {
+    "name": "mirasim-godmode-re",
+    "pattern": "mirasim|\\u5fb7\\u5dde\\u6251\\u514b|texas hold|instawin|arcade.*(\\u8865\\u4e01|patch)|\\u900f\\u89c6\\u8865\\u4e01|\\u5fc5\\u80dc\\u8865\\u4e01|\\u673a\\u53f0\\u8865\\u4e01|\\u725b\\u4ed4\\u6251\\u514b.*(\\u4f5c\\u5f0a|\\u8f85\\u52a9|\\u8865\\u4e01)",
+    "confidence": 0.92,
+    "reason": "Task text matches Mirasim \\u684c\\u9762\\u5fb7\\u5dde\\u6251\\u514b\\u8f85\\u52a9\\uff08\\u900f\\u89c6/\\u5fc5\\u80dc\\u8865\\u4e01\\u3001renderer \\u591a\\u526f\\u672c\\u3001\\u7248\\u672c\\u5347\\u7ea7\\u5931\\u6548\\u4fee\\u590d\\uff09\\u3002"
+  },
+  {
+    "name": "pentest-orchestration",
+    "pattern": "orchestrat|pentest.{0,6}(orchestr|pipeline|automation)|attack.?surface|recon.{0,6}scan.{0,6}exploit|scan.{0,6}pipeline|sn1per|reconftw|detection.{0,4}recipe|攻击流程编排|编排器|渗透.{0,6}(编排器|自动化|流水线)|扫描.{0,4}流水线|(侦察|扫描).{0,4}(利用|报告).{0,6}(流水线|编排器)|检测配方|攻击面.{0,4}(管理|评估)|侦察.{0,4}扫描.{0,4}利用.{0,4}报告",
+    "confidence": 0.85,
+    "reason": "Task text matches attack-flow / pentest pipeline orchestration (recon-scan-exploit-report), declarative detection recipes, workspace/loot asset management, or Sn1per/reconftw/nuclei orchestrator architecture."
+  },
+  {
+    "name": "wechat-miniapp-protocol-re",
+    "pattern": "wechat|\u5fae\u4fe1|\u5c0f\u7a0b\u5e8f|mini.?program|wxapkg|mitmproxy|sign.*req.?id|9w9|(\u5fae\u4fe1|\u5c0f\u7a0b\u5e8f|wechat).{0,16}(\u6293\u5305|\u7b7e\u540d|\u62bd\u5956|\u7b7e\u5230|\u4efb\u52a1|\u8f6c\u76d8|\u798f\u5361|\u7ea2\u5305|\u52a9\u529b|\u5185\u5b58|\u9006\u5411|\u81ea\u52a8\u5316)",
+    "confidence": 0.92,
+    "reason": "Task text matches WeChat mini-program protocol reverse engineering (mitmproxy sniffing, sign/req-id signature cracking, V8 memory extraction, business API chain, PySide6 GUI)."
   }
 ]

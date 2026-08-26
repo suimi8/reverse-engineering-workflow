@@ -1,6 +1,6 @@
 ﻿{
   "name": "reverse-engineering-workflow",
-  "version": "2.0.0",
+  "version": "2.2.0",
   "language": "zh-CN",
   "short_description": "Suimi-supported authorized reverse engineering workflow",
   "packaging": {
@@ -59,7 +59,12 @@
     "github-reverse-modules/skills/game-security-research/references/official-skills/mobile-security.md",
     "github-reverse-modules/skills/game-security-research/references/official-skills/research-rigor.md",
     "github-reverse-modules/skills/game-security-research/references/official-skills/reverse-engineering-tools.md",
-    "github-reverse-modules/skills/game-security-research/references/official-skills/windows-kernel-security.md"
+    "github-reverse-modules/skills/game-security-research/references/official-skills/windows-kernel-security.md",
+    "local-reverse-modules/skills/wechat-miniapp-protocol-re/MODULE.md",
+    "local-reverse-modules/skills/wechat-miniapp-protocol-re/references/wechat-miniapp-re-checklist.md",
+    "local-reverse-modules/skills/wechat-miniapp-protocol-re/references/signature-algorithms.md",
+    "local-reverse-modules/skills/mirasim-godmode-re/references/mirasim-patch-checklist.md",
+    "local-reverse-modules/skills/mirasim-godmode-re/MODULE.md"
   ],
   "scripts": [
     "scripts/pyqt_visible_dialogs_probe.py",

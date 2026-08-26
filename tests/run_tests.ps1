@@ -8,6 +8,10 @@ $testsDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $rootDir = (Resolve-Path -LiteralPath (Join-Path $testsDir '..')).Path
 
 $pester = @(Get-Module -ListAvailable -Name Pester | Sort-Object Version -Descending) | Select-Object -First 1
+# 测试脚本使用 dot-source 加载共享函数，与 Pester 4/5 的 ScriptScope 兼容最佳；
+# Pester 6 引入独立 ScriptScope 会导致 dot-source 的函数不可见，故优先选 3.x/4.x/5.x。
+$pester45 = @(Get-Module -ListAvailable -Name Pester | Where-Object { $_.Version.Major -ge 3 -and $_.Version.Major -le 5 } | Sort-Object Version -Descending) | Select-Object -First 1
+if ($pester45) { $pester = $pester45 }
 if (-not $pester) {
     if ($Quiet) {
         Write-Output 'SKIP:Pester is not installed.'
@@ -35,8 +39,10 @@ if ($testFiles.Count -eq 0) {
 }
 
 $pesterMajor = [int]$pester.Version.Major
-if ($pesterMajor -lt 4) {
+if ($pesterMajor -le 3) {
     $quietArgs = @{ Quiet = $true }
+} elseif ($pesterMajor -ge 6) {
+    $quietArgs = @{ Output = if ($Quiet) { 'None' } else { 'Normal' } }
 } else {
     $quietArgs = @{ Show = if ($Quiet) { 'None' } else { 'All' } }
 }
@@ -44,6 +50,13 @@ if ($pesterMajor -lt 4) {
 $invokeArgs = @{
     Script   = $testFiles
     PassThru = $true
+}
+# Pester 6+ removed -Script; use -Path instead
+if ($pesterMajor -ge 6) {
+    $invokeArgs = @{
+        Path     = $testFiles
+        PassThru = $true
+    }
 }
 $result = Invoke-Pester @invokeArgs @quietArgs
 

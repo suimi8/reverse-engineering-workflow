@@ -62,6 +62,8 @@
 | suimi Flet 桌面诊断 | `local-reverse-modules/skills/flet-desktop-diagnostics/MODULE.md` | suimi 支持的 Flet 桌面 app.exe/flet.exe 进程关系、窗口响应、AppData、localhost 依赖和功能界面诊断 |
 | suimi Windows Python 程序恢复 | `local-reverse-modules/skills/windows-python-app-recovery/MODULE.md` | suimi 支持的 Windows Python/Flet/Nuitka/PyInstaller 打包程序恢复、源码丢失后运行修复、AppData 状态恢复、本地服务和自启动验证 |
 | suimi Windows 本地服务自启动 | `local-reverse-modules/skills/windows-local-service-persistence/MODULE.md` | suimi 支持的 127.0.0.1 本地辅助服务、Startup 启动项、计划任务 fallback、端口防重复和冷启动验证 |
+| suimi Mirasim 德州扑克辅助维护 | `local-reverse-modules/skills/mirasim-godmode-re/MODULE.md` | suimi 支持的 Mirasim 桌面单机德州扑克（Electron）renderer 多副本发现与多目标打补丁、版本升级失效诊断、补丁串多版本适配、asar 重打包与 CDP 状态读取兼容 |
+| suimi 微信小程序协议逆向 | `local-reverse-modules/skills/wechat-miniapp-protocol-re/MODULE.md` | suimi 支持的微信 PC 小程序协议逆向（mitmproxy 抓包、sign/req-id 双盐双层 MD5 签名破解、V8 内存源码提取、业务接口链路、PySide6 GUI 集成） |
 
 ## Web/API 安全研究路由技能
 
@@ -184,6 +186,7 @@
 | suimi Windows跳板比赛 | `security-research-modules/skills/competition-windows-pivot/MODULE.md` |
 | suimi ZIP归档比赛 | `security-research-modules/skills/competition-zip-archive/MODULE.md` |
 | suimi CTF沙箱协调器 | `security-research-modules/skills/ctf-sandbox-orchestrator/MODULE.md` |
+| suimi攻击流程编排 | `security-research-modules/skills/pentest-orchestration/MODULE.md` |
 
 ## 推荐加载顺序
 

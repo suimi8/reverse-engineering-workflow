@@ -52,6 +52,14 @@
   "display_name": "suimi Windows 本地服务自启动"
  },
  {
+  "path": "local-reverse-modules/skills/mirasim-godmode-re/MODULE.md",
+  "display_name": "suimi Mirasim 德州扑克辅助维护"
+ },
+ {
+  "path": "local-reverse-modules/skills/wechat-miniapp-protocol-re/MODULE.md",
+  "display_name": "suimi 微信小程序协议逆向"
+ },
+ {
   "path": "security-research-modules/skills/hack/MODULE.md",
   "display_name": "suimi安全研究总入口"
  },
@@ -570,5 +578,9 @@
  {
   "path": "github-reverse-modules/skills/game-security-research/MODULE.md",
   "display_name": "suimi游戏安全研究"
+ },
+ {
+  "path": "security-research-modules/skills/pentest-orchestration/MODULE.md",
+  "display_name": "suimi攻击流程编排"
  }
 ]

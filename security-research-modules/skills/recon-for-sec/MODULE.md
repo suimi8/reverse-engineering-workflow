@@ -28,6 +28,7 @@ description: >-
 - [Dependency Confusion](../dependency-confusion/MODULE.md) — Supply chain reconnaissance for internal package names
 - [OSINT Recon Arsenal](../osint-recon/MODULE.md) — 外部 753+ 工具目录查询（按分类找具体 OSINT 工具）与执行前安全边界核查
 - [Unauthorized Access to Common Services](../unauthorized-access-common-services/MODULE.md) — Redis/MongoDB/Elasticsearch/Docker API 等常见服务未授权访问排查
+- [suimi攻击流程编排](../pentest-orchestration/MODULE.md): 授权渗透测试的攻击流程编排方法论：把侦察-扫描-利用-报告串成统一可复现流水线，涵盖模式分发(mode dispatch)、分层配置、工作区与loot资产管理、声明式检测配方(detection recipe)、多工具编排与安全边界；用于设计运行扩展一条攻击面评估流水线，对标Sn1per与reconftw的orchestrator架构。
 
 ## Recommended Flow
 

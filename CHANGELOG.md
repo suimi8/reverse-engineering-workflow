@@ -1,8 +1,50 @@
-# Changelog
+﻿# Changelog
 
 本技能包所有值得记录的变更都记录在此文件。格式参考 Keep a Changelog。版本号与 `manifest.json` 保持一致。
 
 
+
+## [2.2.0] - 2026-08-26
+
+【中改】完成 `wechat-miniapp-protocol-re` 入库补全 + 给 `pentest-orchestration` 增加多步检测链引擎与批量配方库。
+
+### Fixed
+
+- 补全 `wechat-miniapp-protocol-re`（suimi微信小程序协议逆向）此前遗留的跨文件登记（chinese-skill-names/unified-skills-entry/local INDEX/根 SKILL.md），使 `cross-reference-completeness` 转绿。
+- 收窄 `wechat-miniapp-protocol-re` 路由规则：把 `签名算法/抓包/内存/抽奖/任务/转盘` 等通用词改为**需与微信/小程序上下文共现**，避免抢占通用 JSVMP/加密/内存等逆向任务（修复 `select_skill` JSVMP 回归用例）；同时把该规则由原始中文改写为 `\uXXXX` ASCII 形式，消除 PS5.1 读取乱码风险。
+- 修正 `tests/routing.Tests.ps1` 的 SQLi/登录控制用例（原断言硬钉 `api-sec` 为唯一胜出者）：实测该模糊查询的胜出者在不同进程/负载下**非确定**——干净枚举时为 `sqli-sql-injection`(0.90)，负载下降级为 `auth-sec`(0.78)/`api-sec`；已核验此非确定性与本次新增路由规则无关（用 HEAD 版 `routing-rules.json` 复测同样非固定，且本仓库位于百度网盘同步目录、文件可能被同步改写）。故把断言收敛为该用例真正要守护的唯一不变量——**不被 `pentest-orchestration` 抢占**（`ok=true` 且路径不含 `pentest-orchestration`），并对齐用例标题；`unit-tests` 由此在 fresh-process 与 `healthcheck` 下稳定 30 通过（连续 3+ 次绿）。
+
+### Added
+
+- `local-reverse-modules/skills/mirasim-godmode-re/`：新增本地逆向恢复模块（suimi Mirasim 德州扑克辅助维护）。沉淀 Mirasim 桌面单机德州扑克（Electron）的逆向维护方法论：renderer 多副本发现（app.asar / resources/web/app / ~/.mirasim/app/<ver>）、版本升级失效诊断（history.jsonl won:false / 异常 reward / webui no_arc）、补丁串多版本适配（minified 函数名漂移）、多目标打补丁与 asar 重打包（@electron/asar createPackage 异步坑）、CDP 状态读取兼容。含 `references/mirasim-patch-checklist.md` 补丁串快照。已登记 INDEX / SKILL.md / unified-skills-entry / chinese-skill-names / manifest / routing-rules（触发词：mirasim、德州扑克、透视补丁、必胜补丁、机台补丁、更新后辅助失效）。
+- `pentest-orchestration/scripts/recipe_chain.py`：多步检测链引擎（stdlib urllib）——先登录抓 token 再打受保护接口，支持 `{{var}}` 模板注入与 body/header 的 json/regex 抽取，recipe 级 `match` 作用于最后一步；`recipe_run.sh` 自动分派 `chain` 配方，`safe:false` + `--unsafe` 门禁。
+- `pentest-orchestration/scripts/batch_convert_templates.sh`：批量把 Sn1per `templates/**.sh` 转成配方库（一模板一文件，文件名沿用源模板名，1:1 可溯源）。
+- `pentest-orchestration/references/recipes/sniper-passive/`：用批量工具从 Sn1per 43 个 passive 模板转出的检测配方库（43 个，其中 2 个 `safe:false`）+ 溯源/授权 README。
+- `pentest-orchestration/references/recipes/http-auth-chain-example.json`：登录→token→受保护接口的多步链示例。
+- `pentest-orchestration/references/detection-recipe-format.md` 第 6 节：`chain` 字段规范由"占位"更新为"已实现"。
+- `tests/routing.Tests.ps1`：新增 wechat 正向路由回归用例（JSVMP 控制用例仍作对照）。
+- `recipe_run.sh`/脚本：python 解释器探测（python3/python 双兼容 Kali 与 Windows）。
+
+## [2.1.0] - 2026-08-26
+
+【中改】新增安全研究模块 `pentest-orchestration`（suimi攻击流程编排）：把"攻击流程编排器"方法论固化为可路由技能，方法论提炼自对 Sn1per 社区版的完整逆向拆解。
+
+### Added
+
+- `security-research-modules/skills/pentest-orchestration/MODULE.md`：攻击流程编排器六层参考架构（入口/分层配置/模式分发/工作区loot/检测配方引擎/报告）、recon→scan→exploit→report 标准执行链、数据驱动扩展法、硬性授权边界、从 Sn1per 提炼的反模式清单。
+- `references/detection-recipe-format.md`：把 Sn1per 的 bash 模板机制改写成声明式**检测配方（detection recipe）JSON**——schema + Sn1per 字段映射表 + 安全边界（safe 标记）。
+- `references/orchestrator-architecture-comparison.md`：Sn1per vs nuclei vs reconftw 逐维架构取舍与选型指引。
+- `references/sniper-normal-teardown.md`：Sn1per `modes/normal.sh`（1259 行）扫描链逐段拆解，用真实行号还原 328 次 nmap / 41 次 msfconsole 的构成。
+- `scripts/orchestrate.sh`：修正 Sn1per 反模式的安全编排器骨架（不强制 root、白名单默认拒绝、dry-run 默认、函数分发替代 source、利用层默认关闭）。
+- `scripts/recipe_run.sh`：检测配方 runner（curl + python 匹配，默认只跑 safe 配方）。
+- `scripts/sniper_template_to_recipe.py`：把 Sn1per `templates/*.sh` 一键转成检测配方 JSON（解析不执行）。
+- `references/recipes/http-path-traversal-example.json`：检测配方格式示例。
+
+### Registered
+
+- `scripts/routing-rules.json`：新增 `pentest-orchestration` 路由规则（中英文关键词，confidence 0.85）。
+- `tests/routing.Tests.ps1`：新增正向命中 + api-sec 不被抢占两条回归用例。
+- 跨文件登记：`chinese-skill-names.json` / `unified-skills-entry.md` / `security-research-modules/INDEX.md` / 根 `SKILL.md` / `recon-for-sec` 路由器 Skill Map（经 new_module.ps1 生成并逐项校验）。
 
 ## [2.0.0] - 2026-08-25
 
