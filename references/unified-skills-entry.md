@@ -54,6 +54,7 @@
 | suimi Web 前端 JS 逆向 | `github-reverse-modules/skills/web-js-reverse/MODULE.md` | suimi 支持的 JS 混淆分级与还原、JSVMP 五步逆向法、CDP 检测绕过、TLS/HTTP2/QUIC 指纹、环境修补、WASM 逆向、反爬分层击破 |
 | suimi Web/APK 加密算法逆向 | `github-reverse-modules/skills/web-crypto-reverse/MODULE.md` | suimi 支持的从 Web JS 与 Android APK 识别并 Python 重构加密/签名算法，30 个 specialist 索引、Web2/Web3 判定、线上验证闭环 |
 | suimi游戏安全研究 | `github-reverse-modules/skills/game-security-research/MODULE.md` | suimi 支持的游戏安全攻防目录检索：游戏破解/外挂（Cheat）、反作弊（EAC/BattlEye/Vanguard）、DMA/RPM、易受攻击驱动、内核保护（PatchGuard/DSE）、引擎安全、移动游戏安全、图形 API Hook、模拟器；含 4231 条目离线快照与官方 10 技能对照 |
+| suimi网络安全项目目录 | `github-reverse-modules/skills/cybersecurity-projects-catalog/MODULE.md` | suimi 支持的网络安全/逆向可运行项目教学目录检索：42/70 项目、四层难度、19 语言 368879 行代码 + 594192 词讲义；重点逆向项目（binary-analysis-tool ELF/Mach-O/PE 解析+反汇编+YARA、rveng ELF 靶场、lisdex 模糊测试、ja3-ja4 TLS 指纹）与双用途工具（c2-beacon/keylogger）；含离线快照，AGPL-3.0 只读参考 |
 
 ## 本地逆向恢复技能
 

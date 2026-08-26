@@ -4,6 +4,24 @@
 
 
 
+## [2.4.0] - 2026-08-27
+
+【中改】新增通用逆向模块 `cybersecurity-projects-catalog`（suimi网络安全项目目录），按 awesome-* 类"三层接入"完整入库，完成 5.A 全部跨文件登记 + 目录型模块路由规则与回归用例。
+
+### Added
+
+- `github-reverse-modules/skills/cybersecurity-projects-catalog/`（MODULE.md + 1 个全量快照）：对外部教育仓库 `CarterPerez-dev/Cybersecurity-Projects`（AGPL-3.0，6220+ stars）的**只读本地全量快照与导航**。基于全树静态分析（非 README 自述）量化：42/70 已建成项目、四层难度（foundations/beginner/intermediate/advanced）、19 语言 368,879 行代码、594,192 词五段式讲义。
+  - `references/cybersecurity-projects-snapshot.json`（56KB）：42 个项目结构化快照，每条含 tier / project_number / title / 各语言 LOC / build_systems / learn_words / engineering_flags / dual_use / **github_url**（URL 缺失 0），另含 65 篇蓝图规格、10 条认证路线图、5 份资源指南、语言聚合与分层统计。
+- MODULE.md 内嵌完整项目索引表（42 项目按四层分类，⚠️ 标注 9 个双用途攻击性工具），并单列"对逆向工程师最有价值的项目"（rveng ELF 靶场 / binary-analysis-tool 三格式解析 / lisdex 模糊测试 / ja3-ja4 TLS 指纹）。
+- 安全边界固化进 MODULE.md：只读目录不自动安装/运行；含功能完整的双用途攻击工具（c2-beacon/keylogger/deserialization-gadget-lab 等）仅供授权研究；**AGPL-3.0 许可陷阱**（README 写 "copy directly" 但许可为网络 copyleft，禁止抄进闭源/商业项目）。
+
+### Changed
+
+- `github-reverse-modules/INDEX.md`、根 `SKILL.md`「Added Reverse Modules」、`references/unified-skills-entry.md`「核心逆向技能」表、`references/chinese-skill-names.json`（147 → 148 条）四处同批登记，保持 `cross-reference-completeness` 一致。
+- `scripts/routing-rules.json`：新增 `cybersecurity-projects-catalog` 路由规则（confidence 0.84，40 → 41 条），文本插入零扰动其它规则；中文关键词用 `\uXXXX` 转义。实测 3 组正向命中（CarterPerez/certgames/网络安全项目合集），且 game-security(0.86)/ce-reverse(0.89)/ida-reverse(0.88)/x64dbg(0.89) 四类既有任务均未被抢占。
+- `tests/routing.Tests.ps1`：补 2 条回归用例（正向命中 catalog + IDA 工具任务不被抢占），Pester 用例 18 → 20。
+- `manifest.json`：版本 2.3.0 → 2.4.0。
+
 ## [2.3.0] - 2026-08-27
 
 【中改】新增本地模块 `xhs-protocol-re`（suimi 小红书协议逆向），完成 5.C 全部跨文件登记。

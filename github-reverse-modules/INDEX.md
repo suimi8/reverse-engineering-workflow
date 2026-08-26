@@ -85,6 +85,9 @@ This directory preserves reverse-only modules bundled into the reverse-engineeri
 - `skills/game-security-research/`
   - Entry: `skills/game-security-research/MODULE.md`
   - Focus: read-only curated directory of game security resources based on the awesome-game-security snapshot (4231 entries, 36 categories): game hacking (Cheat), anti-cheat (EAC/BattlEye/Vanguard), DMA/RPM, vulnerable drivers, kernel protection, engine security, mobile game security, graphics API hooking, emulators. Includes `references/awesome-game-security-snapshot.json` offline snapshot and the official 10-skill topic mapping. Directory only — never auto-installs listed tools.
+- `skills/cybersecurity-projects-catalog/`
+  - Entry: `skills/cybersecurity-projects-catalog/MODULE.md`
+  - Focus: read-only curated directory of runnable cybersecurity + reverse-engineering learning projects based on the CarterPerez-dev/Cybersecurity-Projects full-tree snapshot (42 built / 70 target across 4 tiers, 368,879 LOC in 19 languages, 594,192 words of learn/ curriculum). Highlights for reverse engineers: binary-analysis-tool (ELF/Mach-O/PE parse + disasm + YARA), rveng (capstone/pyelftools ELF challenge platform), zero-day-vulnerability-scanner/lisdex (fuzzing), ja3-ja4 TLS fingerprinting; plus dual-use offensive tooling (c2-beacon, keylogger, deserialization-gadget-lab). Includes `references/cybersecurity-projects-snapshot.json` offline snapshot. Directory only — never auto-installs; upstream AGPL-3.0, do not copy code into closed-source projects.
 
 ## New References
 

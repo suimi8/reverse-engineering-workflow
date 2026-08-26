@@ -1,0 +1,2149 @@
+{
+ "repo": "CarterPerez-dev/Cybersecurity-Projects",
+ "url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects",
+ "source": "git clone https://github.com/CarterPerez-dev/Cybersecurity-Projects.git (full-tree static analysis)",
+ "homepage": "https://certgames.com",
+ "license": "AGPL-3.0",
+ "stars": 6220,
+ "forks": 929,
+ "default_branch": "main",
+ "generated_at": "2026-08-27",
+ "snapshot_method": "Full-tree clone + per-project LOC/language/test/build/learn-doc measurement (not README-derived). Every project's github_url points to its live source tree.",
+ "nature": "Educational catalog of complete, runnable cybersecurity + reverse-engineering projects across 4 difficulty tiers, each shipping full source in 20+ languages plus a 5-part learn/ curriculum. The real product is the ~594k-word teaching corpus; the code is the worked example. Upstream funnels to the author's certgames.com guided-course platform.",
+ "totals": {
+  "projects_built": 42,
+  "projects_target": 70,
+  "blueprint_specs": 65,
+  "code_loc": 368879,
+  "learn_words": 594192,
+  "languages_used": 19,
+  "roadmaps": 10,
+  "resource_guides": 5
+ },
+ "tier_stats": {
+  "foundations": {
+   "count": 3,
+   "code_loc": 6035
+  },
+  "beginner": {
+   "count": 17,
+   "code_loc": 85224
+  },
+  "intermediate": {
+   "count": 11,
+   "code_loc": 102427
+  },
+  "advanced": {
+   "count": 11,
+   "code_loc": 175193
+  }
+ },
+ "language_totals": [
+  {
+   "lang": "Go",
+   "loc": 99077
+  },
+  {
+   "lang": "Python",
+   "loc": 71058
+  },
+  {
+   "lang": "Rust",
+   "loc": 56371
+  },
+  {
+   "lang": "TSX",
+   "loc": 24946
+  },
+  {
+   "lang": "SCSS",
+   "loc": 23893
+  },
+  {
+   "lang": "TypeScript",
+   "loc": 22301
+  },
+  {
+   "lang": "Zig",
+   "loc": 16703
+  },
+  {
+   "lang": "Shell",
+   "loc": 15199
+  },
+  {
+   "lang": "Crystal",
+   "loc": 8639
+  },
+  {
+   "lang": "Haskell",
+   "loc": 7963
+  },
+  {
+   "lang": "Ruby",
+   "loc": 4882
+  },
+  {
+   "lang": "V",
+   "loc": 4248
+  },
+  {
+   "lang": "C++",
+   "loc": 3692
+  },
+  {
+   "lang": "C",
+   "loc": 3613
+  },
+  {
+   "lang": "Nim",
+   "loc": 2440
+  },
+  {
+   "lang": "CSS",
+   "loc": 1238
+  },
+  {
+   "lang": "JavaScript",
+   "loc": 661
+  },
+  {
+   "lang": "SQL",
+   "loc": 644
+  },
+  {
+   "lang": "Lua",
+   "loc": 88
+  }
+ ],
+ "dual_use_projects": [
+  "c2-beacon",
+  "canary-token-generator",
+  "deserialization-gadget-lab",
+  "hash-cracker",
+  "keylogger",
+  "prompt-injection-firewall",
+  "systemd-persistence-scanner",
+  "credential-enumeration",
+  "honeypot-network"
+ ],
+ "safety_note": "This catalog contains functional dual-use offensive tooling (C2 beacon, cross-platform keylogger, deserialization gadget lab, credential enumeration, systemd persistence). Read-only reference for authorized study/defense only. Upstream license is AGPL-3.0 (network-copyleft) despite the README's 'copy directly' wording — do not paste its code into closed-source/commercial projects.",
+ "projects": [
+  {
+   "id": "foundations/hash-identifier",
+   "tier": "foundations",
+   "name": "hash-identifier",
+   "project_number": null,
+   "title": "Identify the algorithm behind a hash string by its prefix, length, and character set — the first move in any password-cracking workflow.",
+   "files": 15,
+   "code_loc": 1198,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 1042
+    },
+    {
+     "lang": "Shell",
+     "loc": 156
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "just",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 13371,
+   "engineering_flags": [
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/foundations/hash-identifier"
+  },
+  {
+   "id": "foundations/http-headers-scanner",
+   "tier": "foundations",
+   "name": "http-headers-scanner",
+   "project_number": null,
+   "title": "Fetch a URL once and grade its HTTP security headers A through F using the same weighted-rubric model as Mozilla Observatory.",
+   "files": 15,
+   "code_loc": 1054,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 898
+    },
+    {
+     "lang": "Shell",
+     "loc": 156
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "just",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 14980,
+   "engineering_flags": [
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/foundations/http-headers-scanner"
+  },
+  {
+   "id": "foundations/password-manager",
+   "tier": "foundations",
+   "name": "password-manager",
+   "project_number": null,
+   "title": "Encrypted command-line password manager — Argon2id key derivation, AES-256-GCM authenticated encryption, atomic durable writes, advisory file locking. One master password protects every credential you trust to it.",
+   "files": 25,
+   "code_loc": 3783,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 3655
+    },
+    {
+     "lang": "Shell",
+     "loc": 128
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "just",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 18311,
+   "engineering_flags": [
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/foundations/password-manager"
+  },
+  {
+   "id": "beginner/base64-tool",
+   "tier": "beginner",
+   "name": "base64-tool",
+   "project_number": 13,
+   "title": "Multi-format encoding/decoding CLI with recursive layer detection for security analysis.",
+   "files": 29,
+   "code_loc": 1870,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 1870
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 6037,
+   "engineering_flags": [
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/base64-tool"
+  },
+  {
+   "id": "beginner/c2-beacon",
+   "tier": "beginner",
+   "name": "c2-beacon",
+   "project_number": 15,
+   "title": "Command and Control beacon and server with XOR-encoded WebSocket protocol, 10 MITRE ATT&CK mapped commands, and a real-time operator dashboard.",
+   "files": 90,
+   "code_loc": 4475,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 2085
+    },
+    {
+     "lang": "SCSS",
+     "loc": 1115
+    },
+    {
+     "lang": "TSX",
+     "loc": 658
+    },
+    {
+     "lang": "TypeScript",
+     "loc": 521
+    },
+    {
+     "lang": "JavaScript",
+     "loc": 96
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "compose",
+    "just",
+    "npm",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 27228,
+   "engineering_flags": [
+    "Docker",
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": true,
+   "dual_use_note": "C2 command-and-control framework (10 MITRE ATT&CK commands: shell/screenshot/keylog/persist)",
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/c2-beacon"
+  },
+  {
+   "id": "beginner/caesar-cipher",
+   "tier": "beginner",
+   "name": "caesar-cipher",
+   "project_number": 10,
+   "title": "Caesar cipher encryption, decryption, and brute-force cracking CLI with frequency analysis.",
+   "files": 24,
+   "code_loc": 774,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 774
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 9471,
+   "engineering_flags": [
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/caesar-cipher"
+  },
+  {
+   "id": "beginner/canary-token-generator",
+   "tier": "beginner",
+   "name": "canary-token-generator",
+   "project_number": 32,
+   "title": "Self-hosted honeytoken generator. Mints seven kinds of tripwire artifacts — invisible web bugs, booby-trapped PDF/DOCX files, fake `.env` and kubeconfig credentials, and a real MySQL wire-protocol decoy — then alerts you on Telegram or a webhook the moment an attacker touches one.",
+   "files": 221,
+   "code_loc": 23487,
+   "languages": [
+    {
+     "lang": "Go",
+     "loc": 18137
+    },
+    {
+     "lang": "TSX",
+     "loc": 2226
+    },
+    {
+     "lang": "SCSS",
+     "loc": 1879
+    },
+    {
+     "lang": "TypeScript",
+     "loc": 940
+    },
+    {
+     "lang": "Shell",
+     "loc": 122
+    }
+   ],
+   "primary_language": "Go",
+   "build_systems": [
+    "compose",
+    "gomod",
+    "just",
+    "npm"
+   ],
+   "learn_docs": 5,
+   "learn_words": 17012,
+   "engineering_flags": [
+    "Docker",
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": true,
+   "dual_use_note": "canary/honeytoken generator",
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/canary-token-generator"
+  },
+  {
+   "id": "beginner/deserialization-gadget-lab",
+   "tier": "beginner",
+   "name": "deserialization-gadget-lab",
+   "project_number": 41,
+   "title": "A Ruby object-deserialization security lab. It reads `Marshal` and YAML bytes without ever reviving them, tells you which classes are in there and which methods those bytes would fire, hunts your loaded code for the classes that make usable gadgets, builds a working payload for a real 2026 CVE, and then stands up a deliberately vulnerable Sinatra target so you can watch the exploit land over HTTP and watch the defense stop it. It ships as a gem plus a container, and every defense in it comes with a written statement of what it cannot do.",
+   "files": 50,
+   "code_loc": 5655,
+   "languages": [
+    {
+     "lang": "Ruby",
+     "loc": 4882
+    },
+    {
+     "lang": "Shell",
+     "loc": 773
+    }
+   ],
+   "primary_language": "Ruby",
+   "build_systems": [
+    "just",
+    "ruby"
+   ],
+   "learn_docs": 5,
+   "learn_words": 19696,
+   "engineering_flags": [
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": true,
+   "dual_use_note": "deserialization gadget-chain exploitation lab",
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/deserialization-gadget-lab"
+  },
+  {
+   "id": "beginner/dns-lookup",
+   "tier": "beginner",
+   "name": "dns-lookup",
+   "project_number": 4,
+   "title": "Professional DNS query CLI with Rich terminal output, reverse lookups, and WHOIS integration.",
+   "files": 23,
+   "code_loc": 1551,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 1551
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "just",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 7660,
+   "engineering_flags": [
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/dns-lookup"
+  },
+  {
+   "id": "beginner/firewall-rule-engine",
+   "tier": "beginner",
+   "name": "firewall-rule-engine",
+   "project_number": 19,
+   "title": "Firewall rule parser, conflict detector, optimizer, and hardened ruleset generator for iptables and nftables.",
+   "files": 30,
+   "code_loc": 4371,
+   "languages": [
+    {
+     "lang": "V",
+     "loc": 4248
+    },
+    {
+     "lang": "Shell",
+     "loc": 123
+    }
+   ],
+   "primary_language": "V",
+   "build_systems": [
+    "vlang"
+   ],
+   "learn_docs": 5,
+   "learn_words": 17274,
+   "engineering_flags": [
+    "README"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/firewall-rule-engine"
+  },
+  {
+   "id": "beginner/hash-cracker",
+   "tier": "beginner",
+   "name": "hash-cracker",
+   "project_number": 18,
+   "title": "Multi-threaded hash cracking tool with dictionary, brute-force, and rule-based mutation attacks.",
+   "files": 52,
+   "code_loc": 2029,
+   "languages": [
+    {
+     "lang": "C++",
+     "loc": 1970
+    },
+    {
+     "lang": "Shell",
+     "loc": 59
+    }
+   ],
+   "primary_language": "C++",
+   "build_systems": [],
+   "learn_docs": 5,
+   "learn_words": 7712,
+   "engineering_flags": [
+    "README",
+    "Test"
+   ],
+   "dual_use": true,
+   "dual_use_note": "hash cracking",
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/hash-cracker"
+  },
+  {
+   "id": "beginner/keylogger",
+   "tier": "beginner",
+   "name": "keylogger",
+   "project_number": 2,
+   "title": "Educational keylogger for security research demonstrating input capture, window tracking, and C2 delivery techniques.",
+   "files": 14,
+   "code_loc": 1014,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 1014
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "just",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 16143,
+   "engineering_flags": [
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": true,
+   "dual_use_note": "cross-platform keystroke capture + webhook exfiltration",
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/keylogger"
+  },
+  {
+   "id": "beginner/linux-cis-hardening-auditor",
+   "tier": "beginner",
+   "name": "linux-cis-hardening-auditor",
+   "project_number": 21,
+   "title": "CIS Benchmark compliance auditor for Linux systems with scored reporting, baseline comparison, and remediation guidance.",
+   "files": 125,
+   "code_loc": 5779,
+   "languages": [
+    {
+     "lang": "Shell",
+     "loc": 5779
+    }
+   ],
+   "primary_language": "Shell",
+   "build_systems": [],
+   "learn_docs": 5,
+   "learn_words": 12228,
+   "engineering_flags": [
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/linux-cis-hardening-auditor"
+  },
+  {
+   "id": "beginner/linux-ebpf-security-tracer",
+   "tier": "beginner",
+   "name": "linux-ebpf-security-tracer",
+   "project_number": 22,
+   "title": "Real-time syscall tracing tool using eBPF for security observability — monitors process execution, file access, network connections, privilege changes, and system operations to detect suspicious behavior.",
+   "files": 32,
+   "code_loc": 2327,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 1821
+    },
+    {
+     "lang": "C",
+     "loc": 387
+    },
+    {
+     "lang": "Shell",
+     "loc": 119
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "just",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 8471,
+   "engineering_flags": [
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/linux-ebpf-security-tracer"
+  },
+  {
+   "id": "beginner/network-traffic-analyzer",
+   "tier": "beginner",
+   "name": "network-traffic-analyzer",
+   "project_number": null,
+   "title": "Two implementations of the same network traffic analyzer — one in Python, one in C++. Both capture packets at the kernel level, parse protocol headers, and display real-time statistics.",
+   "files": 60,
+   "code_loc": 4407,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 2882
+    },
+    {
+     "lang": "C++",
+     "loc": 1480
+    },
+    {
+     "lang": "Shell",
+     "loc": 45
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "just",
+    "python"
+   ],
+   "learn_docs": 10,
+   "learn_words": 21922,
+   "engineering_flags": [
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/network-traffic-analyzer"
+  },
+  {
+   "id": "beginner/prompt-injection-firewall",
+   "tier": "beginner",
+   "name": "prompt-injection-firewall",
+   "project_number": 42,
+   "title": "A prompt injection firewall that gives up on reading the attacker's mind and enforces structure around the model instead. Untrusted text is fenced behind a per-request nonce it cannot guess, the model's tool calls are authorized by the firewall rather than requested-and-granted, and registered secrets are matched on the way out through a closure over every reversible encoding. Text inspection ships too, scored and labelled best-effort, because it catches the copy-pasted eighty percent. It runs keyless and offline, ships an OpenAI-compatible proxy, and includes a six-level arena where each level is a firewall configuration so you can feel which layer stopped you.",
+   "files": 151,
+   "code_loc": 8620,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 5948
+    },
+    {
+     "lang": "SCSS",
+     "loc": 984
+    },
+    {
+     "lang": "TypeScript",
+     "loc": 779
+    },
+    {
+     "lang": "TSX",
+     "loc": 546
+    },
+    {
+     "lang": "Shell",
+     "loc": 267
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "compose",
+    "docker",
+    "just",
+    "npm",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 14392,
+   "engineering_flags": [
+    "Docker",
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": true,
+   "dual_use_note": "LLM prompt-injection offense/defense",
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/prompt-injection-firewall"
+  },
+  {
+   "id": "beginner/simple-port-scanner",
+   "tier": "beginner",
+   "name": "simple-port-scanner",
+   "project_number": 7,
+   "title": "Asynchronous TCP port scanner built with C++ and Boost.Asio for high-concurrency network reconnaissance.",
+   "files": 15,
+   "code_loc": 242,
+   "languages": [
+    {
+     "lang": "C++",
+     "loc": 242
+    }
+   ],
+   "primary_language": "C++",
+   "build_systems": [],
+   "learn_docs": 5,
+   "learn_words": 13761,
+   "engineering_flags": [
+    "README"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/simple-port-scanner"
+  },
+  {
+   "id": "beginner/simple-vulnerability-scanner",
+   "tier": "beginner",
+   "name": "simple-vulnerability-scanner",
+   "project_number": 11,
+   "title": "Fast Python dependency updater and vulnerability scanner written in Go.",
+   "files": 42,
+   "code_loc": 4412,
+   "languages": [
+    {
+     "lang": "Go",
+     "loc": 4412
+    }
+   ],
+   "primary_language": "Go",
+   "build_systems": [
+    "gomod",
+    "pip",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 15443,
+   "engineering_flags": [
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/simple-vulnerability-scanner"
+  },
+  {
+   "id": "beginner/steganography-multi-tool",
+   "tier": "beginner",
+   "name": "steganography-multi-tool",
+   "project_number": null,
+   "title": "A multi-format steganography tool in Go. It takes a message or a file, seals it in a passphrase-encrypted, compressed, integrity-checked envelope, and hides that envelope inside an ordinary-looking carrier: the low bits of an image or an audio file, the Reed-Solomon slack of a QR code, zero-width characters in a block of text, or the structure of a PDF. Point `reveal` at the result and it auto-detects the carrier and hands the message back. It ships as a single static, dependency-free binary and drives from either a scriptable CLI or a guided terminal wizard.",
+   "files": 80,
+   "code_loc": 9644,
+   "languages": [
+    {
+     "lang": "Go",
+     "loc": 9410
+    },
+    {
+     "lang": "Shell",
+     "loc": 234
+    }
+   ],
+   "primary_language": "Go",
+   "build_systems": [
+    "gomod",
+    "just"
+   ],
+   "learn_docs": 5,
+   "learn_words": 10902,
+   "engineering_flags": [
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/steganography-multi-tool"
+  },
+  {
+   "id": "beginner/systemd-persistence-scanner",
+   "tier": "beginner",
+   "name": "systemd-persistence-scanner",
+   "project_number": 22,
+   "title": "Linux persistence mechanism scanner. Drop a single binary, find every backdoor.",
+   "files": 103,
+   "code_loc": 4567,
+   "languages": [
+    {
+     "lang": "Go",
+     "loc": 4508
+    },
+    {
+     "lang": "Shell",
+     "loc": 59
+    }
+   ],
+   "primary_language": "Go",
+   "build_systems": [
+    "gomod"
+   ],
+   "learn_docs": 5,
+   "learn_words": 9255,
+   "engineering_flags": [
+    "README",
+    "Test"
+   ],
+   "dual_use": true,
+   "dual_use_note": "systemd persistence (offense+defense)",
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/beginner/systemd-persistence-scanner"
+  },
+  {
+   "id": "intermediate/api-security-scanner",
+   "tier": "intermediate",
+   "name": "api-security-scanner",
+   "project_number": 1,
+   "title": "Full-stack API vulnerability scanner targeting the OWASP API Security Top 10 with configurable scan modules and a React dashboard.",
+   "files": 124,
+   "code_loc": 6706,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 3501
+    },
+    {
+     "lang": "TSX",
+     "loc": 1098
+    },
+    {
+     "lang": "TypeScript",
+     "loc": 1057
+    },
+    {
+     "lang": "CSS",
+     "loc": 914
+    },
+    {
+     "lang": "JavaScript",
+     "loc": 136
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "compose",
+    "just",
+    "npm",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 23574,
+   "engineering_flags": [
+    "Docker",
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/intermediate/api-security-scanner"
+  },
+  {
+   "id": "intermediate/binary-analysis-tool",
+   "tier": "intermediate",
+   "name": "binary-analysis-tool",
+   "project_number": 20,
+   "title": "Static binary analysis engine with multi-format parsing, YARA scanning, x86 disassembly, and MITRE ATT&CK threat scoring.",
+   "files": 128,
+   "code_loc": 12718,
+   "languages": [
+    {
+     "lang": "Rust",
+     "loc": 6645
+    },
+    {
+     "lang": "SCSS",
+     "loc": 2237
+    },
+    {
+     "lang": "TSX",
+     "loc": 1993
+    },
+    {
+     "lang": "TypeScript",
+     "loc": 1138
+    },
+    {
+     "lang": "C",
+     "loc": 465
+    }
+   ],
+   "primary_language": "Rust",
+   "build_systems": [
+    "cargo",
+    "compose",
+    "just",
+    "npm"
+   ],
+   "learn_docs": 5,
+   "learn_words": 15311,
+   "engineering_flags": [
+    "Docker",
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/intermediate/binary-analysis-tool"
+  },
+  {
+   "id": "intermediate/credential-enumeration",
+   "tier": "intermediate",
+   "name": "credential-enumeration",
+   "project_number": 21,
+   "title": "Post-access credential exposure detection for Linux systems, written in Nim.",
+   "files": 30,
+   "code_loc": 2676,
+   "languages": [
+    {
+     "lang": "Nim",
+     "loc": 2440
+    },
+    {
+     "lang": "Shell",
+     "loc": 236
+    }
+   ],
+   "primary_language": "Nim",
+   "build_systems": [
+    "docker"
+   ],
+   "learn_docs": 5,
+   "learn_words": 14220,
+   "engineering_flags": [
+    "Docker",
+    "README",
+    "Test"
+   ],
+   "dual_use": true,
+   "dual_use_note": "credential enumeration / harvesting",
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/intermediate/credential-enumeration"
+  },
+  {
+   "id": "intermediate/credential-rotation-enforcer",
+   "tier": "intermediate",
+   "name": "credential-rotation-enforcer",
+   "project_number": 27,
+   "title": "Credential rotation enforcer written in Crystal. Tracks credentials, evaluates compile-time-checked policies, and executes the four-step rotation contract against AWS Secrets Manager, HashiCorp Vault, GitHub fine-grained PATs, and local `.env` files. Single binary, live TUI, bidirectional Telegram bot, tamper-evident audit log, signed compliance evidence export.",
+   "files": 194,
+   "code_loc": 8899,
+   "languages": [
+    {
+     "lang": "Crystal",
+     "loc": 8639
+    },
+    {
+     "lang": "Shell",
+     "loc": 228
+    },
+    {
+     "lang": "Python",
+     "loc": 32
+    }
+   ],
+   "primary_language": "Crystal",
+   "build_systems": [
+    "compose",
+    "crystal",
+    "just"
+   ],
+   "learn_docs": 5,
+   "learn_words": 5083,
+   "engineering_flags": [
+    "Docker",
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/intermediate/credential-rotation-enforcer"
+  },
+  {
+   "id": "intermediate/dlp-scanner",
+   "tier": "intermediate",
+   "name": "dlp-scanner",
+   "project_number": 23,
+   "title": "Data Loss Prevention scanner for files, databases, and network traffic.",
+   "files": 91,
+   "code_loc": 7887,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 7866
+    },
+    {
+     "lang": "Shell",
+     "loc": 21
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "just",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 12721,
+   "engineering_flags": [
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/intermediate/dlp-scanner"
+  },
+  {
+   "id": "intermediate/docker-security-audit",
+   "tier": "intermediate",
+   "name": "docker-security-audit",
+   "project_number": 8,
+   "title": "Docker security audit CLI that checks containers, images, and Dockerfiles against CIS Docker Benchmark v1.6.0.",
+   "files": 61,
+   "code_loc": 11561,
+   "languages": [
+    {
+     "lang": "Go",
+     "loc": 11561
+    }
+   ],
+   "primary_language": "Go",
+   "build_systems": [
+    "docker",
+    "gomod",
+    "just"
+   ],
+   "learn_docs": 5,
+   "learn_words": 17062,
+   "engineering_flags": [
+    "Docker",
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/intermediate/docker-security-audit"
+  },
+  {
+   "id": "intermediate/ja3-ja4-tls-fingerprinting",
+   "tier": "intermediate",
+   "name": "ja3-ja4-tls-fingerprinting",
+   "project_number": 34,
+   "title": "A passive TLS fingerprinting sensor in Rust. Point it at a capture file or a live interface and it computes the JA3, JA4, JA4S, JA4H, JA4X, and JA4T fingerprints of every handshake, matches them against a local intelligence database, and flags the things a fingerprint alone cannot hide: a TLS stack that disagrees with its own User-Agent, a brand-new fingerprint, a client that rotates its identity to evade a blocklist. It reads TCP and the TLS hidden inside QUIC initial packets, never sends a byte, and carries half a million fingerprints a second.",
+   "files": 180,
+   "code_loc": 16735,
+   "languages": [
+    {
+     "lang": "Rust",
+     "loc": 12180
+    },
+    {
+     "lang": "SCSS",
+     "loc": 2133
+    },
+    {
+     "lang": "TSX",
+     "loc": 1046
+    },
+    {
+     "lang": "TypeScript",
+     "loc": 864
+    },
+    {
+     "lang": "Shell",
+     "loc": 416
+    }
+   ],
+   "primary_language": "Rust",
+   "build_systems": [
+    "cargo",
+    "compose",
+    "just",
+    "npm"
+   ],
+   "learn_docs": 7,
+   "learn_words": 11707,
+   "engineering_flags": [
+    "Docker",
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/intermediate/ja3-ja4-tls-fingerprinting"
+  },
+  {
+   "id": "intermediate/sbom-generator-vulnerability-matcher",
+   "tier": "intermediate",
+   "name": "sbom-generator-vulnerability-matcher",
+   "project_number": 24,
+   "title": "SBOM generator and vulnerability matcher that scans Go, Node.js, and Python projects, produces SPDX 2.3 and CycloneDX 1.5 documents, and cross-references packages against OSV and NVD vulnerability databases.",
+   "files": 69,
+   "code_loc": 3810,
+   "languages": [
+    {
+     "lang": "Go",
+     "loc": 3654
+    },
+    {
+     "lang": "Shell",
+     "loc": 156
+    }
+   ],
+   "primary_language": "Go",
+   "build_systems": [
+    "gomod",
+    "npm",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 15523,
+   "engineering_flags": [
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/intermediate/sbom-generator-vulnerability-matcher"
+  },
+  {
+   "id": "intermediate/secrets-scanner",
+   "tier": "intermediate",
+   "name": "secrets-scanner",
+   "project_number": 16,
+   "title": "Secrets scanner for codebases and git repositories, written in Go.",
+   "files": 58,
+   "code_loc": 8704,
+   "languages": [
+    {
+     "lang": "Go",
+     "loc": 8524
+    },
+    {
+     "lang": "Shell",
+     "loc": 177
+    },
+    {
+     "lang": "Python",
+     "loc": 2
+    },
+    {
+     "lang": "JavaScript",
+     "loc": 1
+    }
+   ],
+   "primary_language": "Go",
+   "build_systems": [
+    "gomod"
+   ],
+   "learn_docs": 5,
+   "learn_words": 9837,
+   "engineering_flags": [
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/intermediate/secrets-scanner"
+  },
+  {
+   "id": "intermediate/security-news-scraper",
+   "tier": "intermediate",
+   "name": "security-news-scraper",
+   "project_number": 39,
+   "title": "A keyless security-news and CVE intelligence engine in Go. Point it at a set of RSS and Atom feeds and it fetches them politely, clusters the same story as it breaks across outlets, extracts every CVE it mentions, enriches each one with authoritative exploit intelligence, ranks the whole set by what actually matters, and hands you a browsable dossier in your terminal. It ships as a single static binary over a local SQLite store, needs no API key to do any of it, and treats the news as the product with the CVE data as the intelligence that sharpens it.",
+   "files": 121,
+   "code_loc": 10427,
+   "languages": [
+    {
+     "lang": "Go",
+     "loc": 10109
+    },
+    {
+     "lang": "Shell",
+     "loc": 233
+    },
+    {
+     "lang": "SQL",
+     "loc": 85
+    }
+   ],
+   "primary_language": "Go",
+   "build_systems": [
+    "gomod",
+    "just"
+   ],
+   "learn_docs": 5,
+   "learn_words": 8196,
+   "engineering_flags": [
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/intermediate/security-news-scraper"
+  },
+  {
+   "id": "intermediate/siem-dashboard",
+   "tier": "intermediate",
+   "name": "siem-dashboard",
+   "project_number": 14,
+   "title": "Full-stack SIEM dashboard with real-time log correlation and MITRE ATT&CK attack scenario simulation engine.",
+   "files": 179,
+   "code_loc": 12304,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 4273
+    },
+    {
+     "lang": "SCSS",
+     "loc": 2858
+    },
+    {
+     "lang": "TypeScript",
+     "loc": 2565
+    },
+    {
+     "lang": "TSX",
+     "loc": 2512
+    },
+    {
+     "lang": "JavaScript",
+     "loc": 96
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "compose",
+    "just",
+    "npm",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 19426,
+   "engineering_flags": [
+    "Docker",
+    "Just",
+    "README"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/intermediate/siem-dashboard"
+  },
+  {
+   "id": "advanced/ai-threat-detection",
+   "tier": "advanced",
+   "name": "ai-threat-detection",
+   "project_number": 17,
+   "title": "AI-powered threat detection engine that analyzes nginx access logs using a 3-model ML ensemble to classify HTTP traffic as benign or malicious in real time.",
+   "files": 190,
+   "code_loc": 13816,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 10082
+    },
+    {
+     "lang": "SCSS",
+     "loc": 1735
+    },
+    {
+     "lang": "TSX",
+     "loc": 1014
+    },
+    {
+     "lang": "TypeScript",
+     "loc": 838
+    },
+    {
+     "lang": "JavaScript",
+     "loc": 96
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "compose",
+    "docker",
+    "just",
+    "npm",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 17715,
+   "engineering_flags": [
+    "Docker",
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/advanced/ai-threat-detection"
+  },
+  {
+   "id": "advanced/api-rate-limiter",
+   "tier": "advanced",
+   "name": "api-rate-limiter",
+   "project_number": 5,
+   "title": "Enterprise rate limiting for FastAPI using HTTP 420 \"Enhance Your Calm\".",
+   "files": 50,
+   "code_loc": 7044,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 6956
+    },
+    {
+     "lang": "Lua",
+     "loc": 88
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "compose",
+    "just",
+    "python"
+   ],
+   "learn_docs": 6,
+   "learn_words": 16269,
+   "engineering_flags": [
+    "Docker",
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/advanced/api-rate-limiter"
+  },
+  {
+   "id": "advanced/bug-bounty-platform",
+   "tier": "advanced",
+   "name": "bug-bounty-platform",
+   "project_number": 6,
+   "title": "Production-ready enterprise bug bounty platform with role-based access, CVSS scoring, and full report triage workflows.",
+   "files": 206,
+   "code_loc": 20506,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 7494
+    },
+    {
+     "lang": "SCSS",
+     "loc": 5581
+    },
+    {
+     "lang": "TSX",
+     "loc": 4294
+    },
+    {
+     "lang": "TypeScript",
+     "loc": 3041
+    },
+    {
+     "lang": "JavaScript",
+     "loc": 96
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "compose",
+    "just",
+    "npm",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 14083,
+   "engineering_flags": [
+    "Docker",
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/advanced/bug-bounty-platform"
+  },
+  {
+   "id": "advanced/encrypted-p2p-chat",
+   "tier": "advanced",
+   "name": "encrypted-p2p-chat",
+   "project_number": 3,
+   "title": "End-to-end encrypted peer-to-peer chat with Signal Protocol (Double Ratchet + X3DH) and WebAuthn/Passkey authentication.",
+   "files": 177,
+   "code_loc": 13929,
+   "languages": [
+    {
+     "lang": "TypeScript",
+     "loc": 4852
+    },
+    {
+     "lang": "Python",
+     "loc": 4714
+    },
+    {
+     "lang": "TSX",
+     "loc": 3899
+    },
+    {
+     "lang": "CSS",
+     "loc": 324
+    },
+    {
+     "lang": "JavaScript",
+     "loc": 140
+    }
+   ],
+   "primary_language": "TypeScript",
+   "build_systems": [
+    "compose",
+    "just",
+    "npm",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 44347,
+   "engineering_flags": [
+    "Docker",
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/advanced/encrypted-p2p-chat"
+  },
+  {
+   "id": "advanced/haskell-reverse-proxy",
+   "tier": "advanced",
+   "name": "haskell-reverse-proxy",
+   "project_number": null,
+   "title": "High-concurrency reverse proxy written in Haskell (upstream marks it IN PROGRESS).",
+   "files": 62,
+   "code_loc": 8461,
+   "languages": [
+    {
+     "lang": "Haskell",
+     "loc": 7963
+    },
+    {
+     "lang": "Python",
+     "loc": 433
+    },
+    {
+     "lang": "Shell",
+     "loc": 65
+    }
+   ],
+   "primary_language": "Haskell",
+   "build_systems": [
+    "just"
+   ],
+   "learn_docs": 0,
+   "learn_words": 0,
+   "engineering_flags": [
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/advanced/haskell-reverse-proxy"
+  },
+  {
+   "id": "advanced/honeypot-network",
+   "tier": "advanced",
+   "name": "honeypot-network",
+   "project_number": 26,
+   "title": "Multi-protocol honeypot network that simulates six real services, captures attacker behavior, maps to MITRE ATT&CK, extracts IOCs, and visualizes everything through a real-time dashboard.",
+   "files": 172,
+   "code_loc": 13576,
+   "languages": [
+    {
+     "lang": "Go",
+     "loc": 10127
+    },
+    {
+     "lang": "TSX",
+     "loc": 1060
+    },
+    {
+     "lang": "TypeScript",
+     "loc": 971
+    },
+    {
+     "lang": "SCSS",
+     "loc": 964
+    },
+    {
+     "lang": "SQL",
+     "loc": 236
+    }
+   ],
+   "primary_language": "Go",
+   "build_systems": [
+    "compose",
+    "gomod",
+    "npm"
+   ],
+   "learn_docs": 5,
+   "learn_words": 10172,
+   "engineering_flags": [
+    "Docker",
+    "README",
+    "Test"
+   ],
+   "dual_use": true,
+   "dual_use_note": "honeypot network (defensive deception)",
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/advanced/honeypot-network"
+  },
+  {
+   "id": "advanced/hsm-emulator",
+   "tier": "advanced",
+   "name": "hsm-emulator",
+   "project_number": 33,
+   "title": "A software **Hardware Security Module** that compiles to a real Cryptoki (PKCS#11) shared object. Load it with `pkcs11-tool`, OpenSSL, or any PKCS#11 host the same way you would a real smartcard or HSM. It speaks the C ABI byte for byte, generates and stores keys, signs and encrypts, and keeps private key material sealed on disk and zeroized in RAM.",
+   "files": 51,
+   "code_loc": 9706,
+   "languages": [
+    {
+     "lang": "Zig",
+     "loc": 6903
+    },
+    {
+     "lang": "C",
+     "loc": 2646
+    },
+    {
+     "lang": "Shell",
+     "loc": 157
+    }
+   ],
+   "primary_language": "Zig",
+   "build_systems": [
+    "docker",
+    "just",
+    "zig"
+   ],
+   "learn_docs": 7,
+   "learn_words": 21776,
+   "engineering_flags": [
+    "Docker",
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/advanced/hsm-emulator"
+  },
+  {
+   "id": "advanced/monitor-the-situation-dashboard",
+   "tier": "advanced",
+   "name": "monitor-the-situation-dashboard",
+   "project_number": 28,
+   "title": "Operator-grade real-time situational awareness dashboard. Eleven live feeds across cyber, world, and finance — fused into a single 3D-globe SOC view with WebSocket delivery and configurable alerting.",
+   "files": 366,
+   "code_loc": 30061,
+   "languages": [
+    {
+     "lang": "Go",
+     "loc": 18635
+    },
+    {
+     "lang": "TypeScript",
+     "loc": 3917
+    },
+    {
+     "lang": "TSX",
+     "loc": 3735
+    },
+    {
+     "lang": "SCSS",
+     "loc": 3355
+    },
+    {
+     "lang": "SQL",
+     "loc": 323
+    }
+   ],
+   "primary_language": "Go",
+   "build_systems": [
+    "compose",
+    "gomod",
+    "npm"
+   ],
+   "learn_docs": 5,
+   "learn_words": 12501,
+   "engineering_flags": [
+    "Docker",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/advanced/monitor-the-situation-dashboard"
+  },
+  {
+   "id": "advanced/rveng",
+   "tier": "advanced",
+   "name": "rveng",
+   "project_number": 37,
+   "title": "An interactive reverse-engineering learning platform. It hands you a real compiled binary, asks a concrete question about it, gives you an in-browser hex viewer, disassembler, section map, and string scanner to answer it, and grades your answer. Only when you are right does it reveal the original C source, so you connect the machine code you just read back to the code that produced it. One framework-free Python analysis engine wears three faces: a web app, a read-only HTTP API, and an embeddable library.",
+   "files": 153,
+   "code_loc": 5403,
+   "languages": [
+    {
+     "lang": "Python",
+     "loc": 2165
+    },
+    {
+     "lang": "SCSS",
+     "loc": 1052
+    },
+    {
+     "lang": "TSX",
+     "loc": 865
+    },
+    {
+     "lang": "TypeScript",
+     "loc": 818
+    },
+    {
+     "lang": "Shell",
+     "loc": 260
+    }
+   ],
+   "primary_language": "Python",
+   "build_systems": [
+    "compose",
+    "just",
+    "npm",
+    "python"
+   ],
+   "learn_docs": 5,
+   "learn_words": 5634,
+   "engineering_flags": [
+    "Docker",
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/advanced/rveng"
+  },
+  {
+   "id": "advanced/zero-day-vulnerability-scanner",
+   "tier": "advanced",
+   "name": "zero-day-vulnerability-scanner",
+   "project_number": 42,
+   "title": "A keyless memory-corruption scanner for C and C++ parsers in Rust. Point it at a source tree and it ranks which functions actually parse untrusted bytes, writes a fuzz harness for the best one with no model in the loop, builds the library under AddressSanitizer without a hand-written build script, runs an AFL++ campaign, then collapses the crash pile into distinct bugs with a stack-hash key, hand-labelled severity, a minimized reproducer proven to still trigger the same bug, and a coordinated-disclosure advisory in human and machine form. It needs no API key, no account and no cloud, and every stage refuses out loud rather than guessing.",
+   "files": 160,
+   "code_loc": 42592,
+   "languages": [
+    {
+     "lang": "Rust",
+     "loc": 37546
+    },
+    {
+     "lang": "Shell",
+     "loc": 4931
+    },
+    {
+     "lang": "C",
+     "loc": 115
+    }
+   ],
+   "primary_language": "Rust",
+   "build_systems": [
+    "cargo",
+    "just"
+   ],
+   "learn_docs": 5,
+   "learn_words": 10441,
+   "engineering_flags": [
+    "Just",
+    "README",
+    "Test"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/advanced/zero-day-vulnerability-scanner"
+  },
+  {
+   "id": "advanced/zig-stateless-scanner",
+   "tier": "advanced",
+   "name": "zig-stateless-scanner",
+   "project_number": 36,
+   "title": "A stateless, line-rate mass TCP/UDP port scanner in the lineage of masscan and zmap. The name is Zulu for \"to hunt.\" It holds no per-connection state, encodes probe identity in a SipHash cookie, walks the address space with a cyclic-group permutation, and ships as a single static binary with no libpcap, no libgmp, and no PCRE. It proves its packet logic against known-answer tests and stays memory-safe under Zig's ReleaseSafe.",
+   "files": 46,
+   "code_loc": 10099,
+   "languages": [
+    {
+     "lang": "Zig",
+     "loc": 9800
+    },
+    {
+     "lang": "Shell",
+     "loc": 299
+    }
+   ],
+   "primary_language": "Zig",
+   "build_systems": [
+    "just",
+    "zig"
+   ],
+   "learn_docs": 6,
+   "learn_words": 7325,
+   "engineering_flags": [
+    "Just",
+    "README"
+   ],
+   "dual_use": false,
+   "dual_use_note": null,
+   "github_url": "https://github.com/CarterPerez-dev/Cybersecurity-Projects/tree/main/PROJECTS/advanced/zig-stateless-scanner"
+  }
+ ],
+ "synopses_blueprints": [
+  {
+   "tier": "beginner",
+   "spec_file": "Base64.Encoder.Decoder.md",
+   "title": "Base64 Encoder Decoder",
+   "status": "built"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Caesar.Cipher.md",
+   "title": "Caesar Cipher",
+   "status": "built"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Canary.Token.Generator.md",
+   "title": "Canary Token Generator",
+   "status": "built"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "DNS.Lookup.Tool.md",
+   "title": "DNS Lookup Tool",
+   "status": "built"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "DNS.Sinkhole.md",
+   "title": "DNS Sinkhole",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Ghost.On.The.Wire.md",
+   "title": "Ghost On The Wire",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Hash.Cracker.md",
+   "title": "Hash Cracker",
+   "status": "built"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Keylogger.md",
+   "title": "Keylogger",
+   "status": "built"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "LLM.Prompt.Injection.Firewall.md",
+   "title": "LLM Prompt Injection Firewall",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Linux.CIS.Hardening.Auditor.md",
+   "title": "Linux CIS Hardening Auditor",
+   "status": "built"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Linux.eBPF.Security.Tracer.md",
+   "title": "Linux eBPF Security Tracer",
+   "status": "built"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Metadata.Scrubber.Tool.md",
+   "title": "Metadata Scrubber Tool",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Network.Traffic.Analyzer.md",
+   "title": "Network Traffic Analyzer",
+   "status": "built"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Phishing.Domain.Generator.And.Quishing.Scanner.md",
+   "title": "Phishing Domain Generator And Quishing Scanner",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "SSH.Brute.Force.Detector.md",
+   "title": "SSH Brute Force Detector",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Security.News.Scraper.md",
+   "title": "Security News Scraper",
+   "status": "built"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Simple.Port.Scanner.md",
+   "title": "Simple Port Scanner",
+   "status": "built"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Simple.Vulnerability.Scanner.md",
+   "title": "Simple Vulnerability Scanner",
+   "status": "built"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Steganography.Multi.Tool.md",
+   "title": "Steganography Multi Tool",
+   "status": "built"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Systemd.Persistence.Scanner.md",
+   "title": "Systemd Persistence Scanner",
+   "status": "built"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Trojan.Application.Builder.md",
+   "title": "Trojan Application Builder",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "Vlang.Firewall.Rule.Engine.md",
+   "title": "Vlang Firewall Rule Engine",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "beginner",
+   "spec_file": "WiFi.Network.Scanner.md",
+   "title": "WiFi Network Scanner",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "API.Rate.Limiter.md",
+   "title": "API Rate Limiter",
+   "status": "built"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "Binary.Analysis.Tool.md",
+   "title": "Binary Analysis Tool",
+   "status": "built"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "Chaos.Engineering.Security.Tool.md",
+   "title": "Chaos Engineering Security Tool",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "Container.Security.Scanner.md",
+   "title": "Container Security Scanner",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "Credential.Rotation.Enforcer.md",
+   "title": "Credential Rotation Enforcer",
+   "status": "built"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "DDoS.Mitigation.Tool.md",
+   "title": "DDoS Mitigation Tool",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "DLP.Scanner.md",
+   "title": "DLP Scanner",
+   "status": "built"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "Docker.Security.Audit.md",
+   "title": "Docker Security Audit",
+   "status": "built"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "Encrypted.Chat.Application.md",
+   "title": "Encrypted Chat Application",
+   "status": "built"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "GraphQL.Security.Tester.md",
+   "title": "GraphQL Security Tester",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "JA3.JA4.TLS.Fingerprinting.Tool.md",
+   "title": "JA3 JA4 TLS Fingerprinting Tool",
+   "status": "built"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "Lua.Nginx.Edge.Backend.md",
+   "title": "Lua Nginx Edge Backend",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "Mobile.App.Security.Analyzer.md",
+   "title": "Mobile App Security Analyzer",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "Nim.Credential.Harvester.md",
+   "title": "Nim Credential Harvester",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "Payload.Obfuscation.Engine.md",
+   "title": "Payload Obfuscation Engine",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "Privesc.Playground.md",
+   "title": "Privesc Playground",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "Race.Condition.Exploiter.md",
+   "title": "Race Condition Exploiter",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "SBOM.Generator.md",
+   "title": "SBOM Generator",
+   "status": "built"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "SIEM.Dashboard.md",
+   "title": "SIEM Dashboard",
+   "status": "built"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "Subdomain.Takeover.Scanner.md",
+   "title": "Subdomain Takeover Scanner",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "Supply.Chain.Attack.Simulator.md",
+   "title": "Supply Chain Attack Simulator",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "Token.Abuse.Playground.md",
+   "title": "Token Abuse Playground",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "intermediate",
+   "spec_file": "Wireless.Deauth.Detector.md",
+   "title": "Wireless Deauth Detector",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "AI.Threat.Detection.md",
+   "title": "AI Threat Detection",
+   "status": "built"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Advanced.Persistent.Threat.Simulator.md",
+   "title": "Advanced Persistent Threat Simulator",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Adversarial.ML.Attacker.md",
+   "title": "Adversarial ML Attacker",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Automated.Penetration.Testing.md",
+   "title": "Automated Penetration Testing",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Autonomous.Security.Operations.Center .md",
+   "title": "Autonomous Security Operations Center",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Blockchain.Smart.Contract.Auditor.md",
+   "title": "Blockchain Smart Contract Auditor",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Bug.Bounty.Platform.md",
+   "title": "Bug Bounty Platform",
+   "status": "built"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Cloud.Security.Compliance.Dashboard.md",
+   "title": "Cloud Security Compliance Dashboard",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Distributed.Password.Cracker.md",
+   "title": "Distributed Password Cracker",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Exploit.Development.Framework.md",
+   "title": "Exploit Development Framework",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Hardware.Security.Module.Emulator.md",
+   "title": "Hardware Security Module Emulator",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Honeypot.Network.md",
+   "title": "Honeypot Network",
+   "status": "built"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Kernel.Rootkit.Detection.md",
+   "title": "Kernel Rootkit Detection",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Malware.Analysis.Platform.md",
+   "title": "Malware Analysis Platform",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Monitor.The.Situation.Dashboard.md",
+   "title": "Monitor The Situation Dashboard",
+   "status": "built"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Network.Covert.Channel.md",
+   "title": "Network Covert Channel",
+   "status": "built"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Quantum.Resistant.Encryption.md",
+   "title": "Quantum Resistant Encryption",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Supply.Chain.Security.Analyzer.md",
+   "title": "Supply Chain Security Analyzer",
+   "status": "planned-or-variant"
+  },
+  {
+   "tier": "advanced",
+   "spec_file": "Zero.Day.Vulnerability.Scanner.md",
+   "title": "Zero Day Vulnerability Scanner",
+   "status": "built"
+  }
+ ],
+ "roadmaps": [
+  "APPLICATION-SECURITY",
+  "CLOUD-SECURITY-ENGINEER",
+  "GRC-ANALYST",
+  "INCIDENT-RESPONDER",
+  "NETWORK-ENGINEER",
+  "PENTESTER",
+  "SECURITY-ARCHITECT",
+  "SECURITY-ENGINEER",
+  "SOC-ANALYST",
+  "THREAT-INTELLIGENCE-ANALYST"
+ ],
+ "resource_guides": [
+  "CERTIFICATIONS",
+  "COMMUNITIES",
+  "COURSES",
+  "FRAMEWORKS",
+  "TOOLS"
+ ]
+}

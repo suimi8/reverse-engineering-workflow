@@ -53,6 +53,22 @@ Describe 'Skill routing scripts' {
         (([string]$result.skill.path) -match 'ce-reverse') | Should Be $true
     }
 
+    It 'select_skill routes a cybersecurity-projects catalog task to the cybersecurity-projects-catalog module' {
+        $json = & (Join-Path $rootDir 'scripts\select_skill.ps1') -TaskText '帮我看看 CarterPerez 的 Cybersecurity-Projects 里有哪些安全项目源码' -AsJson | Out-String
+        $result = $json | ConvertFrom-Json
+        $result.ok | Should Be $true
+        (([string]$result.skill.path) -match 'cybersecurity-projects-catalog') | Should Be $true
+    }
+
+    It 'select_skill still routes an IDA binary-analysis task to a tool module (not preempted by cybersecurity-projects-catalog)' {
+        $json = & (Join-Path $rootDir 'scripts\select_skill.ps1') -TaskText '帮我用 ida 分析这个二进制里的算法' -AsJson | Out-String
+        $result = $json | ConvertFrom-Json
+        $result.ok | Should Be $true
+        # the new catalog rule (0.84) must NOT preempt an IDA tool task (ida-reverse 0.88)
+        (([string]$result.skill.path) -match 'cybersecurity-projects-catalog') | Should Be $false
+        (([string]$result.skill.path) -match 'ida-reverse') | Should Be $true
+    }
+
     It 'select_skill routes an attack-flow orchestration task to pentest-orchestration' {
         $json = & (Join-Path $rootDir 'scripts\select_skill.ps1') -TaskText '帮我设计一个攻击流程编排器，把侦察扫描利用报告串成一条可复现的流水线' -AsJson | Out-String
         $result = $json | ConvertFrom-Json

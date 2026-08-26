@@ -238,5 +238,11 @@
     "pattern": "wechat|\u5fae\u4fe1|\u5c0f\u7a0b\u5e8f|mini.?program|wxapkg|mitmproxy|sign.*req.?id|9w9|(\u5fae\u4fe1|\u5c0f\u7a0b\u5e8f|wechat).{0,16}(\u6293\u5305|\u7b7e\u540d|\u62bd\u5956|\u7b7e\u5230|\u4efb\u52a1|\u8f6c\u76d8|\u798f\u5361|\u7ea2\u5305|\u52a9\u529b|\u5185\u5b58|\u9006\u5411|\u81ea\u52a8\u5316)",
     "confidence": 0.92,
     "reason": "Task text matches WeChat mini-program protocol reverse engineering (mitmproxy sniffing, sign/req-id signature cracking, V8 memory extraction, business API chain, PySide6 GUI)."
+  },
+  {
+    "name": "cybersecurity-projects-catalog",
+    "pattern": "carter.?perez|cybersecurity.?projects|certgames|gamified.{0,4}cyber|(\u7f51\u7edc\u5b89\u5168|\u5b89\u5168)(\u9879\u76ee|\u5de5\u7a0b).{0,6}(\u76ee\u5f55|\u5408\u96c6|\u96c6\u5408|\u6e90\u7801|\u53c2\u8003|\u5b9e\u73b0|\u8303\u4f8b|\u5b66\u4e60|\u6e05\u5355|\u8def\u7ebf|catalog)|(\u76ee\u5f55|\u5408\u96c6|\u6e90\u7801|\u53c2\u8003|\u5b9e\u73b0|\u8303\u4f8b|\u5b66\u4e60|\u6e05\u5355|catalog).{0,6}(\u7f51\u7edc\u5b89\u5168|\u5b89\u5168)(\u9879\u76ee|\u5de5\u7a0b)|70.{0,4}\u5b89\u5168\u9879\u76ee|\u5b89\u5168\u9879\u76ee.{0,4}(\u6e90\u7801|\u53c2\u8003|\u5b9e\u73b0|\u8303\u4f8b|\u84dd\u56fe|\u9009\u9898|\u6e05\u5355)|security.{0,4}project.{0,6}(catalog|reference|collection|source)|(\u5b89\u5168|\u6e17\u900f|red.?team).{0,6}\u5b66\u4e60(\u9879\u76ee|\u8def\u7ebf).{0,6}(\u6e90\u7801|\u53c2\u8003|\u6e05\u5355)",
+    "confidence": 0.84,
+    "reason": "Task text matches the cybersecurity + reverse-engineering runnable-project learning catalog (CarterPerez-dev/Cybersecurity-Projects, 42/70 projects across 4 tiers, 19 languages, learn curriculum); read-only curated directory with an offline snapshot."
   }
 ]

@@ -586,5 +586,9 @@
   {
     "path": "security-research-modules/skills/pentest-orchestration/MODULE.md",
     "display_name": "suimi攻击流程编排"
+  },
+  {
+    "path": "github-reverse-modules/skills/cybersecurity-projects-catalog/MODULE.md",
+    "display_name": "suimi网络安全项目目录"
   }
 ]

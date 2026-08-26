@@ -222,6 +222,7 @@ The following upstream reverse-only modules were appended without replacing loca
 - `github-reverse-modules/skills/web-js-reverse/MODULE.md`: Web frontend JS reverse, obfuscation deobfuscation, JSVMP methodology, CDP bypass, TLS fingerprint, env patching, WASM reverse, anti-crawler.
 - `github-reverse-modules/skills/web-crypto-reverse/MODULE.md`: Web/APK crypto reverse, identify and rebuild encryption/signing algorithms in Python, specialist index, online verification.
 - `github-reverse-modules/skills/game-security-research/MODULE.md`: read-only game security research directory (awesome-game-security snapshot, 4231 entries / 36 categories): game hacking, anti-cheat, DMA, vulnerable drivers, kernel protection, engine security, mobile game security, graphics API hooking, emulators; offline snapshot JSON included.
+- `github-reverse-modules/skills/cybersecurity-projects-catalog/MODULE.md`: read-only cybersecurity + reverse-engineering project catalog (CarterPerez-dev/Cybersecurity-Projects full-tree snapshot, 42/70 built projects, 4 tiers, 368,879 LOC in 19 languages, 594,192-word learn curriculum): binary-analysis-tool (ELF/Mach-O/PE + disasm + YARA), rveng (ELF challenge platform), lisdex fuzzer, ja3-ja4 TLS fingerprinting, SIEM/honeypot, plus dual-use c2-beacon/keylogger; offline snapshot JSON included; AGPL-3.0, reference-only.
 
 ## Shared Upstream Scripts
 
