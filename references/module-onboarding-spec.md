@@ -507,3 +507,23 @@ game-security-research 入库后 healthcheck 24/24 PASS 但 tests/routing.Tests.
 **Validation**
 
 2026-08-25 实践验证：对 module-onboarding-spec.md 做覆盖矩阵审计，发现 4 项检查未入表 + 脱敏边界主题完全缺失；新增第 13/14 节后 healthcheck 24/24 PASS、0 FAIL；对照 game-security-research 快照（4231 条目 0 缺 URL）与官方 10 skills（无 TRUNCATED 标记）验证验收方法可行；该审计法此前已两次发现 healthcheck 覆盖不到的缺口（路由回归用例缺失），证明"healthcheck 全绿 ≠ 规范完整"。
+
+### 带 healthcheck 硬契约的 MODULE.md 只增补正文零风险扩写法
+
+- source: `20260827-023227-带-healthcheck-硬契约的-module-md-只增补正文零风险扩写法`
+- category: tooling
+- applies_to: 对本包 github/local/security 三棵树中带 frontmatter 正则契约+中文名行+5-token 反馈契约+BOM/CRLF 的 MODULE.md 做仅增补正文的扩写或加注时
+- purpose_zh: 批量补厚或加注模块时零风险保住 healthcheck 硬契约，避免 frontmatter/中文名/反馈 token/BOM/换行被破坏导致 mandatory-final-feedback-contract 等检查 fail
+- confidence: 4/5
+
+**Lesson**
+
+用锚点唯一化的字节级插入 + validate-all-then-write-all + BOM与换行保持：读原始字节 -> 按 BOM 决定 utf-8-sig/utf-8 解码 -> 探测 CRLF/LF -> 只对唯一锚点做一次 replace 或在中文名行后按行插入 -> 写回保留原 BOM 与换行；先对所有编辑断言(命中计数==1)全部通过再统一写盘，任一锚点不唯一即整体放弃、杜绝半改；frontmatter 四行 / 中文名行 / 5 个反馈 token 一律不碰，只在其后正文增补。
+
+**Evidence**
+
+本轮多子代理补厚 9 个模块(ghidra/go-rust/macos/thick-client/browser-ext/protocol + flet/win-python-recovery/service-persistence)并给 14 个 competition 模块加归一化指针，全部只增补正文；改后 healthcheck 24 PASS/0 FAIL/0 WARN、unit-tests 30/30、5-token 与 BOM 逐文件核验未变
+
+**Validation**
+
+改后 scripts/healthcheck.ps1 必须 0 fail(mandatory-final-feedback-contract / chinese-skill-names / cross-reference-completeness 全绿)；grep 逐文件确认 5 token 各计数 1、frontmatter 四行与中文名行未变；od 确认 BOM 未变
