@@ -995,7 +995,7 @@ Promoted to `references/module-onboarding-spec.md` by `scripts/promote_skill_les
 ## 2026-08-26 16:36:49 +08:00 - github-repo-recon 免克隆仓库架构逆向法
 
 - id: 20260826-163649-github-repo-recon-免克隆仓库架构逆向法
-- status: candidate
+- status: promoted
 - category: method
 - confidence: 4/5
 - applies_to: 分析公开 GitHub 安全/逆向项目的真实架构与能力边界
@@ -1018,10 +1018,15 @@ Promoted to `references/module-onboarding-spec.md` by `scripts/promote_skill_les
 ### Next Action
 
 review
+
+### Promotion
+
+Promoted to `references/reverse-engineering-methods.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-27 04:57:53 +08:00.
+
 ## 2026-08-26 17:10:41 +08:00 - 补全模块注册会激活其路由规则-必须跑兄弟任务回归防抢占
 
 - id: 20260826-171041-补全模块注册会激活其路由规则-必须跑兄弟任务回归防抢占
-- status: candidate
+- status: promoted
 - category: method
 - confidence: 4/5
 - applies_to: 给本地/安全模块补登记时同步校验其 routing-rules.json 规则不抢占通用兄弟任务
@@ -1044,6 +1049,11 @@ healthcheck 24/24 PASS；routing 回归：JSVMP->root、wechat 任务->wechat、
 ### Next Action
 
 review
+
+### Promotion
+
+Promoted to `references/module-onboarding-spec.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-27 04:57:54 +08:00.
+
 ## 2026-08-27 02:32:27 +08:00 - 带 healthcheck 硬契约的 MODULE.md 只增补正文零风险扩写法
 
 - id: 20260827-023227-带-healthcheck-硬契约的-module-md-只增补正文零风险扩写法
@@ -1074,4 +1084,67 @@ review
 ### Promotion
 
 Promoted to `references/module-onboarding-spec.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-27 02:33:08 +08:00.
+
+
+## 2026-08-27 04:16:16 +08:00 - GitHub 仓库零落地全量化静态取证法
+
+- id: 20260827-041616-github-仓库零落地全量化静态取证法
+- status: promoted
+- category: static
+- confidence: 4/5
+- applies_to: 任意公开 GitHub/Git 仓库的真实用途与成色判定，禁止污染工作目录
+- purpose_zh: 在不依赖 README 结论、不在工作目录留文件的前提下量化判定仓库真实作用与成色
+- target_skill_path: references/reverse-engineering-methods.md
+- tags: github, repo-audit, static-analysis, no-footprint, oss-forensics
+
+### Evidence
+
+本轮对 CarterPerez-dev/Cybersecurity-Projects (42/70 项目, 368879 LOC, 约5000 测试函数, 仅 1 处 TODO) 与 freestylefly/awesome-gpt-image-2 (535 案例, 67.4 万字符提示词语料, 41 个 Serverless 端点 + 13 表 RLS 支付后端) 的判定均由该流程产出
+
+### Lesson
+
+五步法: 1) 先用 GitHub API git/trees/HEAD?recursive=1 取全量 blob 清单, 按扩展名与顶层目录做体积/文件数直方图, 免下载即可区分 代码仓/数据仓/产品仓; 2) 再 clone 到系统 TEMP 而非工作目录并保留完整历史; 3) 成色取证用三组反向指标替代读 README: 占位符密度(TODO/FIXME/unimplemented/NotImplementedError) + 各语言测试函数密度 + 依赖清单与构建文件计数; 4) 意图取证看 README 之外四类文件: .env.example 给出外部服务依赖全貌, DB 迁移给出业务模型, api 目录给出产品能力, CI workflow 给出发布分发渠道; 5) 用 git log -p --all 配合密钥正则做全历史泄密扫描, 收尾删除 TEMP 目录并用 git status --porcelain 验证工作目录 0 行
+
+### Validation
+
+结论可交叉验证: r2 的 cases.json totalCases=535 与 gallery 锚点 164+371=535 吻合; r1 的 SYNOPSES 65 篇蓝图与 README 42/70 徽标吻合; 清理后 git status 输出 0 行
+
+### Next Action
+
+review
+
+### Promotion
+
+Promoted to `references/reverse-engineering-methods.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-27 04:57:54 +08:00.
+
+## 2026-08-27 04:53:08 +08:00 - healthcheck 必须用 pwsh7+ 跑否则 select_skill 的 Sort-Object -Stable 在 PS5.1 假失败
+
+- id: 20260827-045308-healthcheck-必须用-pwsh7-跑否则-select-skill-的-sort-ob
+- status: promoted
+- category: tooling
+- confidence: 4/5
+- applies_to: 在本包跑 scripts/healthcheck.ps1 / tests 做入库门禁验收时选择 PowerShell 版本
+- purpose_zh: 厘清入库门禁的真实基线：healthcheck 报的 select_skill Stable 参数错误是 PS 版本问题不是真故障，避免把既有绿状态误判为红或反之
+- target_skill_path: references/module-onboarding-spec.md
+- tags: healthcheck, powershell, pwsh, sort-object-stable, onboarding-gate, ps5.1
+
+### Evidence
+
+本轮入库 cybersecurity-projects-catalog 时: 用 Windows PowerShell 5.1 (powershell) 跑 healthcheck 在 line 712 报 select_skill.ps1 找不到 Stable 参数并 exit1; 定位到 select_skill.ps1:239/243 用了 Sort-Object -Descending -Stable, 而 -Stable 是 PowerShell 6+ 才有的参数; 实测 powershell=5.1.26100 报错, pwsh=7.6.5 正常; 改用 pwsh 跑得到真实基线 (唯一 fail 是本会话自己 record 的 undecided lesson 导致 unit-tests, 补 target 后 0 fail)
+
+### Lesson
+
+本包入库门禁必须用 pwsh (PowerShell 7+) 跑 scripts/healthcheck.ps1 与 tests, 不能用 powershell (Windows PowerShell 5.1): select_skill.ps1 用 Sort-Object -Stable 做确定性排序, -Stable 是 PS6+ 专属, 在 5.1 下抛 '找不到 Stable 参数' 并被 ErrorActionPreference=Stop 冒泡到 healthcheck line712 的调用点, 表现为 reusable-skill-selector 相关假失败且无 PASS/FAIL 汇总(整个 healthcheck 提前中断 exit1); 规范 §14.5 写的 'powershell -ExecutionPolicy Bypass -File healthcheck.ps1' 命令字面用 powershell, 实际须在 pwsh 环境执行. 门禁验收前先 pwsh --version 确认 7+, 再据此判断基线红绿, 不要把 5.1 的 Stable 报错当成模块问题
+
+### Validation
+
+powershell 5.1 跑 healthcheck exit1 且仅有 Stable 报错无汇总; pwsh 7.6.5 跑同一仓库得 24 检查项完整汇总; 修掉自引入的 undecided 后 pwsh 下 24 PASS/0 FAIL/0 WARN
+
+### Next Action
+
+review
+
+### Promotion
+
+Promoted to `references/module-onboarding-spec.md` by `scripts/promote_skill_lesson.ps1` on 2026-08-27 04:57:55 +08:00.
 

@@ -527,3 +527,43 @@ game-security-research 入库后 healthcheck 24/24 PASS 但 tests/routing.Tests.
 **Validation**
 
 改后 scripts/healthcheck.ps1 必须 0 fail(mandatory-final-feedback-contract / chinese-skill-names / cross-reference-completeness 全绿)；grep 逐文件确认 5 token 各计数 1、frontmatter 四行与中文名行未变；od 确认 BOM 未变
+
+### 补全模块注册会激活其路由规则-必须跑兄弟任务回归防抢占
+
+- source: `20260826-171041-补全模块注册会激活其路由规则-必须跑兄弟任务回归防抢占`
+- category: method
+- applies_to: 给本地/安全模块补登记时同步校验其 routing-rules.json 规则不抢占通用兄弟任务
+- purpose_zh: 一个未登记模块补全 cross-reference 后，其路由规则会从'休眠'变'生效'，过宽的业务名词会突然抢占通用逆向任务
+- confidence: 4/5
+
+**Lesson**
+
+补全一个此前未登记模块的 cross-reference 后，select_skill 才会真正应用它的 routing-rules.json 规则（登记前规则对未注册目标不生效）。因此补登记必须同步：(1) 用通用兄弟任务做回归（如 wechat 补登后 JSVMP/加密/内存任务是否被抢），(2) 把规则里的通用业务名词（签名/抓包/内存/任务/抽奖）改为需与领域锚点（微信/小程序/wechat）共现，(3) 补正向命中 + 兄弟不抢占两条 tests/routing.Tests.ps1 用例。
+
+**Evidence**
+
+wechat-miniapp-protocol-re 补全 5.C 登记后，其 0.92 规则的 '签名算法' token 抢走 JSVMP 回归用例（route 到 wechat 而非 root），healthcheck unit-tests FAIL；把通用词改为 (微信|小程序|wechat).{0,16}(...) 共现后 JSVMP 回 root(0.85)、wechat 正向仍 0.92，unit-tests 30 全绿。
+
+**Validation**
+
+healthcheck 24/24 PASS；routing 回归：JSVMP->root、wechat 任务->wechat、通用签名/内存任务->root 均符合预期。
+
+### healthcheck 必须用 pwsh7+ 跑否则 select_skill 的 Sort-Object -Stable 在 PS5.1 假失败
+
+- source: `20260827-045308-healthcheck-必须用-pwsh7-跑否则-select-skill-的-sort-ob`
+- category: tooling
+- applies_to: 在本包跑 scripts/healthcheck.ps1 / tests 做入库门禁验收时选择 PowerShell 版本
+- purpose_zh: 厘清入库门禁的真实基线：healthcheck 报的 select_skill Stable 参数错误是 PS 版本问题不是真故障，避免把既有绿状态误判为红或反之
+- confidence: 4/5
+
+**Lesson**
+
+本包入库门禁必须用 pwsh (PowerShell 7+) 跑 scripts/healthcheck.ps1 与 tests, 不能用 powershell (Windows PowerShell 5.1): select_skill.ps1 用 Sort-Object -Stable 做确定性排序, -Stable 是 PS6+ 专属, 在 5.1 下抛 '找不到 Stable 参数' 并被 ErrorActionPreference=Stop 冒泡到 healthcheck line712 的调用点, 表现为 reusable-skill-selector 相关假失败且无 PASS/FAIL 汇总(整个 healthcheck 提前中断 exit1); 规范 §14.5 写的 'powershell -ExecutionPolicy Bypass -File healthcheck.ps1' 命令字面用 powershell, 实际须在 pwsh 环境执行. 门禁验收前先 pwsh --version 确认 7+, 再据此判断基线红绿, 不要把 5.1 的 Stable 报错当成模块问题
+
+**Evidence**
+
+本轮入库 cybersecurity-projects-catalog 时: 用 Windows PowerShell 5.1 (powershell) 跑 healthcheck 在 line 712 报 select_skill.ps1 找不到 Stable 参数并 exit1; 定位到 select_skill.ps1:239/243 用了 Sort-Object -Descending -Stable, 而 -Stable 是 PowerShell 6+ 才有的参数; 实测 powershell=5.1.26100 报错, pwsh=7.6.5 正常; 改用 pwsh 跑得到真实基线 (唯一 fail 是本会话自己 record 的 undecided lesson 导致 unit-tests, 补 target 后 0 fail)
+
+**Validation**
+
+powershell 5.1 跑 healthcheck exit1 且仅有 Stable 报错无汇总; pwsh 7.6.5 跑同一仓库得 24 检查项完整汇总; 修掉自引入的 undecided 后 pwsh 下 24 PASS/0 FAIL/0 WARN

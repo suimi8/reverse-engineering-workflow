@@ -4,6 +4,17 @@
 
 
 
+## [2.4.1] - 2026-08-27
+
+【小修】按学习闭环 §11 将候选池 4 条经验全部审查通过（review 0 error / 0 warning / 无重复）并晋级到最窄既有 reference，候选池清零（pending 0）。
+
+### Changed
+
+- `references/reverse-engineering-methods.md`：新建 `## Promoted Learning Notes` 段，收录 2 条 GitHub 仓库分析法——`github-repo-recon 免克隆仓库架构逆向法`（不 clone 快速还原架构 vs README 宣称）与 `GitHub 仓库零落地全量化静态取证法`（TEMP 全量克隆 + 反向成色指标 + 四类意图文件 + 全历史泄密扫描 + 零残留收尾），二者互补。
+- `references/module-onboarding-spec.md`：`## Promoted Learning Notes` 段追加 2 条入库门禁经验（source 引用 9 → 11）——`补全模块注册会激活其路由规则-必须跑兄弟任务回归防抢占` 与 `healthcheck 必须用 pwsh7+ 跑否则 select_skill 的 Sort-Object -Stable 在 PS5.1 假失败`。BOM 保留、Promoted Learning Notes 仍为文末大节、source 引用与 inbox promoted 状态一致（§14.5）。
+- `references/skill-learning-inbox.md`：4 条 candidate 状态 → promoted（promoted 总数 31 → 35）。
+- `manifest.json`：版本 2.4.0 → 2.4.1。
+
 ## [2.4.0] - 2026-08-27
 
 【中改】新增通用逆向模块 `cybersecurity-projects-catalog`（suimi网络安全项目目录），按 awesome-* 类"三层接入"完整入库，完成 5.A 全部跨文件登记 + 目录型模块路由规则与回归用例。
