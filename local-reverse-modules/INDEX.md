@@ -19,6 +19,9 @@ This directory preserves suimi local reverse recovery modules for authorized Win
 - `skills/wechat-miniapp-protocol-re/`
   - Entry: `skills/wechat-miniapp-protocol-re/MODULE.md`
   - Focus: 微信 PC 小程序协议逆向与自动化（mitmproxy 抓包、sign/req-id 双盐双层 MD5、V8 内存源码提取、业务接口链路、PySide6 GUI 集成）。
+- `skills/xhs-protocol-re/`
+  - Entry: `skills/xhs-protocol-re/MODULE.md`
+  - Focus: 小红书 PC web 协议逆向（XYS_/X-s 签名复刻、mnsv2 字节码 VM 寄生、x-s-common 解码与 a1 同源自检、签名版本漂移实时取参、扫码登录 login_info 与 activate 游客陷阱、常驻签名服务导航互斥、xiaohongshu-mcp 浏览器路线）。
 
 ## Shared Support Scripts
 

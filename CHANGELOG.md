@@ -4,6 +4,24 @@
 
 
 
+## [2.3.0] - 2026-08-27
+
+【中改】新增本地模块 `xhs-protocol-re`（suimi 小红书协议逆向），完成 5.C 全部跨文件登记。
+
+### Added
+
+- `local-reverse-modules/skills/xhs-protocol-re/`（MODULE.md + 3 个 references）：小红书 PC web 协议逆向与自动化。覆盖五条线路的取舍（`XYS_` 静态复刻 / `mnsv2` 字节码 VM **刻意寄生不破解** / `x-s-common` 同表可解 / 登录状态机行为逆向 / `xiaohongshu-mcp` 浏览器路线），并把三类证据源（HAR 静态复核 / 实时链路实测 / 真人扫码实测）逐条分列标注、不合并。
+  - `references/signature-algorithms.md`：`XYS_` 构造公式、乱序 base64 码表原文、`S` 与 `x-s-common` 双字段表（编号错开一位）、`x6`/`x7` 结构线索（20B/24B、`x6` 键 == `S.x1` 69/69）、签名参数实时取值设计、验证统计（码表解码 82/82、`x5` 复算 81/82、`x-s-common` 解码 17/17、`getdss` 对 `x12` 尾段 78/82）。
+  - `references/login-flow-and-traps.md`：三步链路、`codeStatus` 状态机、**三个致命陷阱**（凭据在 `qrcode/status` 的 `login_info` 而非 `activate`；`userId` 不可作判据；必须用 `user/me` 的 `guest` 收口）、常驻签名服务五条并发不变量、症状对照表。
+  - `references/xhs-protocol-re-checklist.md`：签名环境/签名构造/请求头必需性/登录链路/并发/验收门/排查顺序/脱敏纪律的勾选清单。
+- 四条红线固化进 MODULE.md：签名 body 与发送 body 必须同一字符串（`x5 = md5(path + body原文)`，服务端不做规范化，分叉后症状只是 406 且会把排查带偏）；GET 的 query 必须进签名路径；无头浏览器不得带 `web_session` 导航；导航与 `mnsv2` evaluate 互斥但**锁只包住 evaluate**（`asyncio.Lock` 不可重入，套在 try/except 外层会永久自死锁）。
+- 排查方法论「**先做受控变量隔离，别急着改算法**」写入 MODULE.md 与 checklist：保持签名不变、只改单个请求头的四组合矩阵，实测得出 `qrcode/create` **需要 `Cookie`**、`X-s-common` 在该端点非必需（但真实浏览器 82/82 都带，定性为"服务端宽容"而非"该头没用"，且明确不外推到其它端点）。
+
+### Changed
+
+- `local-reverse-modules/INDEX.md`、根 `SKILL.md`「Added Local Reverse Modules」、`references/unified-skills-entry.md`「本地逆向恢复技能」表、`references/chinese-skill-names.json`（146 → 147 条）四处同批登记，保持 `cross-reference-completeness` 一致。
+- `manifest.json`：版本 2.2.1 → 2.3.0，`references` 45 → 49（新增模块的 MODULE.md 与 3 个 references）。
+
 ## [2.2.1] - 2026-08-27
 
 【小改/加固】多子代理审计后的一致性与健壮性修复；**无新增/删除模块**，145 个 MODULE.md 与全部注册表计数不变，`healthcheck` 24 项全绿、`unit-tests` 30 通过。

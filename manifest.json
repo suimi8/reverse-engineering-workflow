@@ -1,6 +1,6 @@
 ﻿{
   "name": "reverse-engineering-workflow",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "language": "zh-CN",
   "short_description": "Suimi-supported authorized reverse engineering workflow",
   "packaging": {
@@ -64,7 +64,11 @@
     "local-reverse-modules/skills/wechat-miniapp-protocol-re/references/wechat-miniapp-re-checklist.md",
     "local-reverse-modules/skills/wechat-miniapp-protocol-re/references/signature-algorithms.md",
     "local-reverse-modules/skills/mirasim-godmode-re/references/mirasim-patch-checklist.md",
-    "local-reverse-modules/skills/mirasim-godmode-re/MODULE.md"
+    "local-reverse-modules/skills/mirasim-godmode-re/MODULE.md",
+    "local-reverse-modules/skills/xhs-protocol-re/MODULE.md",
+    "local-reverse-modules/skills/xhs-protocol-re/references/signature-algorithms.md",
+    "local-reverse-modules/skills/xhs-protocol-re/references/login-flow-and-traps.md",
+    "local-reverse-modules/skills/xhs-protocol-re/references/xhs-protocol-re-checklist.md"
   ],
   "scripts": [
     "scripts/pyqt_visible_dialogs_probe.py",

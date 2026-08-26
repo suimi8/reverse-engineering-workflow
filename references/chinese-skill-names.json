@@ -1,586 +1,590 @@
 ﻿[
- {
-  "path": "SKILL.md",
-  "display_name": "suimi逆向总入口"
- },
- {
-  "path": "github-reverse-modules/skills/reverse-engineering/MODULE.md",
-  "display_name": "suimi逆向方法全集"
- },
- {
-  "path": "github-reverse-modules/skills/radare2/MODULE.md",
-  "display_name": "suimi radare2 逆向"
- },
- {
-  "path": "github-reverse-modules/skills/ida-reverse/MODULE.md",
-  "display_name": "suimi IDA 逆向"
- },
- {
-  "path": "github-reverse-modules/skills/binary-diff/MODULE.md",
-  "display_name": "suimi二进制 Diff"
- },
- {
-  "path": "github-reverse-modules/skills/apk-reverse/MODULE.md",
-  "display_name": "suimi APK 逆向"
- },
- {
-  "path": "github-reverse-modules/skills/mobile-reverse/MODULE.md",
-  "display_name": "suimi移动端逆向"
- },
- {
-  "path": "github-reverse-modules/skills/x64dbg-reverse/MODULE.md",
-  "display_name": "suimi x64dbg 动态调试"
- },
- {
-  "path": "github-reverse-modules/skills/ce-reverse/MODULE.md",
-  "display_name": "suimi Cheat Engine 逆向"
- },
- {
-  "path": "github-reverse-modules/skills/traffic-capture/MODULE.md",
-  "display_name": "suimi抓包与流量分析"
- },
- {
-  "path": "local-reverse-modules/skills/flet-desktop-diagnostics/MODULE.md",
-  "display_name": "suimi Flet 桌面诊断"
- },
- {
-  "path": "local-reverse-modules/skills/windows-python-app-recovery/MODULE.md",
-  "display_name": "suimi Windows Python 程序恢复"
- },
- {
-  "path": "local-reverse-modules/skills/windows-local-service-persistence/MODULE.md",
-  "display_name": "suimi Windows 本地服务自启动"
- },
- {
-  "path": "local-reverse-modules/skills/mirasim-godmode-re/MODULE.md",
-  "display_name": "suimi Mirasim 德州扑克辅助维护"
- },
- {
-  "path": "local-reverse-modules/skills/wechat-miniapp-protocol-re/MODULE.md",
-  "display_name": "suimi 微信小程序协议逆向"
- },
- {
-  "path": "security-research-modules/skills/hack/MODULE.md",
-  "display_name": "suimi安全研究总入口"
- },
- {
-  "path": "security-research-modules/skills/recon-for-sec/MODULE.md",
-  "display_name": "suimi安全侦察路由"
- },
- {
-  "path": "security-research-modules/skills/osint-recon/MODULE.md",
-  "display_name": "suimi OSINT 侦察工具库"
- },
- {
-  "path": "security-research-modules/skills/api-sec/MODULE.md",
-  "display_name": "suimi API 安全路由"
- },
- {
-  "path": "security-research-modules/skills/auth-sec/MODULE.md",
-  "display_name": "suimi认证安全路由"
- },
- {
-  "path": "security-research-modules/skills/injection-checking/MODULE.md",
-  "display_name": "suimi注入检测路由"
- },
- {
-  "path": "security-research-modules/skills/file-access-vuln/MODULE.md",
-  "display_name": "suimi文件访问路由"
- },
- {
-  "path": "security-research-modules/skills/business-logic-vuln/MODULE.md",
-  "display_name": "suimi业务逻辑路由"
- },
- {
-  "path": "security-research-modules/skills/api-recon-and-docs/MODULE.md",
-  "display_name": "suimi API 侦察与文档分析"
- },
- {
-  "path": "security-research-modules/skills/api-authorization-and-bola/MODULE.md",
-  "display_name": "suimi API 授权与 BOLA"
- },
- {
-  "path": "security-research-modules/skills/api-auth-and-jwt-abuse/MODULE.md",
-  "display_name": "suimi API 认证与 JWT 滥用"
- },
- {
-  "path": "security-research-modules/skills/graphql-and-hidden-parameters/MODULE.md",
-  "display_name": "suimi GraphQL 与隐藏参数"
- },
- {
-  "path": "security-research-modules/skills/idor-broken-object-authorization/MODULE.md",
-  "display_name": "suimi IDOR 对象授权"
- },
- {
-  "path": "security-research-modules/skills/jwt-oauth-token-attacks/MODULE.md",
-  "display_name": "suimi JWT/OAuth Token 攻击"
- },
- {
-  "path": "security-research-modules/skills/oauth-oidc-misconfiguration/MODULE.md",
-  "display_name": "suimi OAuth/OIDC 配置审查"
- },
- {
-  "path": "security-research-modules/skills/saml-sso-assertion-attacks/MODULE.md",
-  "display_name": "suimi SAML/SSO 断言审查"
- },
- {
-  "path": "security-research-modules/skills/authbypass-authentication-flaws/MODULE.md",
-  "display_name": "suimi认证绕过审查"
- },
- {
-  "path": "security-research-modules/skills/xss-cross-site-scripting/MODULE.md",
-  "display_name": "suimi XSS 跨站脚本"
- },
- {
-  "path": "security-research-modules/skills/sqli-sql-injection/MODULE.md",
-  "display_name": "suimi SQL 注入"
- },
- {
-  "path": "security-research-modules/skills/ssrf-server-side-request-forgery/MODULE.md",
-  "display_name": "suimi SSRF 服务端请求伪造"
- },
- {
-  "path": "security-research-modules/skills/ssti-server-side-template-injection/MODULE.md",
-  "display_name": "suimi SSTI 模板注入"
- },
- {
-  "path": "security-research-modules/skills/xxe-xml-external-entity/MODULE.md",
-  "display_name": "suimi XXE XML 外部实体"
- },
- {
-  "path": "security-research-modules/skills/cmdi-command-injection/MODULE.md",
-  "display_name": "suimi命令注入"
- },
- {
-  "path": "security-research-modules/skills/deserialization-insecure/MODULE.md",
-  "display_name": "suimi不安全反序列化"
- },
- {
-  "path": "security-research-modules/skills/expression-language-injection/MODULE.md",
-  "display_name": "suimi表达式语言注入"
- },
- {
-  "path": "security-research-modules/skills/jndi-injection/MODULE.md",
-  "display_name": "suimi JNDI 注入"
- },
- {
-  "path": "security-research-modules/skills/prototype-pollution/MODULE.md",
-  "display_name": "suimi原型污染"
- },
- {
-  "path": "security-research-modules/skills/request-smuggling/MODULE.md",
-  "display_name": "suimi请求走私"
- },
- {
-  "path": "security-research-modules/skills/http-parameter-pollution/MODULE.md",
-  "display_name": "suimi HTTP 参数污染"
- },
- {
-  "path": "security-research-modules/skills/type-juggling/MODULE.md",
-  "display_name": "suimi PHP 类型混淆"
- },
- {
-  "path": "security-research-modules/skills/xslt-injection/MODULE.md",
-  "display_name": "suimi XSLT 注入"
- },
- {
-  "path": "security-research-modules/skills/crlf-injection/MODULE.md",
-  "display_name": "suimi CRLF 注入"
- },
- {
-  "path": "security-research-modules/skills/nosql-injection/MODULE.md",
-  "display_name": "suimi NoSQL 注入"
- },
- {
-  "path": "security-research-modules/skills/path-traversal-lfi/MODULE.md",
-  "display_name": "suimi路径穿越与 LFI"
- },
- {
-  "path": "security-research-modules/skills/upload-insecure-files/MODULE.md",
-  "display_name": "suimi不安全文件上传"
- },
- {
-  "path": "security-research-modules/skills/csrf-cross-site-request-forgery/MODULE.md",
-  "display_name": "suimi CSRF 跨站请求伪造"
- },
- {
-  "path": "security-research-modules/skills/cors-cross-origin-misconfiguration/MODULE.md",
-  "display_name": "suimi CORS 跨域配置审查"
- },
- {
-  "path": "security-research-modules/skills/open-redirect/MODULE.md",
-  "display_name": "suimi开放重定向"
- },
- {
-  "path": "security-research-modules/skills/clickjacking/MODULE.md",
-  "display_name": "suimi点击劫持"
- },
- {
-  "path": "security-research-modules/skills/web-cache-deception/MODULE.md",
-  "display_name": "suimi Web 缓存欺骗"
- },
- {
-  "path": "security-research-modules/skills/websocket-security/MODULE.md",
-  "display_name": "suimi WebSocket 安全"
- },
- {
-  "path": "security-research-modules/skills/business-logic-vulnerabilities/MODULE.md",
-  "display_name": "suimi业务逻辑漏洞"
- },
- {
-  "path": "security-research-modules/skills/race-condition/MODULE.md",
-  "display_name": "suimi竞态条件"
- },
- {
-  "path": "security-research-modules/skills/dependency-confusion/MODULE.md",
-  "display_name": "suimi依赖混淆"
- },
- {
-  "path": "security-research-modules/skills/insecure-source-code-management/MODULE.md",
-  "display_name": "suimi源码管理泄露"
- },
- {
-  "path": "security-research-modules/skills/csv-formula-injection/MODULE.md",
-  "display_name": "suimi CSV 公式注入"
- },
- {
-  "path": "security-research-modules/skills/recon-and-methodology/MODULE.md",
-  "display_name": "suimi通用安全方法论"
- },
- {
-  "path": "security-research-modules/skills/unauthorized-access-common-services/MODULE.md",
-  "display_name": "suimi常见服务未授权访问"
- },
- {
-  "path": "github-reverse-modules/skills/dotnet-reverse/MODULE.md",
-  "display_name": "suimi .NET 逆向"
- },
- {
-  "path": "github-reverse-modules/skills/js-reverse/MODULE.md",
-  "display_name": "suimi JS 逆向"
- },
- {
-  "path": "github-reverse-modules/skills/ghidra-reverse/MODULE.md",
-  "display_name": "suimi Ghidra 逆向"
- },
- {
-  "path": "github-reverse-modules/skills/go-rust-reverse/MODULE.md",
-  "display_name": "suimi Go/Rust 逆向"
- },
- {
-  "path": "github-reverse-modules/skills/malware-analysis/MODULE.md",
-  "display_name": "suimi 恶意软件分析"
- },
- {
-  "path": "github-reverse-modules/skills/firmware-pentest/MODULE.md",
-  "display_name": "suimi 固件渗透"
- },
- {
-  "path": "github-reverse-modules/skills/protocol-reverse/MODULE.md",
-  "display_name": "suimi 协议逆向"
- },
- {
-  "path": "github-reverse-modules/skills/thick-client/MODULE.md",
-  "display_name": "suimi 厚客户端逆向"
- },
- {
-  "path": "github-reverse-modules/skills/patch-diff-exploit/MODULE.md",
-  "display_name": "suimi 补丁差异利用"
- },
- {
-  "path": "github-reverse-modules/skills/pwn-chain/MODULE.md",
-  "display_name": "suimi 漏洞利用链"
- },
- {
-  "path": "github-reverse-modules/skills/edr-bypass-re/MODULE.md",
-  "display_name": "suimi EDR 绕过逆向"
- },
- {
-  "path": "github-reverse-modules/skills/macos-reverse/MODULE.md",
-  "display_name": "suimi macOS 逆向"
- },
- {
-  "path": "github-reverse-modules/skills/browser-extension-reverse/MODULE.md",
-  "display_name": "suimi 浏览器扩展逆向"
- },
- {
-  "path": "security-research-modules/skills/attack-chain/MODULE.md",
-  "display_name": "suimi 攻击链"
- },
- {
-  "path": "security-research-modules/skills/browser-automation/MODULE.md",
-  "display_name": "suimi 浏览器自动化"
- },
- {
-  "path": "security-research-modules/skills/case-review/MODULE.md",
-  "display_name": "suimi 案例审查"
- },
- {
-  "path": "security-research-modules/skills/cloud-k8s/MODULE.md",
-  "display_name": "suimi 云与K8s安全"
- },
- {
-  "path": "security-research-modules/skills/code-audit/MODULE.md",
-  "display_name": "suimi 代码审计"
- },
- {
-  "path": "security-research-modules/skills/ctf-sandbox/MODULE.md",
-  "display_name": "suimi CTF沙箱"
- },
- {
-  "path": "security-research-modules/skills/database-security/MODULE.md",
-  "display_name": "suimi 数据库安全"
- },
- {
-  "path": "security-research-modules/skills/diagram-generator/MODULE.md",
-  "display_name": "suimi 图表生成"
- },
- {
-  "path": "security-research-modules/skills/digital-forensics/MODULE.md",
-  "display_name": "suimi 数字取证"
- },
- {
-  "path": "security-research-modules/skills/docs-generator/MODULE.md",
-  "display_name": "suimi 文档生成"
- },
- {
-  "path": "security-research-modules/skills/email-security/MODULE.md",
-  "display_name": "suimi 邮件安全"
- },
- {
-  "path": "security-research-modules/skills/hardware-security/MODULE.md",
-  "display_name": "suimi 硬件安全"
- },
- {
-  "path": "security-research-modules/skills/identity-federation/MODULE.md",
-  "display_name": "suimi 身份联合"
- },
- {
-  "path": "security-research-modules/skills/llm-security/MODULE.md",
-  "display_name": "suimi LLM安全"
- },
- {
-  "path": "security-research-modules/skills/ot-ics/MODULE.md",
-  "display_name": "suimi OT/ICS安全"
- },
- {
-  "path": "security-research-modules/skills/radio-sdr/MODULE.md",
-  "display_name": "suimi 无线电SDR"
- },
- {
-  "path": "security-research-modules/skills/supply-chain-security/MODULE.md",
-  "display_name": "suimi 供应链安全"
- },
- {
-  "path": "security-research-modules/skills/threat-hunting/MODULE.md",
-  "display_name": "suimi 威胁狩猎"
- },
- {
-  "path": "security-research-modules/skills/threat-intelligence/MODULE.md",
-  "display_name": "suimi 威胁情报"
- },
- {
-  "path": "security-research-modules/skills/wifi-wireless/MODULE.md",
-  "display_name": "suimi WiFi无线安全"
- },
- {
-  "path": "security-research-modules/skills/windows-ad/MODULE.md",
-  "display_name": "suimi Windows AD安全"
- },
- {
-  "path": "github-reverse-modules/skills/reverse-engineering/dsl-vm-reverse/MODULE.md",
-  "display_name": "suimi DSL 自定义虚拟机逆向"
- },
- {
-  "path": "security-research-modules/skills/ctf-sandbox-orchestrator/MODULE.md",
-  "display_name": "suimi CTF沙箱协调器"
- },
- {
-  "path": "security-research-modules/skills/competition-ad-certificate-abuse/MODULE.md",
-  "display_name": "suimi AD证书滥用比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-agent-cloud/MODULE.md",
-  "display_name": "suimi Agent云环境比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-android-hooking/MODULE.md",
-  "display_name": "suimi Android Hook比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-browser-persistence/MODULE.md",
-  "display_name": "suimi 浏览器持久化比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-bundle-sourcemap-recovery/MODULE.md",
-  "display_name": "suimi 前端Sourcemap恢复比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-cloud-metadata-path/MODULE.md",
-  "display_name": "suimi 云元数据路径比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-container-runtime/MODULE.md",
-  "display_name": "suimi 容器运行时比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-crypto-mobile/MODULE.md",
-  "display_name": "suimi 移动端密码学比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-custom-protocol-replay/MODULE.md",
-  "display_name": "suimi 自定义协议重放比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-dpapi-credential-chain/MODULE.md",
-  "display_name": "suimi DPAPI凭据链比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-file-parser-chain/MODULE.md",
-  "display_name": "suimi 文件解析链比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-firmware-layout/MODULE.md",
-  "display_name": "suimi 固件布局比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-forensic-timeline/MODULE.md",
-  "display_name": "suimi 取证时间线比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-graphql-rpc-drift/MODULE.md",
-  "display_name": "suimi GraphQL/RPC漂移比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-identity-windows/MODULE.md",
-  "display_name": "suimi Windows身份比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-ios-runtime/MODULE.md",
-  "display_name": "suimi iOS运行时比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-jwt-claim-confusion/MODULE.md",
-  "display_name": "suimi JWT声明混淆比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-k8s-control-plane/MODULE.md",
-  "display_name": "suimi K8s控制面比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-kerberos-delegation/MODULE.md",
-  "display_name": "suimi Kerberos委派比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-kernel-container-escape/MODULE.md",
-  "display_name": "suimi 内核容器逃逸比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-linux-credential-pivot/MODULE.md",
-  "display_name": "suimi Linux凭据跳板比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-lsass-ticket-material/MODULE.md",
-  "display_name": "suimi LSASS票据材料比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-mailbox-abuse/MODULE.md",
-  "display_name": "suimi 邮箱滥用比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-malware-config/MODULE.md",
-  "display_name": "suimi 恶意软件配置比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-oauth-oidc-chain/MODULE.md",
-  "display_name": "suimi OAuth/OIDC链比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-pcap-protocol/MODULE.md",
-  "display_name": "suimi PCAP协议比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-prompt-injection/MODULE.md",
-  "display_name": "suimi Prompt注入比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-queue-worker-drift/MODULE.md",
-  "display_name": "suimi 队列/Worker漂移比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-race-condition-state-drift/MODULE.md",
-  "display_name": "suimi 竞态条件比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-relay-coercion-chain/MODULE.md",
-  "display_name": "suimi 中继强制链比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-request-normalization-smuggling/MODULE.md",
-  "display_name": "suimi 请求归一化走私比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-reverse-pwn/MODULE.md",
-  "display_name": "suimi 逆向Pwn比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-runtime-routing/MODULE.md",
-  "display_name": "suimi 运行时路由比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-ssrf-metadata-pivot/MODULE.md",
-  "display_name": "suimi SSRF元数据跳板比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-stego-media/MODULE.md",
-  "display_name": "suimi 隐写媒体比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-supply-chain/MODULE.md",
-  "display_name": "suimi 供应链比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-template-render-path/MODULE.md",
-  "display_name": "suimi 模板渲染路径比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-web-runtime/MODULE.md",
-  "display_name": "suimi Web运行时比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-websocket-runtime/MODULE.md",
-  "display_name": "suimi WebSocket运行时比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-windows-pivot/MODULE.md",
-  "display_name": "suimi Windows跳板比赛"
- },
- {
-  "path": "security-research-modules/skills/competition-zip-archive/MODULE.md",
-  "display_name": "suimi ZIP归档比赛"
- },
- {
-  "path": "security-research-modules/skills/pentest-tools/MODULE.md",
-  "display_name": "suimi 渗透测试工具链"
- },
- {
-  "path": "github-reverse-modules/skills/web-api-reverse/MODULE.md",
-  "display_name": "suimi Web 后端 API 逆向"
- },
- {
-  "path": "github-reverse-modules/skills/web-js-reverse/MODULE.md",
-  "display_name": "suimi Web 前端 JS 逆向"
- },
- {
-  "path": "github-reverse-modules/skills/web-crypto-reverse/MODULE.md",
-  "display_name": "suimi Web/APK 加密算法逆向"
- },
- {
-  "path": "github-reverse-modules/skills/game-security-research/MODULE.md",
-  "display_name": "suimi游戏安全研究"
- },
- {
-  "path": "security-research-modules/skills/pentest-orchestration/MODULE.md",
-  "display_name": "suimi攻击流程编排"
- }
+  {
+    "path": "SKILL.md",
+    "display_name": "suimi逆向总入口"
+  },
+  {
+    "path": "github-reverse-modules/skills/reverse-engineering/MODULE.md",
+    "display_name": "suimi逆向方法全集"
+  },
+  {
+    "path": "github-reverse-modules/skills/radare2/MODULE.md",
+    "display_name": "suimi radare2 逆向"
+  },
+  {
+    "path": "github-reverse-modules/skills/ida-reverse/MODULE.md",
+    "display_name": "suimi IDA 逆向"
+  },
+  {
+    "path": "github-reverse-modules/skills/binary-diff/MODULE.md",
+    "display_name": "suimi二进制 Diff"
+  },
+  {
+    "path": "github-reverse-modules/skills/apk-reverse/MODULE.md",
+    "display_name": "suimi APK 逆向"
+  },
+  {
+    "path": "github-reverse-modules/skills/mobile-reverse/MODULE.md",
+    "display_name": "suimi移动端逆向"
+  },
+  {
+    "path": "github-reverse-modules/skills/x64dbg-reverse/MODULE.md",
+    "display_name": "suimi x64dbg 动态调试"
+  },
+  {
+    "path": "github-reverse-modules/skills/ce-reverse/MODULE.md",
+    "display_name": "suimi Cheat Engine 逆向"
+  },
+  {
+    "path": "github-reverse-modules/skills/traffic-capture/MODULE.md",
+    "display_name": "suimi抓包与流量分析"
+  },
+  {
+    "path": "local-reverse-modules/skills/flet-desktop-diagnostics/MODULE.md",
+    "display_name": "suimi Flet 桌面诊断"
+  },
+  {
+    "path": "local-reverse-modules/skills/windows-python-app-recovery/MODULE.md",
+    "display_name": "suimi Windows Python 程序恢复"
+  },
+  {
+    "path": "local-reverse-modules/skills/windows-local-service-persistence/MODULE.md",
+    "display_name": "suimi Windows 本地服务自启动"
+  },
+  {
+    "path": "local-reverse-modules/skills/mirasim-godmode-re/MODULE.md",
+    "display_name": "suimi Mirasim 德州扑克辅助维护"
+  },
+  {
+    "path": "local-reverse-modules/skills/wechat-miniapp-protocol-re/MODULE.md",
+    "display_name": "suimi 微信小程序协议逆向"
+  },
+  {
+    "path": "local-reverse-modules/skills/xhs-protocol-re/MODULE.md",
+    "display_name": "suimi 小红书协议逆向"
+  },
+  {
+    "path": "security-research-modules/skills/hack/MODULE.md",
+    "display_name": "suimi安全研究总入口"
+  },
+  {
+    "path": "security-research-modules/skills/recon-for-sec/MODULE.md",
+    "display_name": "suimi安全侦察路由"
+  },
+  {
+    "path": "security-research-modules/skills/osint-recon/MODULE.md",
+    "display_name": "suimi OSINT 侦察工具库"
+  },
+  {
+    "path": "security-research-modules/skills/api-sec/MODULE.md",
+    "display_name": "suimi API 安全路由"
+  },
+  {
+    "path": "security-research-modules/skills/auth-sec/MODULE.md",
+    "display_name": "suimi认证安全路由"
+  },
+  {
+    "path": "security-research-modules/skills/injection-checking/MODULE.md",
+    "display_name": "suimi注入检测路由"
+  },
+  {
+    "path": "security-research-modules/skills/file-access-vuln/MODULE.md",
+    "display_name": "suimi文件访问路由"
+  },
+  {
+    "path": "security-research-modules/skills/business-logic-vuln/MODULE.md",
+    "display_name": "suimi业务逻辑路由"
+  },
+  {
+    "path": "security-research-modules/skills/api-recon-and-docs/MODULE.md",
+    "display_name": "suimi API 侦察与文档分析"
+  },
+  {
+    "path": "security-research-modules/skills/api-authorization-and-bola/MODULE.md",
+    "display_name": "suimi API 授权与 BOLA"
+  },
+  {
+    "path": "security-research-modules/skills/api-auth-and-jwt-abuse/MODULE.md",
+    "display_name": "suimi API 认证与 JWT 滥用"
+  },
+  {
+    "path": "security-research-modules/skills/graphql-and-hidden-parameters/MODULE.md",
+    "display_name": "suimi GraphQL 与隐藏参数"
+  },
+  {
+    "path": "security-research-modules/skills/idor-broken-object-authorization/MODULE.md",
+    "display_name": "suimi IDOR 对象授权"
+  },
+  {
+    "path": "security-research-modules/skills/jwt-oauth-token-attacks/MODULE.md",
+    "display_name": "suimi JWT/OAuth Token 攻击"
+  },
+  {
+    "path": "security-research-modules/skills/oauth-oidc-misconfiguration/MODULE.md",
+    "display_name": "suimi OAuth/OIDC 配置审查"
+  },
+  {
+    "path": "security-research-modules/skills/saml-sso-assertion-attacks/MODULE.md",
+    "display_name": "suimi SAML/SSO 断言审查"
+  },
+  {
+    "path": "security-research-modules/skills/authbypass-authentication-flaws/MODULE.md",
+    "display_name": "suimi认证绕过审查"
+  },
+  {
+    "path": "security-research-modules/skills/xss-cross-site-scripting/MODULE.md",
+    "display_name": "suimi XSS 跨站脚本"
+  },
+  {
+    "path": "security-research-modules/skills/sqli-sql-injection/MODULE.md",
+    "display_name": "suimi SQL 注入"
+  },
+  {
+    "path": "security-research-modules/skills/ssrf-server-side-request-forgery/MODULE.md",
+    "display_name": "suimi SSRF 服务端请求伪造"
+  },
+  {
+    "path": "security-research-modules/skills/ssti-server-side-template-injection/MODULE.md",
+    "display_name": "suimi SSTI 模板注入"
+  },
+  {
+    "path": "security-research-modules/skills/xxe-xml-external-entity/MODULE.md",
+    "display_name": "suimi XXE XML 外部实体"
+  },
+  {
+    "path": "security-research-modules/skills/cmdi-command-injection/MODULE.md",
+    "display_name": "suimi命令注入"
+  },
+  {
+    "path": "security-research-modules/skills/deserialization-insecure/MODULE.md",
+    "display_name": "suimi不安全反序列化"
+  },
+  {
+    "path": "security-research-modules/skills/expression-language-injection/MODULE.md",
+    "display_name": "suimi表达式语言注入"
+  },
+  {
+    "path": "security-research-modules/skills/jndi-injection/MODULE.md",
+    "display_name": "suimi JNDI 注入"
+  },
+  {
+    "path": "security-research-modules/skills/prototype-pollution/MODULE.md",
+    "display_name": "suimi原型污染"
+  },
+  {
+    "path": "security-research-modules/skills/request-smuggling/MODULE.md",
+    "display_name": "suimi请求走私"
+  },
+  {
+    "path": "security-research-modules/skills/http-parameter-pollution/MODULE.md",
+    "display_name": "suimi HTTP 参数污染"
+  },
+  {
+    "path": "security-research-modules/skills/type-juggling/MODULE.md",
+    "display_name": "suimi PHP 类型混淆"
+  },
+  {
+    "path": "security-research-modules/skills/xslt-injection/MODULE.md",
+    "display_name": "suimi XSLT 注入"
+  },
+  {
+    "path": "security-research-modules/skills/crlf-injection/MODULE.md",
+    "display_name": "suimi CRLF 注入"
+  },
+  {
+    "path": "security-research-modules/skills/nosql-injection/MODULE.md",
+    "display_name": "suimi NoSQL 注入"
+  },
+  {
+    "path": "security-research-modules/skills/path-traversal-lfi/MODULE.md",
+    "display_name": "suimi路径穿越与 LFI"
+  },
+  {
+    "path": "security-research-modules/skills/upload-insecure-files/MODULE.md",
+    "display_name": "suimi不安全文件上传"
+  },
+  {
+    "path": "security-research-modules/skills/csrf-cross-site-request-forgery/MODULE.md",
+    "display_name": "suimi CSRF 跨站请求伪造"
+  },
+  {
+    "path": "security-research-modules/skills/cors-cross-origin-misconfiguration/MODULE.md",
+    "display_name": "suimi CORS 跨域配置审查"
+  },
+  {
+    "path": "security-research-modules/skills/open-redirect/MODULE.md",
+    "display_name": "suimi开放重定向"
+  },
+  {
+    "path": "security-research-modules/skills/clickjacking/MODULE.md",
+    "display_name": "suimi点击劫持"
+  },
+  {
+    "path": "security-research-modules/skills/web-cache-deception/MODULE.md",
+    "display_name": "suimi Web 缓存欺骗"
+  },
+  {
+    "path": "security-research-modules/skills/websocket-security/MODULE.md",
+    "display_name": "suimi WebSocket 安全"
+  },
+  {
+    "path": "security-research-modules/skills/business-logic-vulnerabilities/MODULE.md",
+    "display_name": "suimi业务逻辑漏洞"
+  },
+  {
+    "path": "security-research-modules/skills/race-condition/MODULE.md",
+    "display_name": "suimi竞态条件"
+  },
+  {
+    "path": "security-research-modules/skills/dependency-confusion/MODULE.md",
+    "display_name": "suimi依赖混淆"
+  },
+  {
+    "path": "security-research-modules/skills/insecure-source-code-management/MODULE.md",
+    "display_name": "suimi源码管理泄露"
+  },
+  {
+    "path": "security-research-modules/skills/csv-formula-injection/MODULE.md",
+    "display_name": "suimi CSV 公式注入"
+  },
+  {
+    "path": "security-research-modules/skills/recon-and-methodology/MODULE.md",
+    "display_name": "suimi通用安全方法论"
+  },
+  {
+    "path": "security-research-modules/skills/unauthorized-access-common-services/MODULE.md",
+    "display_name": "suimi常见服务未授权访问"
+  },
+  {
+    "path": "github-reverse-modules/skills/dotnet-reverse/MODULE.md",
+    "display_name": "suimi .NET 逆向"
+  },
+  {
+    "path": "github-reverse-modules/skills/js-reverse/MODULE.md",
+    "display_name": "suimi JS 逆向"
+  },
+  {
+    "path": "github-reverse-modules/skills/ghidra-reverse/MODULE.md",
+    "display_name": "suimi Ghidra 逆向"
+  },
+  {
+    "path": "github-reverse-modules/skills/go-rust-reverse/MODULE.md",
+    "display_name": "suimi Go/Rust 逆向"
+  },
+  {
+    "path": "github-reverse-modules/skills/malware-analysis/MODULE.md",
+    "display_name": "suimi 恶意软件分析"
+  },
+  {
+    "path": "github-reverse-modules/skills/firmware-pentest/MODULE.md",
+    "display_name": "suimi 固件渗透"
+  },
+  {
+    "path": "github-reverse-modules/skills/protocol-reverse/MODULE.md",
+    "display_name": "suimi 协议逆向"
+  },
+  {
+    "path": "github-reverse-modules/skills/thick-client/MODULE.md",
+    "display_name": "suimi 厚客户端逆向"
+  },
+  {
+    "path": "github-reverse-modules/skills/patch-diff-exploit/MODULE.md",
+    "display_name": "suimi 补丁差异利用"
+  },
+  {
+    "path": "github-reverse-modules/skills/pwn-chain/MODULE.md",
+    "display_name": "suimi 漏洞利用链"
+  },
+  {
+    "path": "github-reverse-modules/skills/edr-bypass-re/MODULE.md",
+    "display_name": "suimi EDR 绕过逆向"
+  },
+  {
+    "path": "github-reverse-modules/skills/macos-reverse/MODULE.md",
+    "display_name": "suimi macOS 逆向"
+  },
+  {
+    "path": "github-reverse-modules/skills/browser-extension-reverse/MODULE.md",
+    "display_name": "suimi 浏览器扩展逆向"
+  },
+  {
+    "path": "security-research-modules/skills/attack-chain/MODULE.md",
+    "display_name": "suimi 攻击链"
+  },
+  {
+    "path": "security-research-modules/skills/browser-automation/MODULE.md",
+    "display_name": "suimi 浏览器自动化"
+  },
+  {
+    "path": "security-research-modules/skills/case-review/MODULE.md",
+    "display_name": "suimi 案例审查"
+  },
+  {
+    "path": "security-research-modules/skills/cloud-k8s/MODULE.md",
+    "display_name": "suimi 云与K8s安全"
+  },
+  {
+    "path": "security-research-modules/skills/code-audit/MODULE.md",
+    "display_name": "suimi 代码审计"
+  },
+  {
+    "path": "security-research-modules/skills/ctf-sandbox/MODULE.md",
+    "display_name": "suimi CTF沙箱"
+  },
+  {
+    "path": "security-research-modules/skills/database-security/MODULE.md",
+    "display_name": "suimi 数据库安全"
+  },
+  {
+    "path": "security-research-modules/skills/diagram-generator/MODULE.md",
+    "display_name": "suimi 图表生成"
+  },
+  {
+    "path": "security-research-modules/skills/digital-forensics/MODULE.md",
+    "display_name": "suimi 数字取证"
+  },
+  {
+    "path": "security-research-modules/skills/docs-generator/MODULE.md",
+    "display_name": "suimi 文档生成"
+  },
+  {
+    "path": "security-research-modules/skills/email-security/MODULE.md",
+    "display_name": "suimi 邮件安全"
+  },
+  {
+    "path": "security-research-modules/skills/hardware-security/MODULE.md",
+    "display_name": "suimi 硬件安全"
+  },
+  {
+    "path": "security-research-modules/skills/identity-federation/MODULE.md",
+    "display_name": "suimi 身份联合"
+  },
+  {
+    "path": "security-research-modules/skills/llm-security/MODULE.md",
+    "display_name": "suimi LLM安全"
+  },
+  {
+    "path": "security-research-modules/skills/ot-ics/MODULE.md",
+    "display_name": "suimi OT/ICS安全"
+  },
+  {
+    "path": "security-research-modules/skills/radio-sdr/MODULE.md",
+    "display_name": "suimi 无线电SDR"
+  },
+  {
+    "path": "security-research-modules/skills/supply-chain-security/MODULE.md",
+    "display_name": "suimi 供应链安全"
+  },
+  {
+    "path": "security-research-modules/skills/threat-hunting/MODULE.md",
+    "display_name": "suimi 威胁狩猎"
+  },
+  {
+    "path": "security-research-modules/skills/threat-intelligence/MODULE.md",
+    "display_name": "suimi 威胁情报"
+  },
+  {
+    "path": "security-research-modules/skills/wifi-wireless/MODULE.md",
+    "display_name": "suimi WiFi无线安全"
+  },
+  {
+    "path": "security-research-modules/skills/windows-ad/MODULE.md",
+    "display_name": "suimi Windows AD安全"
+  },
+  {
+    "path": "github-reverse-modules/skills/reverse-engineering/dsl-vm-reverse/MODULE.md",
+    "display_name": "suimi DSL 自定义虚拟机逆向"
+  },
+  {
+    "path": "security-research-modules/skills/ctf-sandbox-orchestrator/MODULE.md",
+    "display_name": "suimi CTF沙箱协调器"
+  },
+  {
+    "path": "security-research-modules/skills/competition-ad-certificate-abuse/MODULE.md",
+    "display_name": "suimi AD证书滥用比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-agent-cloud/MODULE.md",
+    "display_name": "suimi Agent云环境比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-android-hooking/MODULE.md",
+    "display_name": "suimi Android Hook比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-browser-persistence/MODULE.md",
+    "display_name": "suimi 浏览器持久化比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-bundle-sourcemap-recovery/MODULE.md",
+    "display_name": "suimi 前端Sourcemap恢复比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-cloud-metadata-path/MODULE.md",
+    "display_name": "suimi 云元数据路径比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-container-runtime/MODULE.md",
+    "display_name": "suimi 容器运行时比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-crypto-mobile/MODULE.md",
+    "display_name": "suimi 移动端密码学比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-custom-protocol-replay/MODULE.md",
+    "display_name": "suimi 自定义协议重放比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-dpapi-credential-chain/MODULE.md",
+    "display_name": "suimi DPAPI凭据链比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-file-parser-chain/MODULE.md",
+    "display_name": "suimi 文件解析链比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-firmware-layout/MODULE.md",
+    "display_name": "suimi 固件布局比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-forensic-timeline/MODULE.md",
+    "display_name": "suimi 取证时间线比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-graphql-rpc-drift/MODULE.md",
+    "display_name": "suimi GraphQL/RPC漂移比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-identity-windows/MODULE.md",
+    "display_name": "suimi Windows身份比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-ios-runtime/MODULE.md",
+    "display_name": "suimi iOS运行时比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-jwt-claim-confusion/MODULE.md",
+    "display_name": "suimi JWT声明混淆比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-k8s-control-plane/MODULE.md",
+    "display_name": "suimi K8s控制面比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-kerberos-delegation/MODULE.md",
+    "display_name": "suimi Kerberos委派比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-kernel-container-escape/MODULE.md",
+    "display_name": "suimi 内核容器逃逸比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-linux-credential-pivot/MODULE.md",
+    "display_name": "suimi Linux凭据跳板比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-lsass-ticket-material/MODULE.md",
+    "display_name": "suimi LSASS票据材料比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-mailbox-abuse/MODULE.md",
+    "display_name": "suimi 邮箱滥用比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-malware-config/MODULE.md",
+    "display_name": "suimi 恶意软件配置比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-oauth-oidc-chain/MODULE.md",
+    "display_name": "suimi OAuth/OIDC链比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-pcap-protocol/MODULE.md",
+    "display_name": "suimi PCAP协议比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-prompt-injection/MODULE.md",
+    "display_name": "suimi Prompt注入比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-queue-worker-drift/MODULE.md",
+    "display_name": "suimi 队列/Worker漂移比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-race-condition-state-drift/MODULE.md",
+    "display_name": "suimi 竞态条件比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-relay-coercion-chain/MODULE.md",
+    "display_name": "suimi 中继强制链比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-request-normalization-smuggling/MODULE.md",
+    "display_name": "suimi 请求归一化走私比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-reverse-pwn/MODULE.md",
+    "display_name": "suimi 逆向Pwn比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-runtime-routing/MODULE.md",
+    "display_name": "suimi 运行时路由比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-ssrf-metadata-pivot/MODULE.md",
+    "display_name": "suimi SSRF元数据跳板比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-stego-media/MODULE.md",
+    "display_name": "suimi 隐写媒体比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-supply-chain/MODULE.md",
+    "display_name": "suimi 供应链比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-template-render-path/MODULE.md",
+    "display_name": "suimi 模板渲染路径比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-web-runtime/MODULE.md",
+    "display_name": "suimi Web运行时比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-websocket-runtime/MODULE.md",
+    "display_name": "suimi WebSocket运行时比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-windows-pivot/MODULE.md",
+    "display_name": "suimi Windows跳板比赛"
+  },
+  {
+    "path": "security-research-modules/skills/competition-zip-archive/MODULE.md",
+    "display_name": "suimi ZIP归档比赛"
+  },
+  {
+    "path": "security-research-modules/skills/pentest-tools/MODULE.md",
+    "display_name": "suimi 渗透测试工具链"
+  },
+  {
+    "path": "github-reverse-modules/skills/web-api-reverse/MODULE.md",
+    "display_name": "suimi Web 后端 API 逆向"
+  },
+  {
+    "path": "github-reverse-modules/skills/web-js-reverse/MODULE.md",
+    "display_name": "suimi Web 前端 JS 逆向"
+  },
+  {
+    "path": "github-reverse-modules/skills/web-crypto-reverse/MODULE.md",
+    "display_name": "suimi Web/APK 加密算法逆向"
+  },
+  {
+    "path": "github-reverse-modules/skills/game-security-research/MODULE.md",
+    "display_name": "suimi游戏安全研究"
+  },
+  {
+    "path": "security-research-modules/skills/pentest-orchestration/MODULE.md",
+    "display_name": "suimi攻击流程编排"
+  }
 ]

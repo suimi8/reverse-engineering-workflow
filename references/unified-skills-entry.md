@@ -64,6 +64,7 @@
 | suimi Windows 本地服务自启动 | `local-reverse-modules/skills/windows-local-service-persistence/MODULE.md` | suimi 支持的 127.0.0.1 本地辅助服务、Startup 启动项、计划任务 fallback、端口防重复和冷启动验证 |
 | suimi Mirasim 德州扑克辅助维护 | `local-reverse-modules/skills/mirasim-godmode-re/MODULE.md` | suimi 支持的 Mirasim 桌面单机德州扑克（Electron）renderer 多副本发现与多目标打补丁、版本升级失效诊断、补丁串多版本适配、asar 重打包与 CDP 状态读取兼容 |
 | suimi 微信小程序协议逆向 | `local-reverse-modules/skills/wechat-miniapp-protocol-re/MODULE.md` | suimi 支持的微信 PC 小程序协议逆向（mitmproxy 抓包、sign/req-id 双盐双层 MD5 签名破解、V8 内存源码提取、业务接口链路、PySide6 GUI 集成） |
+| suimi 小红书协议逆向 | `local-reverse-modules/skills/xhs-protocol-re/MODULE.md` | suimi 支持的小红书 PC web 协议逆向（XYS_/X-s 签名复刻、mnsv2 字节码 VM 寄生、x-s-common 解码与 a1 同源自检、签名版本漂移实时取参、扫码登录 login_info 与 activate 游客陷阱、常驻签名服务导航互斥、xiaohongshu-mcp 浏览器路线） |
 
 ## Web/API 安全研究路由技能
 

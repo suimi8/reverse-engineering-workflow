@@ -251,6 +251,7 @@ The following suimi local reverse module is preserved under `local-reverse-modul
 - `local-reverse-modules/skills/windows-local-service-persistence/MODULE.md`: Windows loopback helper service startup repair, Startup-folder/PowerShell launcher patterns, duplicate guards, and cold-start verification.
 - `local-reverse-modules/skills/mirasim-godmode-re/MODULE.md`: Mirasim 桌面单机德州扑克（Electron）renderer 多副本发现与多目标打补丁、版本升级失效诊断、补丁串多版本适配、asar 重打包、CDP 状态读取兼容。
 - `local-reverse-modules/skills/wechat-miniapp-protocol-re/MODULE.md`: 微信 PC 小程序协议逆向与自动化（mitmproxy 抓包、sign/req-id 双盐双层 MD5、V8 内存源码提取、业务接口链路、PySide6 GUI 集成）。
+- `local-reverse-modules/skills/xhs-protocol-re/MODULE.md`: 小红书 PC web 协议逆向（XYS_/X-s 签名复刻、mnsv2 字节码 VM 寄生、x-s-common 解码与 a1 同源自检、签名版本漂移实时取参、扫码登录 login_info 与 activate 游客陷阱、常驻签名服务导航互斥、xiaohongshu-mcp 浏览器路线）。
 
 ## Added Security Research Modules
 
