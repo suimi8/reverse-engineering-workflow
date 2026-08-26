@@ -155,6 +155,12 @@ if (Test-Path -LiteralPath $stagePath) {
 
 try {
     Copy-Item -LiteralPath $sourceRoot -Destination $stagePath -Recurse -Force
+    # Do not propagate VCS/build/install artifacts into the installed copy (keeps installs lean)
+    foreach ($junk in @('.git', 'local-installed')) {
+        $junkPath = Join-Path $stagePath $junk
+        if (Test-Path -LiteralPath $junkPath) { Remove-Item -LiteralPath $junkPath -Recurse -Force }
+    }
+    Get-ChildItem -LiteralPath $stagePath -Recurse -File -Include *.zip, *.bak -ErrorAction SilentlyContinue | Remove-Item -Force -ErrorAction SilentlyContinue
     $stageShape = suimiAssert-PackageShape -RootDir $stagePath -Label 'Staged package'
 
     if (Test-Path -LiteralPath $destinationPath) {
